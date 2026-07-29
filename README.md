@@ -15,8 +15,10 @@ python3 -m http.server 8080
 
 Open [http://localhost:8080](http://localhost:8080)
 
-## Stack
+## Live site
 
-- HTML + embedded CSS
-- [Getwebfield design system](https://github.com/) responsive tokens (640px / 1200px breakpoints)
-- Figma source: Roof Builders
+Deployed via **GitHub Pages** on push to `main`.
+
+After the repo is on GitHub and Pages is enabled, the site will be at:
+
+`https://<your-github-username>.github.io/roof-builders/`
