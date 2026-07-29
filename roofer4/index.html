@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roofer 4 — Louisiana Roofing Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Saira+Extra+Condensed:wght@600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-heading: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-tagline: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --font-badge: 'Saira Extra Condensed', sans-serif;
+      --brand: #2173bd;
+      --text-main: #f9fafb;
+      --text-base: #f3f4f6;
+      --text-subtle: #9ca3af;
+      --text-inverted-main: #f9fafb;
+      --text-inverted-base: #f3f4f6;
+      --border-subtle: #1f2937;
+      --surface-base: #000000;
+      --surface-raised: #0a0a0a;
+      --surface-muted: #111111;
+      --space-section-y: 48px;
+      --space-section-x: 16px;
+      color-scheme: dark;
+    }
+
+    @media (min-width: 640px) {
+      :root { --space-section-x: 32px; }
+    }
+
+    @media (min-width: 1200px) {
+      :root { --space-section-y: 96px; --space-section-x: 40px; }
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-base);
+      background: var(--surface-base);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button, summary { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .layout-container {
+      width: 100%;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding-left: var(--space-section-x);
+      padding-right: var(--space-section-x);
+    }
+
+    .space-section {
+      padding-top: var(--space-section-y);
+      padding-bottom: var(--space-section-y);
+    }
+
+    .section--white { background: var(--surface-base); }
+    .section--muted { background: var(--surface-raised); }
+    .section--black { background: var(--surface-base); }
+
+    .type-h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--text-main);
+    }
+
+    .type-h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--text-main);
+    }
+
+    .type-h3 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--text-main);
+    }
+
+    .type-h4 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--text-main);
+    }
+
+    .type-body-lg {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      color: var(--text-base);
+    }
+
+    .type-body-md {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      color: var(--text-base);
+    }
+
+    .type-eyebrow,
+    .type-tagline {
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-subtle);
+    }
+
+    @media (min-width: 640px) {
+      .type-h1 { font-size: 64px; }
+      .type-h2 { font-size: 48px; }
+      .type-h3 { font-size: 36px; }
+      .type-h4 { font-size: 28px; }
+      .type-body-lg { font-size: 18px; }
+      .type-body-md { font-size: 16px; }
+    }
+
+    .text-content-main { color: var(--text-main); }
+    .text-content-base { color: var(--text-base); }
+    .text-content-subtle { color: var(--text-subtle); }
+    .text-content-inverted-main { color: var(--text-inverted-main); }
+    .text-content-inverted-base { color: var(--text-inverted-base); }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 16px 24px;
+      line-height: 1;
+    }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-inverted-main);
+      border: 1px solid rgba(255,255,255,0.35);
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 16px 24px;
+      line-height: 1;
+    }
+
+    @media (min-width: 640px) {
+      .btn-primary,
+      .btn-ghost { font-size: 15px; }
+    }
+
+    .btn-full { width: 100%; }
+
+    .form-field {
+      width: 100%;
+      border: 1px solid #333;
+      padding: 14px 16px;
+      font-size: 15px;
+      font-family: var(--font-body);
+      background: var(--surface-muted);
+      color: var(--text-main);
+    }
+
+    .form-field::placeholder { color: var(--text-subtle); }
+
+    .form-field--dark {
+      background: #111;
+      border-color: #333;
+      color: var(--text-main);
+    }
+
+    .form-field--dark::placeholder { color: var(--text-subtle); }
+
+    /* ===== TOP DOCK (thin utility strip — not sticky black, not overlay) ===== */
+    .top-dock {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 10px var(--space-section-x);
+      background: var(--surface-muted);
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-subtle);
+      flex-wrap: wrap;
+    }
+
+    /* ===== SIDE-RAIL SHELL (desktop: left rail + main) ===== */
+    .page-shell {
+      display: block;
+    }
+
+    @media (min-width: 1200px) {
+      .page-shell {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        min-height: 100svh;
+      }
+    }
+
+    .side-rail {
+      display: none;
+      background: #000;
+      color: var(--text-inverted-base);
+      padding: 32px 24px;
+      flex-direction: column;
+      gap: 40px;
+      position: sticky;
+      top: 0;
+      height: 100svh;
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 1200px) {
+      .side-rail { display: flex; }
+    }
+
+    .side-rail__logo { width: 120px; filter: brightness(0) invert(1); }
+
+    .side-rail__nav {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .side-rail__nav a {
+      font-size: 13px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-inverted-base);
+    }
+
+    .side-rail__nav a:hover { color: var(--text-inverted-main); }
+
+    .side-rail__phone {
+      margin-top: auto;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-inverted-main);
+    }
+
+    /* Mobile nav (only when side rail hidden) */
+    .mobile-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px var(--space-section-x);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--surface-base);
+    }
+
+    @media (min-width: 1200px) {
+      .mobile-nav { display: none; }
+    }
+
+    .mobile-nav__logo {
+      width: 110px;
+      filter: brightness(0) invert(1);
+    }
+
+    .mobile-nav__cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    /* ===== FORM-FIRST HERO SPLIT ===== */
+    .hero-lead {
+      display: grid;
+      min-height: min(88svh, 820px);
+    }
+
+    @media (min-width: 640px) {
+      .hero-lead {
+        grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+      }
+    }
+
+    .hero-lead__panel {
+      background: var(--surface-raised);
+      color: var(--text-base);
+      padding: 40px var(--space-section-x);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      border-right: 1px solid var(--border-subtle);
+    }
+
+    @media (min-width: 1200px) {
+      .hero-lead__panel { padding: 48px 40px; }
+    }
+
+    .hero-lead__panel .type-h1 { color: var(--text-main); }
+    .hero-lead__panel .type-eyebrow { color: var(--text-subtle); }
+
+    .hero-lead__desc {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      max-width: 560px;
+      color: var(--text-base);
+    }
+
+    @media (min-width: 640px) {
+      .hero-lead__desc { font-size: 18px; }
+    }
+
+    .hero-form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 400px;
+    }
+
+    .hero-form__note {
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
+    .hero-lead__collage {
+      display: grid;
+      grid-template-rows: 1.2fr 0.8fr;
+      gap: 4px;
+      min-height: 320px;
+      background: var(--surface-base);
+    }
+
+    .hero-lead__collage figure {
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .hero-lead__collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* ===== INLINE TRUST PILLS (not marquee, not black strip) ===== */
+    .trust-inline {
+      padding: 24px var(--space-section-x);
+      border-bottom: 1px solid var(--border-subtle);
+      background: var(--surface-base);
+    }
+
+    .trust-inline__list {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      max-width: 1400px;
+      margin: 0 auto;
+      justify-content: center;
+    }
+
+    .trust-inline__list li {
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-muted);
+      padding: 10px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-base);
+    }
+
+    /* ===== ACCORDION SERVICES ===== */
+    .accordion {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .accordion details {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .accordion summary {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 24px 0;
+      color: var(--text-main);
+    }
+
+    .accordion summary::-webkit-details-marker { display: none; }
+
+    .accordion summary .type-h3 { pointer-events: none; }
+
+    .accordion__mark {
+      font-size: 22px;
+      line-height: 1;
+      color: var(--text-subtle);
+      width: 24px;
+      text-align: center;
+    }
+
+    .accordion details[open] .accordion__mark { color: var(--brand); }
+
+    .accordion__body {
+      padding: 0 0 28px;
+      display: grid;
+      gap: 16px;
+    }
+
+    @media (min-width: 640px) {
+      .accordion__body {
+        grid-template-columns: 1fr auto;
+        align-items: end;
+      }
+    }
+
+    .accordion__body p {
+      font-size: 15px;
+      line-height: 1.6;
+      max-width: 560px;
+    }
+
+    /* ===== ZIGZAG SECTIONS ===== */
+    .zigzag {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .zigzag__row {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+
+    @media (min-width: 640px) {
+      .zigzag__row {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      .zigzag__row--flip .zigzag__media { order: 2; }
+      .zigzag__row--flip .zigzag__copy { order: 1; }
+    }
+
+    .zigzag__media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+    }
+
+    .zigzag__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .zigzag__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .zigzag__copy p {
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 480px;
+    }
+
+    /* ===== VERTICAL PROCESS RAIL ===== */
+    .process-rail {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 720px;
+    }
+
+    .process-rail__step {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+    }
+
+    .process-rail__track {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .process-rail__dot {
+      width: 12px;
+      height: 12px;
+      background: var(--brand);
+      flex-shrink: 0;
+      margin-top: 8px;
+    }
+
+    .process-rail__line {
+      width: 2px;
+      flex: 1;
+      background: #333;
+      min-height: 40px;
+    }
+
+    .process-rail__step:last-child .process-rail__line { display: none; }
+
+    .process-rail__content {
+      padding-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .process-rail__content p {
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ===== REVIEW COLUMNS ===== */
+    .review-columns {
+      display: grid;
+      gap: 24px;
+    }
+
+    @media (min-width: 640px) {
+      .review-columns { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    }
+
+    .review-col {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding-top: 24px;
+      border-top: 2px solid var(--brand);
+    }
+
+    .review-col__quote {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      color: var(--text-main);
+    }
+
+    @media (min-width: 640px) {
+      .review-col__quote { font-size: 18px; }
+    }
+
+    .review-col__name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-main);
+    }
+
+    .review-col__meta {
+      font-size: 13px;
+      color: var(--text-subtle);
+    }
+
+    /* ===== CONTACT SPLIT ===== */
+    .contact-split {
+      display: grid;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .contact-split {
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 48px;
+        align-items: start;
+      }
+    }
+
+    .contact-split__info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .contact-split__info p { font-size: 15px; line-height: 1.6; }
+
+    .area-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 16px;
+      font-size: 14px;
+    }
+
+    .contact-split__form {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: var(--surface-muted);
+      border: 1px solid var(--border-subtle);
+      padding: 24px;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      background: var(--surface-base);
+      color: var(--text-base);
+      border-top: 1px solid var(--border-subtle);
+      padding: 48px var(--space-section-x) 24px;
+    }
+
+    .footer-bar {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 32px;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .footer-bar__logo {
+      width: 110px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-bar__links {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .footer-copy {
+      max-width: 1400px;
+      margin: 24px auto 0;
+      font-size: 13px;
+      color: var(--text-subtle);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-dock">
+    <span>1 Galleria Blvd Suite 1900, Metairie, LA 70001</span>
+    <span>Mon–Fri · 8:00 AM – 5:00 PM</span>
+  </div>
+
+  <div class="page-shell">
+    <aside class="side-rail" aria-label="Primary navigation">
+      <a href="index.html">
+        <img class="side-rail__logo" src="images/logo.svg" alt="Roofer 4" width="120" height="37">
+      </a>
+      <ul class="side-rail__nav">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <a class="side-rail__phone" href="tel:5043840676">(504) 384-0676</a>
+    </aside>
+
+    <main>
+      <header class="mobile-nav">
+        <a href="index.html">
+          <img class="mobile-nav__logo" src="images/logo.svg" alt="Roofer 4" width="110" height="34">
+        </a>
+        <a class="mobile-nav__cta" href="tel:5043840676">Call (504) 384-0676</a>
+      </header>
+
+      <!-- FORM-FIRST HERO -->
+      <section class="hero-lead" aria-label="Hero">
+        <div class="hero-lead__panel">
+          <p class="type-eyebrow">Louisiana storm roofing</p>
+          <h1 class="type-h1">Get a straight answer about your roof today</h1>
+          <p class="hero-lead__desc">Locally owned. Storm-tested. Book a free inspection and we'll tell you what's wrong — no upselling.</p>
+          <form class="hero-form" action="#" method="post">
+            <input class="form-field form-field--dark" type="text" name="name" placeholder="Name" aria-label="Name" required>
+            <input class="form-field form-field--dark" type="tel" name="phone" placeholder="Phone" aria-label="Phone" required>
+            <input class="form-field form-field--dark" type="text" name="address" placeholder="Property address" aria-label="Address">
+            <button class="btn-primary btn-full" type="submit">Book Free Inspection</button>
+            <p class="hero-form__note">No spam. No pressure. Same-day callbacks when possible.</p>
+          </form>
+        </div>
+        <div class="hero-lead__collage" aria-hidden="false">
+          <figure>
+            <picture>
+              <source srcset="images/hero-aerial.webp" type="image/webp">
+              <img src="images/hero-aerial.jpg" alt="Louisiana home with storm-ready roof" width="1400" height="933" loading="eager">
+            </picture>
+          </figure>
+          <figure>
+            <picture>
+              <source srcset="images/hero-crew.webp" type="image/webp">
+              <img src="images/hero-crew.jpg" alt="Local roofing crew on site" width="1400" height="787" loading="lazy">
+            </picture>
+          </figure>
+        </div>
+      </section>
+
+      <div class="trust-inline" aria-label="Trust indicators">
+        <ul class="trust-inline__list">
+          <li>Licensed &amp; Insured</li>
+          <li>Free Inspections</li>
+          <li>Financing Available</li>
+          <li>Emergency Repairs</li>
+          <li>FORTIFIED Options</li>
+        </ul>
+      </div>
+
+      <!-- ACCORDION SERVICES -->
+      <section class="section--white space-section" id="services">
+        <div class="layout-container">
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:32px;max-width:640px;">
+            <p class="type-eyebrow">Services</p>
+            <h2 class="type-h2">What we fix, replace, and protect</h2>
+            <p class="text-content-base">Open a service to see how we help — then book if it fits.</p>
+          </div>
+
+          <div class="accordion">
+            <details open>
+              <summary>
+                <h3 class="type-h3">Roof Repairs</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>Leaks, storm damage, missing shingles — we find the real source and fix it right, often the same day. No upselling.</p>
+                <a class="btn-primary" href="#contact">Get My Roof Repaired</a>
+              </div>
+            </details>
+            <details>
+              <summary>
+                <h3 class="type-h3">Roof Installation</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>A new roof built to last and matched to your budget, installed by a certified local crew with a clean job site.</p>
+                <a class="btn-primary" href="#contact">Plan My Installation</a>
+              </div>
+            </details>
+            <details>
+              <summary>
+                <h3 class="type-h3">Roof Leak Repair</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>A small leak today becomes a ceiling and mold problem tomorrow. We locate the source fast and stop the water.</p>
+                <a class="btn-primary" href="#contact">Stop My Leak</a>
+              </div>
+            </details>
+            <details>
+              <summary>
+                <h3 class="type-h3">Roof Coating</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>Extend your roof's life and cut energy costs with a protective coating for Louisiana sun, rain, and heat.</p>
+                <a class="btn-primary" href="#contact">Protect My Roof</a>
+              </div>
+            </details>
+            <details>
+              <summary>
+                <h3 class="type-h3">Roof Inspection</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>A free, honest top-to-bottom check before small problems get expensive — with a clear report and no pressure.</p>
+                <a class="btn-primary" href="#contact">Book a Free Inspection</a>
+              </div>
+            </details>
+            <details>
+              <summary>
+                <h3 class="type-h3">Roof Replacement</h3>
+                <span class="accordion__mark" aria-hidden="true">+</span>
+              </summary>
+              <div class="accordion__body">
+                <p>When repairs aren't enough, we replace your roof to FORTIFIED standards — tougher in a storm and often covered by insurance.</p>
+                <a class="btn-primary" href="#contact">Price My New Roof</a>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ZIGZAG ABOUT -->
+      <section class="section--muted space-section" id="about">
+        <div class="layout-container">
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px;max-width:640px;">
+            <p class="type-eyebrow">About</p>
+            <h2 class="type-h2">Built for Louisiana's climate — wherever you are in the state</h2>
+          </div>
+
+          <div class="zigzag">
+            <article class="zigzag__row">
+              <div class="zigzag__media">
+                <picture>
+                  <source srcset="images/residential.webp" type="image/webp">
+                  <img src="images/residential.jpg" alt="Residential roofing project" width="1119" height="1400" loading="lazy">
+                </picture>
+              </div>
+              <div class="zigzag__copy">
+                <h3 class="type-h3">Residential roofs that last</h3>
+                <p>Most roofs fail early from water intrusion. We come out fast, tell you exactly what's wrong, and fix it to survive the next hurricane season.</p>
+                <a class="btn-primary" href="#contact">Residential Quote</a>
+              </div>
+            </article>
+
+            <article class="zigzag__row zigzag__row--flip">
+              <div class="zigzag__media">
+                <picture>
+                  <source srcset="images/commercial.webp" type="image/webp">
+                  <img src="images/commercial.jpg" alt="Commercial roofing project" width="990" height="1400" loading="lazy">
+                </picture>
+              </div>
+              <div class="zigzag__copy">
+                <h3 class="type-h3">Commercial systems that work</h3>
+                <p>Industrial, office, hospitality, retail, and education. Custom estimates, detailed reports, and help with insurance claims.</p>
+                <a class="btn-primary" href="#contact">Commercial Quote</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- VERTICAL PROCESS -->
+      <section class="section--white space-section" id="process">
+        <div class="layout-container">
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px;max-width:640px;">
+            <p class="type-eyebrow">Process</p>
+            <h2 class="type-h2">Four steps from call to completed roof</h2>
+          </div>
+
+          <div class="process-rail">
+            <div class="process-rail__step">
+              <div class="process-rail__track">
+                <span class="process-rail__dot"></span>
+                <span class="process-rail__line"></span>
+              </div>
+              <div class="process-rail__content">
+                <h3 class="type-h3">1. Free inspection</h3>
+                <p>We inspect your roof top to bottom and give you an honest report — no upselling.</p>
+              </div>
+            </div>
+            <div class="process-rail__step">
+              <div class="process-rail__track">
+                <span class="process-rail__dot"></span>
+                <span class="process-rail__line"></span>
+              </div>
+              <div class="process-rail__content">
+                <h3 class="type-h3">2. Clear quote</h3>
+                <p>Detailed estimate with material options matched to your budget and storm needs.</p>
+              </div>
+            </div>
+            <div class="process-rail__step">
+              <div class="process-rail__track">
+                <span class="process-rail__dot"></span>
+                <span class="process-rail__line"></span>
+              </div>
+              <div class="process-rail__content">
+                <h3 class="type-h3">3. Expert install</h3>
+                <p>Certified local crew, quality materials, and a clean job site every day.</p>
+              </div>
+            </div>
+            <div class="process-rail__step">
+              <div class="process-rail__track">
+                <span class="process-rail__dot"></span>
+                <span class="process-rail__line"></span>
+              </div>
+              <div class="process-rail__content">
+                <h3 class="type-h3">4. Warranty follow-up</h3>
+                <p>Workmanship warranty included. We check back after the first storm season.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEW COLUMNS -->
+      <section class="section--white space-section" id="reviews">
+        <div class="layout-container">
+          <div style="display:flex;flex-direction:column;gap:12px;margin-bottom:40px;max-width:640px;">
+            <p class="type-eyebrow">Reviews</p>
+            <h2 class="type-h2">What homeowners say after the job</h2>
+          </div>
+          <div class="review-columns">
+            <blockquote class="review-col">
+              <p class="review-col__quote">"Outstanding roof replacement in New Orleans. Professional from inspection to cleanup."</p>
+              <div>
+                <p class="review-col__name">Martin Molina</p>
+                <p class="review-col__meta">Verified · New Orleans</p>
+              </div>
+            </blockquote>
+            <blockquote class="review-col">
+              <p class="review-col__quote">"They found the leak the first visit and fixed it the same day. Straight talk, fair price."</p>
+              <div>
+                <p class="review-col__name">Alicia Reyes</p>
+                <p class="review-col__meta">Verified · Metairie</p>
+              </div>
+            </blockquote>
+            <blockquote class="review-col">
+              <p class="review-col__quote">"Insurance paperwork was a headache — they walked us through every step."</p>
+              <div>
+                <p class="review-col__name">James Porter</p>
+                <p class="review-col__meta">Verified · Kenner</p>
+              </div>
+            </blockquote>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SPLIT -->
+      <section class="section--muted space-section" id="contact">
+        <div class="layout-container">
+          <div class="contact-split">
+            <div class="contact-split__info">
+              <p class="type-eyebrow">Contact</p>
+              <h2 class="type-h2">Request your free roof inspection</h2>
+              <p>Free inspection. No-obligation quote. Backed by a workmanship warranty.</p>
+              <div>
+                <p class="text-content-main" style="font-weight:500;">1 Galleria Blvd Suite 1900<br>Metairie, LA 70001</p>
+                <p class="text-content-subtle" style="margin-top:8px;">Mon–Fri · 8:00 AM – 5:00 PM</p>
+                <a class="btn-primary" href="tel:5043840676" style="margin-top:16px;">Call (504) 384-0676</a>
+              </div>
+              <div>
+                <p class="type-eyebrow" style="margin-bottom:12px;">Service area</p>
+                <ul class="area-list">
+                  <li>Metairie</li>
+                  <li>New Orleans</li>
+                  <li>Kenner</li>
+                  <li>Slidell</li>
+                  <li>Covington</li>
+                  <li>Mandeville</li>
+                  <li>Baton Rouge</li>
+                  <li>Lafayette</li>
+                </ul>
+              </div>
+            </div>
+
+            <form class="contact-split__form" action="#" method="post">
+              <input class="form-field" type="text" name="name" placeholder="Name" aria-label="Name" required>
+              <input class="form-field" type="email" name="email" placeholder="Email" aria-label="Email" required>
+              <input class="form-field" type="tel" name="phone" placeholder="Phone Number" aria-label="Phone" required>
+              <input class="form-field" type="text" name="address" placeholder="Address" aria-label="Address">
+              <textarea class="form-field" name="message" rows="4" placeholder="Tell us about your roof" aria-label="Message"></textarea>
+              <button class="btn-primary btn-full" type="submit">Book My Free Inspection</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="footer-bar">
+          <img class="footer-bar__logo" src="images/logo.svg" alt="Roofer 4" width="110" height="34">
+          <ul class="footer-bar__links">
+            <li><a href="../index.html">Roofer 1</a></li>
+            <li><a href="../roofer2/index.html">Roofer 2</a></li>
+            <li><a href="../roofer3/index.html">Roofer 3</a></li>
+            <li><a href="index.html">Roofer 4</a></li>
+          </ul>
+        </div>
+        <p class="footer-copy">&copy; 2026 Roofer 4 Demo · Getwebfield</p>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.querySelectorAll('.accordion details').forEach(function (item) {
+      item.addEventListener('toggle', function () {
+        if (!item.open) return;
+        document.querySelectorAll('.accordion details').forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+  </script>
+</body>
+</html>

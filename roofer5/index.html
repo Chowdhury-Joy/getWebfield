@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roofer 5 — Louisiana Roofing Demo (CRO)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Saira+Extra+Condensed:wght@600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --font-heading: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-tagline: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --font-badge: 'Saira Extra Condensed', sans-serif;
+      --font-weight-heading: 400;
+      --font-weight-body: 400;
+      --font-weight-button: 500;
+      --brand: #2173bd;
+      --content-main: #1f2937;
+      --content-base: #4b5563;
+      --content-subtle: #9ca3af;
+      --content-inverted-main: #f9fafb;
+      --content-inverted-base: #f3f4f6;
+      --content-inverted-subtle: #d1d5db;
+      --border-subtle: #e5e7eb;
+      --border-dark: #1f2937;
+      --space-section-y: 48px;
+      --space-section-x: 16px;
+      --layout-max: 1400px;
+    }
+
+    @media (min-width: 640px) {
+      :root { --space-section-x: 32px; }
+    }
+
+    @media (min-width: 1200px) {
+      :root {
+        --space-section-y: 96px;
+        --space-section-x: 40px;
+      }
+    }
+
+    html { scroll-behavior: smooth; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: var(--font-weight-body);
+      color: var(--content-base);
+      background: #fff;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 80px;
+    }
+
+    @media (min-width: 1200px) {
+      body { padding-bottom: 0; }
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .layout-container {
+      width: 100%;
+      max-width: var(--layout-max);
+      margin: 0 auto;
+      padding-left: var(--space-section-x);
+      padding-right: var(--space-section-x);
+    }
+
+    /* Every section keeps full top + bottom — adjacent same-color sections stack (96+96 desktop) */
+    .space-section {
+      padding-top: var(--space-section-y);
+      padding-bottom: var(--space-section-y);
+    }
+
+    .section--white { background: #fff; }
+    .section--black { background: #000; color: var(--content-inverted-base); }
+
+    .type-h1 {
+      font-family: var(--font-heading);
+      font-size: 48px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+    }
+
+    .type-h2 {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+    }
+
+    .type-h3 {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+    }
+
+    .type-h4 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+    }
+
+    @media (min-width: 640px) {
+      .type-h1 { font-size: 64px; }
+      .type-h2 { font-size: 48px; }
+      .type-h3 { font-size: 36px; }
+      .type-h4 { font-size: 28px; }
+    }
+
+    .type-body-lg {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      color: var(--content-base);
+    }
+
+    @media (min-width: 640px) {
+      .type-body-lg { font-size: 18px; }
+    }
+
+    .type-body-md {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      color: var(--content-base);
+    }
+
+    @media (min-width: 640px) {
+      .type-body-md { font-size: 16px; }
+    }
+
+    .type-tagline {
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--content-subtle);
+    }
+
+    .section--black .type-h1,
+    .section--black .type-h2,
+    .section--black .type-h3,
+    .section--black .type-h4 { color: var(--content-inverted-main); }
+
+    .section--black .type-body-lg,
+    .section--black .type-body-md { color: var(--content-inverted-base); }
+
+    .section--black .type-tagline { color: var(--content-inverted-subtle); }
+
+    .stack-header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+      max-width: 640px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--brand);
+      color: #fff;
+      font-family: var(--font-body);
+      font-weight: var(--font-weight-button);
+      font-size: 14px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 16px 24px;
+    }
+
+    @media (min-width: 640px) {
+      .btn-primary { font-size: 15px; }
+    }
+
+    .btn-primary:focus-visible,
+    .btn-secondary:focus-visible,
+    .form-field:focus-visible,
+    .service-row:focus-visible {
+      outline: 2px solid var(--brand);
+      outline-offset: 2px;
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: var(--content-main);
+      border: 1px solid #dbdbdb;
+      font-family: var(--font-body);
+      font-weight: var(--font-weight-button);
+      font-size: 14px;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      padding: 16px 24px;
+    }
+
+    .section--black .btn-secondary {
+      background: transparent;
+      color: var(--content-inverted-main);
+      border-color: #374151;
+    }
+
+    .btn-full { width: 100%; }
+
+    .form-field {
+      width: 100%;
+      border: 1px solid #333;
+      padding: 16px;
+      font-family: var(--font-body);
+      font-size: 16px;
+      color: var(--content-inverted-main);
+      background: #111;
+    }
+
+    .form-field::placeholder { color: #9ca3af; }
+
+    /* ===== CHROME ===== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: #fff;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .site-header__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px var(--space-section-x);
+      max-width: var(--layout-max);
+      margin: 0 auto;
+    }
+
+    .site-header__logo { width: 112px; }
+
+    .site-header__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .site-header__phone {
+      display: none;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      color: var(--content-main);
+    }
+
+    @media (min-width: 640px) {
+      .site-header__phone { display: inline-flex; }
+    }
+
+    .offer-strip {
+      background: var(--brand);
+      color: var(--content-inverted-main);
+      text-align: center;
+      padding: 12px var(--space-section-x);
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ===== HERO ===== */
+    .hero-grid {
+      display: grid;
+      gap: 40px;
+      align-items: start;
+    }
+
+    @media (min-width: 1200px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+        gap: 56px;
+        align-items: center;
+      }
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      align-items: flex-start;
+    }
+
+    .hero-desc { max-width: 560px; }
+
+    .benefit-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .benefit-list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 12px;
+      align-items: start;
+      font-size: 15px;
+      letter-spacing: -0.03em;
+      color: var(--content-base);
+    }
+
+    .benefit-list__check {
+      width: 20px;
+      height: 20px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1px;
+    }
+
+    .proof-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      align-items: center;
+      padding-top: 8px;
+      border-top: 1px solid var(--border-subtle);
+      width: 100%;
+      max-width: 480px;
+      font-size: 14px;
+    }
+
+    .proof-line__stars {
+      color: var(--content-main);
+      letter-spacing: 0.1em;
+    }
+
+    .lead-box {
+      background: #000;
+      color: var(--content-inverted-base);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    @media (min-width: 640px) {
+      .lead-box { padding: 32px; }
+    }
+
+    .lead-box__title {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-inverted-main);
+    }
+
+    @media (min-width: 640px) {
+      .lead-box__title { font-size: 36px; }
+    }
+
+    .lead-box__sub {
+      font-size: 14px;
+      color: var(--content-inverted-subtle);
+      margin-bottom: 4px;
+    }
+
+    .lead-box__selected {
+      display: none;
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--content-inverted-subtle);
+      border: 1px solid #333;
+      padding: 10px 12px;
+    }
+
+    .lead-box__selected.is-visible { display: block; }
+
+    .lead-box__selected strong {
+      color: var(--content-inverted-main);
+      font-weight: 400;
+    }
+
+    .lead-box__note {
+      font-size: 13px;
+      color: #9ca3af;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .lead-box__alt {
+      text-align: center;
+      font-size: 14px;
+      color: var(--content-inverted-base);
+    }
+
+    .lead-box__alt a {
+      font-weight: 500;
+      color: var(--content-inverted-main);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ===== PROOF (black section) ===== */
+    .proof-grid {
+      display: grid;
+      gap: 40px;
+    }
+
+    @media (min-width: 640px) {
+      .proof-grid {
+        grid-template-columns: 1.5fr 1fr;
+        gap: 48px;
+        align-items: end;
+      }
+    }
+
+    .proof-quote {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-inverted-main);
+    }
+
+    @media (min-width: 640px) {
+      .proof-quote { font-size: 48px; }
+    }
+
+    .proof-quote cite {
+      display: block;
+      margin-top: 20px;
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      font-style: normal;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--content-inverted-subtle);
+    }
+
+    .proof-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      border-top: 1px solid #1f2937;
+      padding-top: 24px;
+    }
+
+    .proof-stat__num {
+      font-family: var(--font-heading);
+      font-size: 36px;
+      line-height: 0.85;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-inverted-main);
+    }
+
+    @media (min-width: 640px) {
+      .proof-stat__num { font-size: 48px; }
+    }
+
+    .proof-stat__label {
+      margin-top: 8px;
+      font-size: 13px;
+      color: var(--content-inverted-subtle);
+    }
+
+    /* ===== SERVICE ROWS ===== */
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .service-row {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
+      width: 100%;
+      text-align: left;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--content-base);
+    }
+
+    @media (min-width: 640px) {
+      .service-row {
+        grid-template-columns: 64px 1fr auto;
+        align-items: center;
+        gap: 24px;
+      }
+    }
+
+    .service-row:hover .service-row__name,
+    .service-row:focus-visible .service-row__name {
+      color: var(--brand);
+    }
+
+    .service-row__num {
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      color: var(--content-subtle);
+      padding-top: 4px;
+    }
+
+    @media (min-width: 640px) {
+      .service-row__num { padding-top: 0; }
+    }
+
+    .service-row__body {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .service-row__name {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+      transition: color 0.15s ease;
+    }
+
+    @media (min-width: 640px) {
+      .service-row__name { font-size: 36px; }
+    }
+
+    .service-row__hint {
+      font-family: var(--font-body);
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: -0.04em;
+      max-width: 520px;
+    }
+
+    @media (min-width: 640px) {
+      .service-row__hint { font-size: 16px; }
+    }
+
+    .service-row__action {
+      grid-column: 2;
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 13px;
+      text-transform: uppercase;
+      color: var(--content-main);
+      margin-top: 4px;
+    }
+
+    @media (min-width: 640px) {
+      .service-row__action {
+        grid-column: auto;
+        margin-top: 0;
+        white-space: nowrap;
+      }
+    }
+
+    /* ===== URGENCY ===== */
+    .urgency-grid {
+      display: grid;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @media (min-width: 640px) {
+      .urgency-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 48px;
+      }
+    }
+
+    .urgency-media {
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .urgency-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .urgency-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    /* ===== PROCESS ===== */
+    .process-grid {
+      display: grid;
+      gap: 32px;
+    }
+
+    @media (min-width: 640px) {
+      .process-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    }
+
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding-top: 20px;
+      border-top: 2px solid var(--brand);
+    }
+
+    .process-step__num {
+      font-family: var(--font-tagline);
+      font-size: 14px;
+      line-height: 1.2;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--content-inverted-subtle);
+    }
+
+    /* ===== FAQ ===== */
+    .faq-layout {
+      display: grid;
+      gap: 40px;
+    }
+
+    @media (min-width: 1200px) {
+      .faq-layout {
+        grid-template-columns: minmax(240px, 0.8fr) 1.2fr;
+        gap: 64px;
+        align-items: start;
+      }
+    }
+
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .faq-list details {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .faq-list summary {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 24px 0;
+      font-family: var(--font-heading);
+      font-size: 28px;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      color: var(--content-main);
+      cursor: pointer;
+    }
+
+    @media (min-width: 640px) {
+      .faq-list summary { font-size: 36px; }
+    }
+
+    .faq-list summary::-webkit-details-marker { display: none; }
+
+    .faq-list__icon {
+      font-size: 22px;
+      line-height: 1;
+      color: var(--content-subtle);
+    }
+
+    .faq-list details[open] .faq-list__icon { color: var(--brand); }
+
+    .faq-list details p {
+      padding: 0 0 24px;
+      font-size: 15px;
+      line-height: 1.55;
+      letter-spacing: -0.03em;
+      color: var(--content-base);
+      max-width: 560px;
+    }
+
+    /* ===== FINAL CTA ===== */
+    .final-cta {
+      display: grid;
+      gap: 28px;
+      max-width: 800px;
+    }
+
+    .final-cta__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #fff;
+    }
+
+    .site-footer__inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px 32px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-footer__logo { width: 100px; }
+
+    .site-footer__meta {
+      font-size: 13px;
+      color: var(--content-subtle);
+    }
+
+    .site-footer__demos {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 16px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--content-subtle);
+    }
+
+    /* ===== STICKY BAR ===== */
+    .sticky-bar {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 8px;
+      background: #fff;
+      border-top: 1px solid var(--border-subtle);
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    }
+
+    @media (min-width: 1200px) {
+      .sticky-bar { display: none; }
+    }
+
+    .sticky-bar .btn-secondary,
+    .sticky-bar .btn-primary {
+      width: 100%;
+      padding: 14px 10px;
+      font-size: 12px;
+    }
+
+    /* Motion */
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-copy,
+    .lead-box {
+      animation: rise-in 0.55s ease both;
+    }
+
+    .lead-box { animation-delay: 0.08s; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a href="index.html" aria-label="Home">
+        <img class="site-header__logo" src="images/logo.svg" alt="Roofer 5" width="112" height="34">
+      </a>
+      <div class="site-header__actions">
+        <a class="site-header__phone" href="tel:5043840676">(504) 384-0676</a>
+        <a class="btn-primary" href="#book">Book Free Inspection</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="offer-strip" role="status">
+    Free roof inspection · No obligation · Same-day callbacks when available
+  </div>
+
+  <!-- HERO -->
+  <section class="section--white space-section" aria-label="Book inspection" id="top">
+    <div class="layout-container">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="type-tagline">Metairie · Greater New Orleans</p>
+          <h1 class="type-h1">Stop guessing about your roof</h1>
+          <p class="type-body-lg hero-desc">Book a free inspection. We’ll tell you what’s wrong, what can wait, and what needs fixing before the next storm — with no upselling.</p>
+          <ul class="benefit-list">
+            <li><span class="benefit-list__check" aria-hidden="true">✓</span><span>Licensed &amp; insured local crew</span></li>
+            <li><span class="benefit-list__check" aria-hidden="true">✓</span><span>Clear written findings after the visit</span></li>
+            <li><span class="benefit-list__check" aria-hidden="true">✓</span><span>Financing options if you need repairs now</span></li>
+          </ul>
+          <p class="proof-line">
+            <span class="proof-line__stars" aria-label="5 star rating">★★★★★</span>
+            <span>100+ reviews · 1,500+ roofs inspected</span>
+          </p>
+        </div>
+
+        <form class="lead-box" id="book" action="#" method="post">
+          <p class="lead-box__title">Book my free inspection</p>
+          <p class="lead-box__sub">Takes under 30 seconds. We’ll call you back.</p>
+          <p class="lead-box__selected" id="service-selected" aria-live="polite">Selected: <strong></strong></p>
+          <input class="form-field" type="text" name="name" placeholder="Your name" aria-label="Your name" required autocomplete="name">
+          <input class="form-field" type="tel" name="phone" placeholder="Phone number" aria-label="Phone number" required autocomplete="tel">
+          <input class="form-field" type="text" name="address" placeholder="Property address (optional)" aria-label="Property address" autocomplete="street-address">
+          <input type="hidden" name="service" id="service-field" value="">
+          <button class="btn-primary btn-full" type="submit">Get My Free Inspection</button>
+          <p class="lead-box__note">No spam. No pressure. Free inspection, always.</p>
+          <p class="lead-box__alt">Prefer to talk now? <a href="tel:5043840676">Call (504) 384-0676</a></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section class="section--black space-section" aria-label="Social proof">
+    <div class="layout-container">
+      <div class="proof-grid">
+        <blockquote class="proof-quote">
+          “They found the leak on the first visit and fixed it the same day. Straight talk, fair price.”
+          <cite>Alicia Reyes · Metairie · Verified customer</cite>
+        </blockquote>
+        <div class="proof-stats">
+          <div>
+            <div class="proof-stat__num">1200+</div>
+            <p class="proof-stat__label">Inspections</p>
+          </div>
+          <div>
+            <div class="proof-stat__num">800+</div>
+            <p class="proof-stat__label">Repairs</p>
+          </div>
+          <div>
+            <div class="proof-stat__num">12+</div>
+            <p class="proof-stat__label">Years local</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section--white space-section" id="services">
+    <div class="layout-container">
+      <div class="stack-header">
+        <p class="type-tagline">What do you need?</p>
+        <h2 class="type-h2">Pick a service. We’ll handle the rest.</h2>
+        <p class="type-body-md">Tap a row — it selects that service and jumps you to the booking form.</p>
+      </div>
+
+      <div class="service-list">
+        <button class="service-row" type="button" data-service="Roof repairs">
+          <span class="service-row__num">01</span>
+          <span class="service-row__body">
+            <span class="service-row__name">Roof repairs</span>
+            <span class="service-row__hint">Leaks, missing shingles, storm damage — often same-day.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+        <button class="service-row" type="button" data-service="Roof leak repair">
+          <span class="service-row__num">02</span>
+          <span class="service-row__body">
+            <span class="service-row__name">Roof leak repair</span>
+            <span class="service-row__hint">Stop water before it hits ceilings, walls, and mold.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+        <button class="service-row" type="button" data-service="Free roof inspection">
+          <span class="service-row__num">03</span>
+          <span class="service-row__body">
+            <span class="service-row__name">Free inspection</span>
+            <span class="service-row__hint">Honest top-to-bottom check. Clear report. No pressure.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+        <button class="service-row" type="button" data-service="Roof installation">
+          <span class="service-row__num">04</span>
+          <span class="service-row__body">
+            <span class="service-row__name">New installation</span>
+            <span class="service-row__hint">Budget-matched materials. Certified local crew.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+        <button class="service-row" type="button" data-service="Roof replacement">
+          <span class="service-row__num">05</span>
+          <span class="service-row__body">
+            <span class="service-row__name">Roof replacement</span>
+            <span class="service-row__hint">FORTIFIED options. Help with insurance paperwork.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+        <button class="service-row" type="button" data-service="Roof coating">
+          <span class="service-row__num">06</span>
+          <span class="service-row__body">
+            <span class="service-row__name">Roof coating</span>
+            <span class="service-row__hint">Extend roof life and cut heat for Louisiana summers.</span>
+          </span>
+          <span class="service-row__action">Book this →</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- URGENCY -->
+  <section class="section--white space-section" id="why">
+    <div class="layout-container">
+      <div class="urgency-grid">
+        <div class="urgency-media">
+          <picture>
+            <source srcset="images/about-house.webp" type="image/webp">
+            <img src="images/about-house.jpg" alt="Louisiana home that needs storm-ready roofing" width="1119" height="1400" loading="lazy">
+          </picture>
+        </div>
+        <div class="urgency-copy">
+          <p class="type-tagline">Why book now</p>
+          <h2 class="type-h2">A small leak gets expensive fast</h2>
+          <p class="type-body-md">Most Louisiana roofs fail early from water intrusion. Waiting through another storm can turn a simple repair into a full replacement — and a mold problem.</p>
+          <p class="type-body-md">A free inspection tells you exactly where you stand this week.</p>
+          <a class="btn-primary" href="#book">Book Free Inspection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="section--black space-section" id="process">
+    <div class="layout-container">
+      <div class="stack-header">
+        <p class="type-tagline">How it works</p>
+        <h2 class="type-h2">Three steps. No runaround.</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-step">
+          <span class="process-step__num">Step 01</span>
+          <h3 class="type-h3">Book in 30 seconds</h3>
+          <p class="type-body-md">Leave your name and phone. We call back — often the same day.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">Step 02</span>
+          <h3 class="type-h3">Free inspection</h3>
+          <p class="type-body-md">We check the roof and explain what’s wrong in plain English.</p>
+        </div>
+        <div class="process-step">
+          <span class="process-step__num">Step 03</span>
+          <h3 class="type-h3">Fix only what’s needed</h3>
+          <p class="type-body-md">Repair when possible. Replace only when the roof can’t wait.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section--white space-section" id="faq">
+    <div class="layout-container">
+      <div class="faq-layout">
+        <div class="stack-header" style="margin-bottom:0;">
+          <p class="type-tagline">Common questions</p>
+          <h2 class="type-h2">Before you book</h2>
+          <p class="type-body-md">Straight answers so you don’t bounce over uncertainty.</p>
+        </div>
+        <div class="faq-list">
+          <details open>
+            <summary>Is the inspection really free?<span class="faq-list__icon" aria-hidden="true">+</span></summary>
+            <p>Yes. We inspect, explain what we find, and leave you a clear report. You’re never obligated to hire us.</p>
+          </details>
+          <details>
+            <summary>How fast can you come out?<span class="faq-list__icon" aria-hidden="true">+</span></summary>
+            <p>Many inspections happen within 24–48 hours. Active leaks and storm emergencies are prioritized the same day when we can.</p>
+          </details>
+          <details>
+            <summary>Will you push a full replacement?<span class="faq-list__icon" aria-hidden="true">+</span></summary>
+            <p>No. If a repair will solve it, we say so. We only recommend replacement when the roof can’t be trusted through the next season.</p>
+          </details>
+          <details>
+            <summary>Do you help with insurance?<span class="faq-list__icon" aria-hidden="true">+</span></summary>
+            <p>Yes. We document damage clearly and can walk you through claim paperwork when storm damage is involved.</p>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section--black space-section" id="contact">
+    <div class="layout-container">
+      <div class="final-cta">
+        <p class="type-tagline">Ready when you are</p>
+        <h2 class="type-h2">Get a straight answer about your roof</h2>
+        <p class="type-body-md">Free inspection. Local crew. No spam, no pressure.</p>
+        <div class="final-cta__actions">
+          <a class="btn-primary" href="#book">Book Free Inspection</a>
+          <a class="btn-secondary" href="tel:5043840676">Call (504) 384-0676</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer space-section">
+    <div class="layout-container">
+      <div class="site-footer__inner">
+        <img class="site-footer__logo" src="images/logo.svg" alt="Roofer 5" width="100" height="30">
+        <p class="site-footer__meta">1 Galleria Blvd Suite 1900, Metairie, LA 70001 · Mon–Fri 8AM–5PM</p>
+        <ul class="site-footer__demos">
+          <li><a href="../index.html">Roofer 1</a></li>
+          <li><a href="../roofer2/index.html">Roofer 2</a></li>
+          <li><a href="../roofer3/index.html">Roofer 3</a></li>
+          <li><a href="../roofer4/index.html">Roofer 4</a></li>
+          <li><a href="index.html">Roofer 5</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <div class="sticky-bar" role="navigation" aria-label="Quick actions">
+    <a class="btn-secondary" href="tel:5043840676">Call Now</a>
+    <a class="btn-primary" href="#book">Book Inspection</a>
+  </div>
+
+  <script>
+    (function () {
+      var field = document.getElementById('service-field');
+      var form = document.getElementById('book');
+      var selected = document.getElementById('service-selected');
+      var selectedStrong = selected ? selected.querySelector('strong') : null;
+
+      document.querySelectorAll('.service-row').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var service = btn.getAttribute('data-service') || '';
+          if (field) field.value = service;
+          if (selected && selectedStrong) {
+            selectedStrong.textContent = service;
+            selected.classList.add('is-visible');
+          }
+          if (form) {
+            form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            var name = form.querySelector('input[name="name"]');
+            if (name) name.focus({ preventScroll: true });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
