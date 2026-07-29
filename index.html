@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roof Builders — Louisiana Roofing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Saira+Extra+Condensed:wght@600&display=swap" rel="stylesheet">
+  <style>
+    /* Design tokens — Getwebfield breakpoints: mobile → 640px → 1200px */
+    :root {
+      --font-heading: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --font-body: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-tagline: 'Bebas Neue', ui-sans-serif, system-ui, sans-serif;
+      --content-main: #1f2937;
+      --content-base: #4b5563;
+      --content-subtle: #9ca3af;
+      --content-inverted-main: #f9fafb;
+      --brand: #2173bd;
+      --border-subtle: #ebebeb;
+      --surface-muted: #f5f5f5;
+      --surface-card: #fafafa;
+      --layout-max: 1400px;
+      --space-section-y: 48px;
+      --space-section-x: 16px;
+      --space-lg: 16px;
+      --space-xl: 24px;
+      --space-xxl: 32px;
+    }
+    @media (min-width: 640px) {
+      :root {
+        --space-section-x: 32px;
+        --space-lg: 20px;
+        --space-xl: 24px;
+        --space-xxl: 40px;
+      }
+    }
+    @media (min-width: 1200px) {
+      :root {
+        --space-section-y: 96px;
+        --space-section-x: 40px;
+        --space-lg: 24px;
+        --space-xl: 32px;
+        --space-xxl: 48px;
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font-body); color: var(--content-base); background: #fff; line-height: 1.5; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    .layout-container { width: 100%; max-width: var(--layout-max); margin: 0 auto; }
+    .space-section { padding: var(--space-section-y) var(--space-section-x); }
+
+    /* Typography */
+    .type-h1 { font-family: var(--font-heading); font-size: 48px; line-height: 0.85; letter-spacing: 0; color: var(--content-main); text-transform: capitalize; }
+    .type-h2 { font-family: var(--font-heading); font-size: 36px; line-height: 0.85; letter-spacing: 0; color: var(--content-main); text-transform: capitalize; }
+    .type-h3 { font-family: var(--font-heading); font-size: 28px; line-height: 1; letter-spacing: 0; color: var(--content-main); text-transform: capitalize; }
+    .type-h4 { font-family: var(--font-heading); font-size: 22px; line-height: 1; letter-spacing: 0; color: var(--content-main); text-transform: capitalize; }
+    .type-body-lg { font-family: var(--font-body); font-size: 16px; line-height: 1.5; letter-spacing: -0.04em; color: var(--content-base); }
+    .type-body-md { font-family: var(--font-body); font-size: 14px; line-height: 1.5; letter-spacing: -0.04em; color: var(--content-base); }
+    .type-body-sm { font-family: var(--font-body); font-size: 12px; line-height: 1.5; letter-spacing: -0.03em; color: var(--content-subtle); }
+    .type-tagline { font-family: var(--font-tagline); font-size: 14px; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; color: var(--content-base); }
+    .type-btn { font-family: var(--font-body); font-size: 14px; font-weight: 500; line-height: 1; text-transform: uppercase; letter-spacing: 0; }
+    @media (min-width: 640px) {
+      .type-h1 { font-size: 64px; }
+      .type-h2 { font-size: 48px; }
+      .type-h3 { font-size: 36px; }
+      .type-h4 { font-size: 28px; }
+      .type-body-lg { font-size: 18px; }
+      .type-btn { font-size: 15px; }
+    }
+
+    /* Buttons */
+    .btn-primary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 24px; background: var(--brand); color: #fff; }
+    .btn-secondary { display: inline-flex; align-items: center; justify-content: center; padding: 16px 24px; background: #fff; color: var(--brand); border: 1px solid #dbdbdb; }
+    .btn-primary-sm, .btn-secondary-sm { padding: 16px 24px; font-size: 13px; }
+
+    /* Top bar */
+    .top-bar { background: var(--brand); color: var(--content-inverted-main); padding: 12px var(--space-section-x); font-size: 13px; font-weight: 500; text-transform: uppercase; }
+    .top-bar__inner { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+    @media (min-width: 640px) {
+      .top-bar__inner { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+
+    /* Nav */
+    .nav { padding: var(--space-lg) var(--space-section-x); display: flex; align-items: center; justify-content: space-between; gap: var(--space-lg); flex-wrap: wrap; }
+    .nav__logo { width: 120px; flex-shrink: 0; }
+    .nav__menu { display: none; gap: 26px; font-size: 16px; text-transform: uppercase; color: var(--content-base); }
+    .nav__menu a:hover, .nav__menu a.is-active { color: var(--content-main); }
+    .nav__menu a.is-active { border-bottom: 2px solid var(--brand); padding-bottom: 2px; }
+    @media (min-width: 1200px) { .nav__menu { display: flex; } }
+
+    /* Viewport intro — top bar + nav + hero + trust = exactly 100vh */
+    .viewport-intro {
+      height: 100svh;
+      min-height: 100svh;
+      max-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .viewport-intro .top-bar,
+    .viewport-intro .nav,
+    .viewport-intro .trust-bar { flex-shrink: 0; }
+    .viewport-intro .hero {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 0;
+      overflow: hidden;
+      padding: var(--space-lg) var(--space-section-x);
+    }
+    .viewport-intro .hero .layout-container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      min-height: 0;
+      height: 100%;
+      width: 100%;
+    }
+    .viewport-intro .hero__grid {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      align-items: center;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .viewport-intro .hero__copy,
+    .viewport-intro .hero__media { min-width: 0; }
+    .viewport-intro .hero__media {
+      aspect-ratio: unset;
+      height: 100%;
+      max-height: 100%;
+      min-height: 0;
+    }
+    @media (max-width: 639px) {
+      .viewport-intro .hero__grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto minmax(0, 1fr);
+      }
+      .viewport-intro .hero__media {
+        height: auto;
+        max-height: clamp(180px, 32svh, 320px);
+        width: 100%;
+      }
+    }
+
+    /* Hero */
+    .hero { padding: var(--space-xxl) var(--space-section-x); }
+    .hero__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); align-items: center; }
+    @media (min-width: 640px) {
+      .hero__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .hero__copy { display: flex; flex-direction: column; gap: var(--space-xl); align-items: flex-start; }
+    .hero__description { max-width: 560px; }
+    .hero__media { position: relative; overflow: hidden; height: 100%; min-height: 240px; }
+    .hero__media img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* Ratings badge */
+    .ratings-badge { display: flex; align-items: center; }
+    .ratings-badge__wreath { width: 36px; height: 80px; flex-shrink: 0; }
+    .ratings-badge__wreath img { width: 100%; height: 100%; object-fit: contain; }
+    .ratings-badge__center { display: flex; flex-direction: column; align-items: center; gap: 8px; margin: 0 -4px; text-align: center; }
+    .ratings-badge__stars { display: flex; gap: 2px; }
+    .ratings-badge__stars img { width: 16px; height: 16px; }
+    .ratings-badge__title { font-family: 'Saira Extra Condensed', sans-serif; font-weight: 600; font-size: 22px; line-height: 1; letter-spacing: 0; color: var(--content-main); text-transform: capitalize; }
+    @media (min-width: 640px) { .ratings-badge__title { font-size: 28px; } }
+
+    /* Trust bar — infinite auto-scroll */
+    .trust-bar { background: #000; color: #ebebeb; padding: 21px 0 16px; overflow: hidden; }
+    .trust-bar__viewport { overflow: hidden; width: 100%; }
+    .trust-bar__track {
+      display: flex;
+      width: max-content;
+      animation: trust-marquee 28s linear infinite;
+      will-change: transform;
+    }
+    .trust-bar__group {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-shrink: 0;
+      padding-right: 40px;
+      font-family: var(--font-heading);
+      font-size: 20px;
+      letter-spacing: 0;
+      text-transform: capitalize;
+      white-space: nowrap;
+    }
+    @media (min-width: 640px) { .trust-bar__group { font-size: 28px; } }
+    @keyframes trust-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .trust-bar__track { animation: none; flex-wrap: wrap; justify-content: center; width: 100%; padding: 0 var(--space-section-x); }
+      .trust-bar__group[aria-hidden="true"] { display: none; }
+      .trust-bar__group { white-space: normal; flex-wrap: wrap; justify-content: center; padding-right: 0; }
+    }
+
+    /* About */
+    .about__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 640px) { .about__grid { grid-template-columns: 1fr 1fr; } }
+    @media (min-width: 1200px) { .about__grid { grid-template-columns: 3fr 6fr 3fr; } }
+    .about__photo { aspect-ratio: 3/4; overflow: hidden; }
+    .about__photo img { width: 100%; height: 100%; object-fit: cover; }
+    .about__content { display: flex; flex-direction: column; gap: var(--space-xl); }
+    .about__stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    @media (min-width: 640px) { .about__stats { grid-template-columns: repeat(3, 1fr); } }
+    .about__stat-num { font-family: var(--font-heading); font-size: 36px; line-height: 0.85; letter-spacing: 0; color: var(--content-main); }
+    @media (min-width: 640px) { .about__stat-num { font-size: 48px; } }
+    .about__testimonial { background: var(--surface-card); border: 1px solid #f0f0f0; padding: var(--space-lg); display: flex; flex-direction: column; gap: var(--space-lg); justify-content: center; }
+    .about__stars { display: flex; gap: 4px; }
+    .about__stars img { width: 20px; height: 20px; }
+
+    /* Services grid — 1 → 2 → 4 cols */
+    .services__header { display: flex; flex-direction: column; gap: var(--space-lg); margin-bottom: var(--space-xxl); }
+    .services__grid { display: grid; grid-template-columns: 1fr; column-gap: var(--space-lg); row-gap: var(--space-lg); }
+    @media (min-width: 640px) { .services__grid { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); } }
+    @media (min-width: 1200px) { .services__grid { grid-template-columns: repeat(4, 1fr); } }
+    .service-card { background: var(--surface-muted); border: 1px solid var(--border-subtle); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-xl); }
+    .service-card__icon { width: 44px; height: 44px; background: var(--border-subtle); border: 1px solid #dbdbdb; flex-shrink: 0; }
+    .service-card__body { flex: 1; display: flex; flex-direction: column; gap: var(--space-lg); }
+    .service-card__media { min-height: 280px; overflow: hidden; position: relative; }
+    .service-card__media img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+
+    /* Residential / Commercial split */
+    .split-panels { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 1200px) { .split-panels { grid-template-columns: 1fr 1fr; } }
+    .split-panel { position: relative; aspect-ratio: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: var(--space-xl); overflow: hidden; }
+    .split-panel__bg { position: absolute; inset: 0; z-index: 0; }
+    .split-panel__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .split-panel__bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(255,255,255,0.95) 40%, rgba(255,255,255,0.6) 100%); }
+    .split-panel__content { position: relative; z-index: 1; display: flex; flex-direction: column; gap: var(--space-lg); align-items: flex-start; }
+
+    /* Process steps — design system grid-steps */
+    .process { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 1200px) { .process { grid-template-columns: 379px 1fr; } }
+    .process__intro { display: flex; flex-direction: column; gap: var(--space-xl); }
+    .process__ctas { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+    .process__steps { display: grid; grid-template-columns: 1fr; column-gap: var(--space-xl); row-gap: var(--space-lg); }
+    @media (min-width: 640px) { .process__steps { grid-template-columns: repeat(2, 1fr); row-gap: var(--space-xl); } }
+    .step-card { background: var(--surface-muted); border: 1px solid var(--border-subtle); padding: var(--space-xl); display: flex; flex-direction: column; gap: var(--space-xl); }
+    .step-card__label { background: #fff; padding: 8px 16px 6px; display: inline-block; color: var(--brand); font-family: var(--font-tagline); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+    /* Financing */
+    .financing { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 1200px) { .financing { grid-template-columns: 379px 1fr; } }
+    .financing__label { background: var(--surface-muted); border: 1px solid var(--border-subtle); padding: 8px 16px 6px; display: inline-block; color: var(--brand); font-family: var(--font-tagline); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
+    .financing__logo { width: 200px; margin-top: var(--space-xxl); }
+    .financing__content { display: flex; flex-direction: column; gap: var(--space-xl); }
+
+    /* Featured testimonial */
+    .featured-testimonial { background: var(--surface-muted); border: 1px solid var(--border-subtle); display: grid; grid-template-columns: 1fr; gap: var(--space-xl); padding: var(--space-section-y) var(--space-section-x); align-items: center; }
+    @media (min-width: 1200px) { .featured-testimonial { grid-template-columns: 1fr 1fr; } }
+    .featured-testimonial__quote { font-size: 18px; line-height: 1.6; letter-spacing: -0.04em; color: #292926; }
+    @media (min-width: 640px) { .featured-testimonial__quote { font-size: 24px; } }
+    .featured-testimonial__media { aspect-ratio: 1; overflow: hidden; }
+    .featured-testimonial__media img { width: 100%; height: 100%; object-fit: cover; }
+    .dots { display: flex; gap: 8px; align-items: center; }
+    .dots span { width: 10px; height: 10px; border-radius: 50%; background: #e9eaeb; }
+    .dots span.is-active { background: #7f56d9; }
+
+    /* FAQ — 1 col mobile, 2 col tablet+ */
+    .faq__header { display: flex; flex-direction: column; gap: var(--space-lg); margin-bottom: var(--space-xxl); }
+    .faq__grid { display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 640px) { .faq__grid { grid-template-columns: repeat(2, 1fr); } }
+    .faq-item { background: var(--surface-muted); border: 1px solid var(--border-subtle); padding: 22px var(--space-lg) var(--space-lg); display: flex; flex-direction: column; gap: var(--space-lg); }
+    .faq-item__q { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+    .faq-item__chevron { flex-shrink: 0; width: 24px; height: 24px; color: var(--content-main); }
+
+    /* Contact form */
+    .contact-wrap { padding: var(--space-section-y) var(--space-section-x); }
+    .contact { position: relative; display: grid; grid-template-columns: 1fr; gap: var(--space-xl); padding: var(--space-section-y) var(--space-section-x); overflow: hidden; }
+    @media (min-width: 1200px) { .contact { grid-template-columns: 1fr 1fr; align-items: center; } }
+    .contact__bg { position: absolute; inset: 0; z-index: 0; }
+    .contact__bg img { width: 100%; height: 100%; object-fit: cover; }
+    .contact__bg::after { content: ''; position: absolute; inset: 0; background: rgba(255,255,255,0.92); }
+    .contact__copy, .contact__form { position: relative; z-index: 1; }
+    .contact__copy { display: flex; flex-direction: column; gap: var(--space-lg); }
+    .contact__copy .type-h2 { color: #292926; }
+    .contact__copy .type-body-lg { color: #666661; max-width: 354px; }
+    .form-field { width: 100%; padding: 16px; border: 1px solid #e5e7eb; background: #fff; font-family: var(--font-body); font-size: 16px; color: var(--content-base); }
+    .form-field--textarea { min-height: 136px; resize: vertical; }
+    .form-stack { display: flex; flex-direction: column; gap: 12px; }
+    .form-note { text-align: center; font-size: 12px; color: #8c8c87; letter-spacing: -0.03em; }
+
+    /* Footer */
+    .footer { padding: var(--space-xl) var(--space-section-x); display: grid; grid-template-columns: 1fr; gap: var(--space-xl); }
+    @media (min-width: 640px) { .footer { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1200px) { .footer { grid-template-columns: 1.2fr 1fr 1fr 1fr 1fr; } }
+    .footer__brand { display: flex; flex-direction: column; gap: var(--space-xl); }
+    .footer__logo { width: 120px; }
+    .footer__social { display: flex; gap: 24px; align-items: center; }
+    .footer__social img { width: 24px; height: 24px; }
+    .footer__col-title { font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 0; color: var(--content-main); margin-bottom: 8px; }
+    .footer__links { display: flex; flex-direction: column; gap: 12px; font-size: 14px; color: var(--content-subtle); }
+    .footer__links a:hover { color: var(--content-base); }
+
+    .stack-header { display: flex; flex-direction: column; gap: var(--space-lg); align-items: flex-start; }
+    .reviewer-name { font-family: var(--font-heading); font-size: 28px; color: var(--content-base); letter-spacing: 0; }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-intro">
+
+  <!-- Top info bar -->
+  <div class="top-bar">
+    <div class="layout-container top-bar__inner">
+      <span>1 Galleria Blvd Suite 1900, Metairie, LA 70001</span>
+      <span>08:00 A.M. – 05:00 P.M.</span>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav layout-container">
+    <a href="index.html" class="nav__logo" aria-label="Roof Builders home">
+      <img src="https://www.figma.com/api/mcp/asset/cc513739-db39-4b6d-986f-c4c34895f070" alt="Roof Builders" width="120" height="37">
+    </a>
+    <nav class="nav__menu" aria-label="Main navigation">
+      <a href="index.html#services">Services</a>
+      <a href="index.html#fortified">Fortified</a>
+      <a href="about.html">About</a>
+      <a href="index.html#area">Area</a>
+      <a href="index.html#reviews">Reviews</a>
+    </nav>
+    <a href="tel:5043840676" class="btn-secondary type-btn">Call (504) 384-0676</a>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="layout-container hero__grid">
+      <div class="hero__copy">
+        <div class="ratings-badge" aria-label="Best roofing in all of Louisiana, 100+ reviews">
+          <div class="ratings-badge__wreath"><img src="https://www.figma.com/api/mcp/asset/20d79716-7a3b-4df9-86de-2efc565044d3" alt="" width="36" height="80"></div>
+          <div class="ratings-badge__center">
+            <div class="ratings-badge__stars" aria-hidden="true">
+              <img src="https://www.figma.com/api/mcp/asset/b70423d9-29ab-4a7e-89ba-fd713d646e3f" alt="" width="16" height="16">
+              <img src="https://www.figma.com/api/mcp/asset/b70423d9-29ab-4a7e-89ba-fd713d646e3f" alt="" width="16" height="16">
+              <img src="https://www.figma.com/api/mcp/asset/b70423d9-29ab-4a7e-89ba-fd713d646e3f" alt="" width="16" height="16">
+              <img src="https://www.figma.com/api/mcp/asset/b70423d9-29ab-4a7e-89ba-fd713d646e3f" alt="" width="16" height="16">
+              <img src="https://www.figma.com/api/mcp/asset/b70423d9-29ab-4a7e-89ba-fd713d646e3f" alt="" width="16" height="16">
+            </div>
+            <p class="ratings-badge__title">Best roofing in<br>all of louisiana</p>
+            <p class="type-body-lg" style="color: var(--content-base);">100+ reviews</p>
+          </div>
+          <div class="ratings-badge__wreath"><img src="https://www.figma.com/api/mcp/asset/f50679f7-bc51-4483-9a15-20f38207bda8" alt="" width="36" height="80"></div>
+        </div>
+        <h1 class="type-h1">Louisiana Roofs Built to Survive Louisiana Storms</h1>
+        <p class="type-body-lg hero__description">Locally owned and storm-tested. We've inspected and repaired 1,500+ roofs across Greater New Orleans. One truck, one purpose: protect families after the storm.</p>
+        <a href="#contact" class="btn-primary type-btn">Book My Free Inspection</a>
+      </div>
+      <div class="hero__media">
+        <img src="https://www.figma.com/api/mcp/asset/0a432b7c-c0d9-4933-8044-00aa4709c54d" alt="Roofing crew working on a Louisiana home" width="584" height="584">
+      </div>
+    </div>
+  </section>
+
+  <!-- Trust bar -->
+  <section class="trust-bar" aria-label="Trust highlights">
+    <div class="trust-bar__viewport">
+      <div class="trust-bar__track">
+        <div class="trust-bar__group">
+          <span>Licensed &amp; insured</span>
+          <span>Free inspections</span>
+          <span>Financing available</span>
+          <span>Emergency repairs</span>
+        </div>
+        <div class="trust-bar__group" aria-hidden="true">
+          <span>Licensed &amp; insured</span>
+          <span>Free inspections</span>
+          <span>Financing available</span>
+          <span>Emergency repairs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- /.viewport-intro -->
+
+  <!-- About -->
+  <section id="about" class="space-section">
+    <div class="layout-container about__grid">
+      <div class="about__photo">
+        <img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt="Roof Builders team on site" width="400" height="533">
+      </div>
+      <div class="about__content">
+        <div class="stack-header">
+          <h2 class="type-h2">Roofing Built For Louisiana's Climate Wherever You Are In The State</h2>
+          <p class="type-body-lg">Most roofs fail at half their expected lifespan, and water intrusion drives most home-construction disputes. A small leak today becomes a ceiling, a wall, and mold tomorrow. We come out fast, tell you exactly what's wrong — no upselling — and fix it to survive the next hurricane season.</p>
+        </div>
+        <div class="about__stats">
+          <div>
+            <p class="about__stat-num">1200+</p>
+            <p class="type-body-lg">Roof Inspections</p>
+          </div>
+          <div>
+            <p class="about__stat-num">800+</p>
+            <p class="type-body-lg">Roofs Repairs</p>
+          </div>
+          <div>
+            <p class="about__stat-num">12+</p>
+            <p class="type-body-lg">Year Experience</p>
+          </div>
+        </div>
+      </div>
+      <aside class="about__testimonial">
+        <div class="about__stars" aria-label="5 out of 5 stars">
+          <img src="https://www.figma.com/api/mcp/asset/519a5019-8662-4d9e-9578-7f9f41dba075" alt="" width="20" height="20">
+          <img src="https://www.figma.com/api/mcp/asset/6ad8fc38-cf3e-42d3-bdbf-f1474d8eaa2c" alt="" width="20" height="20">
+          <img src="https://www.figma.com/api/mcp/asset/b0231148-7a77-4039-8fd6-08b1c6dbb26a" alt="" width="20" height="20">
+          <img src="https://www.figma.com/api/mcp/asset/36f9a8f9-04c1-49a4-8164-64edab25ddbf" alt="" width="20" height="20">
+          <img src="https://www.figma.com/api/mcp/asset/c139aa36-b4ee-434c-ba68-cd528c6435cb" alt="" width="20" height="20">
+        </div>
+        <p class="type-body-md">They did an outstanding job with my roof replacement in New Orleans. From the initial inspection to the final cleanup, their team was professional and efficient. They walked me through the entire process, helped me choose the best materials for my home, and completed the project on time. My new roof looks fantastic and has greatly improved the curb appeal of my house. I highly recommend them to anyone in need of a roof replacement!</p>
+        <div>
+          <p class="reviewer-name">Martin Molina</p>
+          <p class="type-body-sm">Verified Buyer</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="space-section" style="background: #fff;">
+    <div class="layout-container">
+      <div class="services__header stack-header">
+        <h2 class="type-h2">Our Specialized Services</h2>
+        <p class="type-body-lg">We provide top-quality roofing solution, designed to protect your house</p>
+      </div>
+      <div class="services__grid">
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Repairs</h3>
+            <p class="type-body-md">Leaks, storm damage, missing shingles — we find the real source and fix it right, often the same day. No upselling, just an honest repair that lasts.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Get My Roof Repaired</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Installation</h3>
+            <p class="type-body-md">A new roof built to last and matched to your budget, installed by a certified local crew with quality materials and a clean job site.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Plan My Installation</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Leak Repair</h3>
+            <p class="type-body-md">A small leak today becomes a ceiling and mold problem tomorrow. We locate the source fast and stop the water before it spreads.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Stop My Leak</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Coating</h3>
+            <p class="type-body-md">Extend your roof's life and cut energy costs with a protective coating that seals against Louisiana sun, rain, and heat.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Protect My Roof</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Gutters</h3>
+            <p class="type-body-md">Proper drainage keeps water off your roof, walls, and foundation. We install and repair gutters that actually move the water away.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Fix My Gutters</a>
+        </article>
+
+        <div class="service-card__media">
+          <img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt="Roofing project in progress" width="400" height="337">
+        </div>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Siding</h3>
+            <p class="type-body-md">Boost curb appeal and weather protection with durable siding installed to stand up to storms and humidity year-round.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Upgrade My Siding</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Inspection</h3>
+            <p class="type-body-md">A free, honest top-to-bottom check before small problems get expensive — with a clear report and no pressure to buy.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Book a Free Inspection</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Roof Replacement</h3>
+            <p class="type-body-md">When repairs aren't enough, we replace your roof to FORTIFIED standards — tougher in a storm and often covered by insurance.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Price My New Roof</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Fences</h3>
+            <p class="type-body-md">Quality fence installation and repair that adds privacy, security, and value — built to handle Gulf Coast weather.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Build My Fence</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Painting</h3>
+            <p class="type-body-md">Interior and exterior painting with a clean, professional finish that protects surfaces and refreshes your whole home.</p>
+          </div>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Refresh My Home</a>
+        </article>
+
+        <div class="service-card__media">
+          <img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt="Completed roofing work" width="400" height="337">
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Residential / Commercial -->
+  <section class="space-section">
+    <div class="layout-container split-panels">
+      <div class="split-panel">
+        <div class="split-panel__bg"><img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt=""></div>
+        <div class="split-panel__content">
+          <h2 class="type-h2">Professional Residential Roofing Services For Your Home</h2>
+          <p class="type-body-lg">A durable roof protects your home. Simplex Roof offers residential roofing services to keep your home safe and energy-efficient. Our experienced team provides repairs and replacements tailored to your needs, ensuring safety and value.</p>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Schedule A Free Inspection</a>
+        </div>
+      </div>
+      <div class="split-panel">
+        <div class="split-panel__bg"><img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt=""></div>
+        <div class="split-panel__content">
+          <h2 class="type-h2">Professional Commercial Roofing Services For Your Business</h2>
+          <p class="type-body-lg">Commercial roofing in Louisiana and Texas requires energy-efficient, safe systems. We serve industrial, office, hospitality, retail, and education sectors with custom estimates and expert advice. Our team assesses needs and budgets, offers detailed reports, and assists with insurance claims.</p>
+          <a href="#contact" class="btn-primary btn-primary-sm type-btn">Schedule A Free Inspection</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="space-section">
+    <div class="layout-container process">
+      <div class="process__intro">
+        <div class="stack-header">
+          <p class="type-tagline">How It Works</p>
+          <h2 class="type-h2">Four Simple Steps. No Surprises.</h2>
+        </div>
+        <div class="process__ctas">
+          <a href="#contact" class="btn-primary type-btn">Book My Free Inspection</a>
+          <a href="tel:5043840676" class="btn-secondary type-btn">Call (504) 384-0676</a>
+        </div>
+      </div>
+      <div class="process__steps">
+        <article class="step-card">
+          <span class="step-card__label">Step 01</span>
+          <div>
+            <h3 class="type-h3">Free Inspection</h3>
+            <p class="type-body-md" style="margin-top: 16px;">Call for a professional Roofing Contractor and schedule your inspection at your convenience. Ensure your roof's safety and quality with expert service today.</p>
+          </div>
+        </article>
+        <article class="step-card">
+          <span class="step-card__label">Step 02</span>
+          <div>
+            <h3 class="type-h3">Honest Quote</h3>
+            <p class="type-body-md" style="margin-top: 16px;">As your Roofing Contractor, we assess your roof's condition, design an action plan, and provide options based on roofing materials, needs, and budget.</p>
+          </div>
+        </article>
+        <article class="step-card">
+          <span class="step-card__label">Step 03</span>
+          <div>
+            <h3 class="type-h3">Professional Install</h3>
+            <p class="type-body-md" style="margin-top: 16px;">As your Roofing Contractor, we ensure a 72-hour project turnover. Our cleaning crew will leave your place spotless—it'll be like we were never there!</p>
+          </div>
+        </article>
+        <article class="step-card">
+          <span class="step-card__label">Step 04</span>
+          <div>
+            <h3 class="type-h3">Walkthrough &amp; Warranty</h3>
+            <p class="type-body-md" style="margin-top: 16px;">With a trusted Roofing Contractor, enjoy the weather stress-free while you Netflix &amp; chill on your stain-free couch. Rest assured, your roof is in expert hands, keeping your home safe and sound.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Financing -->
+  <section class="space-section">
+    <div class="layout-container financing">
+      <div>
+        <div class="stack-header">
+          <span class="financing__label">Financing Options</span>
+          <h2 class="type-h2">A Roof Shouldn't Have To Wait For Payday.</h2>
+        </div>
+        <img class="financing__logo" src="https://www.figma.com/api/mcp/asset/4b890cff-c87e-40db-a376-ea3ae2aa1086" alt="Service Finance Company" width="200" height="66">
+      </div>
+      <div class="financing__content">
+        <p class="type-body-lg">Whether your new roof is the result of a planned project or because of unexpected circumstances, it can represent a significant, but necessary, home investment. A roof helps to keep your home and family protected from the elements.</p>
+        <p class="type-body-lg">We have multiple financing options for you that include 0% interest, 12 months of no payments, and even extended payment plans to fit your budget.</p>
+        <p class="type-body-lg">*With approved credit</p>
+        <a href="#contact" class="btn-primary btn-primary-sm type-btn">Apply for Financing Options</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured testimonial -->
+  <section id="reviews" class="contact-wrap">
+    <div class="layout-container featured-testimonial">
+      <div>
+        <p class="featured-testimonial__quote">"Excellent company!!! I had them come look at a job I wanted to do and Jose was completely honest in telling me that it was not feasible to do so. He could have just told me anything and got the job anyway because I really don't know much about roofing. It is nice to not be taken advantage of!! Not only was he honest he took his time to explain to me my options and why some are good and some are not. Unfortunately I could not use them for the job I had in mind but definitely plan on using them for any future jobs. Very nice guy who is honest and helpful! Give them a shot!! Thanks Simplex!!!"</p>
+        <div style="margin-top: 24px;">
+          <p class="reviewer-name">Martin Molina</p>
+          <p class="type-body-sm">Verified Buyer</p>
+        </div>
+        <div class="dots" style="margin-top: 24px;" aria-label="Testimonial pagination">
+          <span class="is-active"></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="featured-testimonial__media">
+        <img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt="Happy roofing customer" width="584" height="584">
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="space-section">
+    <div class="layout-container">
+      <div class="faq__header stack-header">
+        <h2 class="type-h2">Frequently Asked Questions</h2>
+        <p class="type-body-lg">Let's put your mind at ease</p>
+      </div>
+      <div class="faq__grid">
+        <details class="faq-item" open>
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            What types of roofing materials do you work with?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+          <p class="type-body-md">We specialize in working with a wide range of roofing materials, including asphalt shingles, metal roofing, clay tiles, TPO, Roof coating and more. Our experienced team can guide you in choosing the best material for your specific needs.</p>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            What sets your roofing services apart from others?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            How long does a typical roof installation take?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            Do you offer any warranties on your roofing services?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            How often should I have my roof inspected?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+        </details>
+        <details class="faq-item">
+          <summary class="faq-item__q type-h4" style="list-style: none; cursor: pointer;">
+            Are you available for emergency roof repairs?
+            <svg class="faq-item__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </summary>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form -->
+  <section id="contact" class="contact-wrap">
+    <div class="layout-container contact">
+      <div class="contact__bg" aria-hidden="true"><img src="https://www.figma.com/api/mcp/asset/d19304b7-4143-4797-b233-20744783d82c" alt=""></div>
+      <div class="contact__copy">
+        <h2 class="type-h2">Get Your Free Roof Inspection Today.</h2>
+        <p class="type-body-lg">Free inspection. No-obligation quote. Backed by a workmanship warranty. Tell us about your roof and we'll be in touch fast.</p>
+      </div>
+      <form class="contact__form form-stack" action="#" method="post">
+        <input class="form-field" type="text" name="name" placeholder="Name" required>
+        <input class="form-field" type="email" name="email" placeholder="Email" required>
+        <input class="form-field" type="tel" name="phone" placeholder="Phone Number" required>
+        <input class="form-field" type="text" name="address" placeholder="Address">
+        <select class="form-field" name="service">
+          <option value="">Service Type</option>
+          <option>Roof Repair</option>
+          <option>Roof Installation</option>
+          <option>Roof Inspection</option>
+          <option>Roof Replacement</option>
+        </select>
+        <textarea class="form-field form-field--textarea" name="message" placeholder="Message"></textarea>
+        <button type="submit" class="btn-primary type-btn" style="width: 100%;">Book My Free Inspection</button>
+        <p class="form-note">No spam, no pressure — just a straight answer about your roof.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer layout-container">
+    <div class="footer__brand">
+      <img class="footer__logo" src="https://www.figma.com/api/mcp/asset/cc513739-db39-4b6d-986f-c4c34895f070" alt="Roof Builders" width="120" height="37">
+      <p class="type-body-sm" style="color: var(--content-main);">When you choose Simplex Roof, you're not just hiring a roofing company — you're getting a local team that answers, shows up, and treats your roof like our own. Licensed &amp; insured. Serving Louisiana &amp; Texas.</p>
+      <div class="footer__social">
+        <a href="#" aria-label="Twitter"><img src="https://www.figma.com/api/mcp/asset/c1c3eb10-8cab-4c75-83b3-cbae4822f6eb" alt="" width="24" height="24"></a>
+        <a href="#" aria-label="Facebook"><img src="https://www.figma.com/api/mcp/asset/6b9f024d-4ea4-4a2c-a58f-da8604528984" alt="" width="24" height="24"></a>
+        <a href="#" aria-label="Instagram"><img src="https://www.figma.com/api/mcp/asset/ea2e5f7b-d0b7-40fb-a27a-375f35952acc" alt="" width="24" height="24"></a>
+        <a href="#" aria-label="LinkedIn"><img src="https://www.figma.com/api/mcp/asset/6865c71a-ce1b-49df-be4e-bfc0008981b4" alt="" width="24" height="24"></a>
+        <a href="#" aria-label="YouTube"><img src="https://www.figma.com/api/mcp/asset/632078c8-c6ea-4bcc-9bb5-c20b3a230d14" alt="" width="24" height="24"></a>
+      </div>
+    </div>
+    <div>
+      <p class="footer__col-title">Services</p>
+      <nav class="footer__links" aria-label="Services">
+        <a href="#">Roof Replacement</a>
+        <a href="#">Roof Repairs</a>
+        <a href="#">Roof Leak Repair</a>
+        <a href="#">Roof Installation</a>
+        <a href="#">Roof Inspection</a>
+        <a href="#">Insurance Claims</a>
+        <a href="#">Roof Coating</a>
+        <a href="#">Gutters</a>
+        <a href="#">Siding</a>
+        <a href="#">Storm Damage</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__col-title">Company</p>
+      <nav class="footer__links" aria-label="Company">
+        <a href="about.html">About Us</a>
+        <a href="#">Fortified Roofs</a>
+        <a href="#">Financing</a>
+        <a href="#">Service Area</a>
+        <a href="#">Reviews</a>
+        <a href="#">Free Inspection</a>
+      </nav>
+    </div>
+    <div id="area">
+      <p class="footer__col-title">Houston, TX</p>
+      <nav class="footer__links" aria-label="Houston service areas">
+        <a href="#">Houston</a>
+        <a href="#">Katy</a>
+        <a href="#">Missouri City</a>
+        <a href="#">Richmond</a>
+        <a href="#">Cypress</a>
+        <a href="#">Tomball</a>
+        <a href="#">Sugar Land</a>
+        <a href="#">Pearland</a>
+        <a href="#">Pasadena</a>
+        <a href="#">Beaumont</a>
+      </nav>
+    </div>
+    <div>
+      <p class="footer__col-title">New Orleans, LA</p>
+      <nav class="footer__links" aria-label="New Orleans service areas">
+        <a href="#">New Orleans</a>
+        <a href="#">Baton Rouge</a>
+        <a href="#">Covington</a>
+        <a href="#">Gonzales</a>
+        <a href="#">Hammond</a>
+        <a href="#">Kenner</a>
+        <a href="#">Mandeville</a>
+        <a href="#">Metairie</a>
+        <a href="#">Prairieville</a>
+        <a href="#">Slidell</a>
+        <a href="#">Denham Springs</a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
