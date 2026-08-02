@@ -136,3 +136,10 @@
  <action>Added Unsplash roofing photos: `service-card-roofing` (worker on shingles) and `service-card-house` (modern shingle home), compressed to 800px max, webp+jpg in `roofer2/images/`.</action>
  <reason>Distinct visuals fill grid gaps on desktop; alt text describes each scene for accessibility.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Residential/commercial split-panel CTAs stretched full card width on desktop.</context>
+ <action>On viewports ≥640px, split-panel `.btn-primary` uses `align-self: flex-start` and `width: auto` so buttons size to their label.</action>
+ <reason>Full-width CTAs looked oversized in side-by-side panels; content-width buttons match typical desktop CTA patterns.</reason>
+</decision>
