@@ -206,3 +206,10 @@
  <action>Replaced `service-card-roofing` with Unsplash photo of a roofer working on a residential roof.</action>
  <reason>Alt text and visual must match — trade photography builds trust in the services grid.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Closed FAQ cards stretched to match the open card height in the same grid row, leaving empty space.</context>
+ <action>`.faq-grid` uses `align-items: start` so each accordion hugs its content when collapsed.</action>
+ <reason>Grid default stretch forced equal row heights; start alignment lets closed cards shrink to title + chevron only.</reason>
+</decision>
