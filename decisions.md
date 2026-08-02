@@ -220,3 +220,10 @@
  <action>Reduced `.financing-section` `min-height` from `80vh` to `60vh`.</action>
  <reason>Tighter section height keeps content grouped while preserving full-height column stretch and bottom-pinned logo/CTA.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Top info bar address and hours looked oversized on mobile, wrapping into a tall block.</context>
+ <action>Reduced `.top-bar` font from 15px to 12px mobile / 13px tablet / 14px desktop; slightly tighter padding and gap.</action>
+ <reason>Utility bar should read smaller than nav and body copy; scaled sizes keep both lines legible without dominating the header.</reason>
+</decision>
