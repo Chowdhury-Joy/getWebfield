@@ -227,3 +227,52 @@
  <action>Reduced `.top-bar` font from 15px to 12px mobile / 13px tablet / 14px desktop; slightly tighter padding and gap.</action>
  <reason>Utility bar should read smaller than nav and body copy; scaled sizes keep both lines legible without dominating the header.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Hero ratings badge title and subtitle felt oversized on mobile, crowding the laurel wreath layout.</context>
+ <action>Reduced badge title to 28px mobile / 32px tablet+, subtitle to 15px / 18px; scaled wreaths and stars proportionally.</action>
+ <reason>Smaller badge reads as supporting social proof without competing with the hero headline.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>About headline forced an awkward line break on mobile via `<br>` after "Climate".</context>
+ <action>Hide `.about-grid__content .type-h2 br` below 640px so the heading wraps naturally on mobile; desktop keeps the designed break.</action>
+ <reason>Mobile single-column layout reads better with fluid wrapping instead of a mid-phrase hard break.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Service cards forced 4:5 portrait ratio on mobile 2-column grid, creating excess empty space in shorter cards.</context>
+ <action>`aspect-ratio: 4 / 5` on `.service-card` applies from 640px up only; mobile cards hug their content height.</action>
+ <reason>Portrait ratio suits tablet/desktop grid; mobile 2×2 reads cleaner when card height follows copy + CTA.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Residential/commercial split-panel body copy crowded the mobile card over the background photo.</context>
+ <action>Hide `.split-panel__content .text-desc` below 640px; headline and CTA remain visible on mobile.</action>
+ <reason>Mobile panels are shorter — headline + button is enough; full paragraph returns on tablet/desktop.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Process section CTAs sat between the headline and step cards on mobile, interrupting the flow.</context>
+ <action>Below 1200px, flex `order` moves `.process-ctas` after `.process-steps`; on mobile both buttons are full width.</action>
+ <reason>Users read steps first, then act — full-width CTAs are easier to tap on small screens.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Financing content column on mobile had tight spacing and a content-width CTA.</context>
+ <action>Below 640px, `.financing-content` uses `gap: 40px` and full-width `.btn-primary`.</action>
+ <reason>Clear separation between copy and action; full-width button matches other mobile CTAs on Roofer 2.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>User wanted Figma testimonial row: auto-scrolling cards with side peek cuts, not static quote + photo layout.</context>
+ <action>Replaced featured testimonial with gray-band `.testimonials-carousel` — CSS marquee (70s loop), 1.2 cards mobile / 2.5 desktop, white cards with quote + verified buyer; pauses on hover; manual scroll when reduced-motion.</action>
+ <reason>Matches Figma node 22766:137; peek cards signal scrollability; slow auto-scroll keeps social proof moving without interaction.</reason>
+</decision>
