@@ -178,3 +178,31 @@
  <action>At 640–1199px, `.about-grid` uses `flex-direction: row` — content column (flex 2) beside testimonial card (flex 1); photo remains hidden until desktop grid.</action>
  <reason>Tablet gets a two-column row without the portrait photo; desktop keeps the full 3-column grid with image.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Financing left column did not stretch to full row height, so `space-between` could not pin the logo to the bottom.</context>
+ <action>Financing section layout chain passes height: section → layout-container → grid (`grid-template-rows: 1fr`, `flex: 1`) → columns stretch with `space-between`.</action>
+ <reason>Left column fills the grid row so badge/headline stay top and Service Finance logo sits at the bottom.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>FAQ accordion needed reliable open/close behavior and roofing-specific answer copy in the two-column grid.</context>
+ <action>Each FAQ item toggles independently with `grid-template-rows` animation, `aria-expanded`/`hidden`, and expanded dummy answers per question.</action>
+ <reason>Independent toggles suit the 2-column layout; smooth expand/collapse and accessible state make the section feel interactive and trustworthy.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Second service-grid image card showed a generic modern building facade, not roofing work.</context>
+ <action>Replaced `service-card-house` with Unsplash photo of a roofing/construction crew on site; updated alt text.</action>
+ <reason>Decorative grid slot should reinforce trade credibility alongside the shingle-installation photo in the first image card.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>First service-grid image card showed unrelated stock photo (interior cleaning), not roofing work.</context>
+ <action>Replaced `service-card-roofing` with Unsplash photo of a roofer working on a residential roof.</action>
+ <reason>Alt text and visual must match — trade photography builds trust in the services grid.</reason>
+</decision>
