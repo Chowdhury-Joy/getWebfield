@@ -1,11 +1,18 @@
-# Roof Builders
+# Roof Builders Demos
 
-Static marketing site for Roof Builders — Louisiana roofing services.
+Static roofing demo sites for client previews.
 
-## Pages
+## Demos
 
-- [Homepage](index.html) — full landing page
-- [About](about.html) — company story and credentials
+| Demo | URL |
+|------|-----|
+| Roofer 1 | `/roofer1/` |
+| Roofer 2 | `/roofer2/` |
+| Roofer 3 | `/roofer3/` |
+| Roofer 4 | `/roofer4/` |
+| Roofer 5 | `/roofer5/` |
+
+Roofer 1 includes [Homepage](roofer1/index.html) and [About](roofer1/about.html).
 
 ## Local preview
 
@@ -13,12 +20,10 @@ Static marketing site for Roof Builders — Louisiana roofing services.
 python3 -m http.server 8080
 ```
 
-Open [http://localhost:8080](http://localhost:8080)
+Open [http://localhost:8080/roofer1/](http://localhost:8080/roofer1/)
 
 ## Live site
 
-Deployed via **GitHub Pages** on push to `main`.
+Deployed via **GitHub Pages** on push to `main`:
 
-After the repo is on GitHub and Pages is enabled, the site will be at:
-
-`https://<your-github-username>.github.io/roof-builders/`
+`https://chowdhury-joy.github.io/getWebfield/`

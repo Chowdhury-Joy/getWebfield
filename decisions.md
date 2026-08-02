@@ -67,6 +67,27 @@
 
 <decision>
  <category>UI/UX</category>
+ <context>User did not want demo sites cross-linked in footers — each roofer page should feel standalone for client sharing.</context>
+ <action>Removed footer demo navigation links from roofer3, roofer4, and roofer5.</action>
+ <reason>Prevents visitors from hopping between internal prototypes; each URL should present as a single client-ready site.</reason>
+</decision>
+
+<decision>
+ <category>Code</category>
+ <context>User wanted Roofer 1 moved off the site root to match multi-demo URL plan (domain/roofer1).</context>
+ <action>Moved index.html, about.html, and images/ into roofer1/. Root index.html redirects to roofer1/. Updated roofer2 about link to ../roofer1/about.html.</action>
+ <reason>Aligns repo structure with gatewayfield.com/roofer1-style hosting; keeps roofer2–5 paths consistent.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Roofer 2 hero nav and content stretched edge-to-edge on ultra-wide screens.</context>
+ <action>Capped `.hero-banner__inner` and `.top-bar__inner` at 1400px centered, matching `.layout-container`. Hero background photo stays full-bleed.</action>
+ <reason>Content aligns with the rest of the page; only the photo remains edge-to-edge as designed.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
  <context>User asked Roofer 3, 4, and 5 to use typography similar to Roofer 1 for demo consistency.</context>
  <action>Aligned all three demos to Roofer 1 type system: Bebas Neue headings (letter-spacing 0, capitalize), Inter body/buttons (500 weight, uppercase, letter-spacing 0), Bebas Neue taglines (0.06em uppercase), Saira Extra Condensed available for badges. Matched h1–h4 scale (48/36/28/22 mobile → 64/48/36/28 at 640px+) and body letter-spacing (-0.04em). Hero descriptions capped at 560px only.</action>
  <reason>Keeps five demos feeling like one brand family while preserving each layout’s unique structure.</reason>
