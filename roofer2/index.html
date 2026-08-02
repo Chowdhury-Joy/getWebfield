@@ -415,13 +415,31 @@
 
     /* ===== ABOUT SECTION ===== */
     .about-grid {
-      display: grid;
+      display: flex;
+      flex-direction: column;
       gap: 32px;
       align-items: stretch;
     }
 
+    @media (min-width: 640px) and (max-width: 1199px) {
+      .about-grid {
+        flex-direction: row;
+      }
+
+      .about-grid__content {
+        flex: 2;
+        min-width: 0;
+      }
+
+      .about-grid > .testimonial-card {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+
     @media (min-width: 1200px) {
       .about-grid {
+        display: grid;
         grid-template-columns: 3fr 6fr 3fr;
       }
     }
@@ -748,13 +766,16 @@
     }
 
     @media (min-width: 1200px) {
-      .financing-grid { grid-template-columns: 379px 1fr; }
+      .financing-grid {
+        grid-template-columns: 379px 1fr;
+        align-items: stretch;
+      }
     }
 
     .financing-left {
       display: flex;
       flex-direction: column;
-      gap: 48px;
+      justify-content: space-between;
     }
 
     .financing-badge {
@@ -777,7 +798,7 @@
     .financing-content {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      justify-content: space-between;
     }
 
     .financing-content .btn-primary {
@@ -1031,17 +1052,28 @@
       gap: 16px;
     }
 
-    /* Mobile: hide decorative grid images (must override .service-card { display: flex }) */
+    /* Mobile: hide decorative service grid images */
     @media (max-width: 639px) {
-      .about-grid__photo,
       .services-grid > .service-card.service-card--image {
         display: none;
       }
     }
 
     @media (min-width: 640px) {
-      .about-grid__photo,
       .services-grid > .service-card.service-card--image {
+        display: block;
+      }
+    }
+
+    /* Tablet: hide about photo; desktop only */
+    @media (max-width: 1199px) {
+      .about-grid__photo {
+        display: none;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .about-grid__photo {
         display: block;
       }
     }

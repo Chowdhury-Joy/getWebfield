@@ -157,3 +157,24 @@
  <action>Financing section uses `min-height: 80vh` with vertically centered content; financing CTA uses content-width (`align-self: flex-start`).</action>
  <reason>Taller section gives the financing pitch more breathing room; content-width button matches other desktop CTAs on Roofer 2.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Financing left column badge/headline and logo sat with fixed gap instead of using column height.</context>
+ <action>`.financing-left` and `.financing-content` use `justify-content: space-between`; grid row stretches so logo and CTA pin to the bottom on desktop.</action>
+ <reason>Matches Figma intent — headline block top, Service Finance logo bottom, with space distributed between.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>About section portrait photo showed full-width on tablet, crowding the copy column.</context>
+ <action>`.about-grid__photo` hidden from mobile through tablet (≤1199px); visible only at desktop (≥1200px) when the 3-column grid is active.</action>
+ <reason>Photo is decorative in the side column; tablet layout is single-column and reads cleaner without the tall image.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>About section stacked vertically on tablet, leaving unused horizontal space.</context>
+ <action>At 640–1199px, `.about-grid` uses `flex-direction: row` — content column (flex 2) beside testimonial card (flex 1); photo remains hidden until desktop grid.</action>
+ <reason>Tablet gets a two-column row without the portrait photo; desktop keeps the full 3-column grid with image.</reason>
+</decision>
