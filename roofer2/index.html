@@ -188,13 +188,23 @@
       background: #1a1a1a;
     }
 
-    .hero-banner__bg {
+    .hero-banner__bg-wrap {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       pointer-events: none;
+    }
+
+    .hero-banner__bg-wrap picture,
+    .hero-banner__bg-wrap img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .hero-banner__bg {
+      object-fit: cover;
     }
 
     .hero-banner__overlay {
@@ -341,6 +351,7 @@
     .hero-content .type-h1 {
       color: var(--text-inverted-main);
       text-transform: capitalize;
+      max-width: 560px;
     }
 
     .hero-content .text-desc {
@@ -587,11 +598,13 @@
       .service-card--image { display: block; }
     }
 
+    .service-card--image picture,
     .service-card--image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       min-height: 280px;
+      display: block;
     }
 
     /* ===== SPLIT PANELS ===== */
@@ -610,28 +623,27 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
+      justify-content: flex-start;
       padding: 32px;
       gap: 32px;
     }
 
-    .split-panel__bg {
+    .split-panel__bg,
+    .split-panel__bg img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       object-fit: cover;
       pointer-events: none;
+      display: block;
     }
 
     .split-panel__overlay {
       position: absolute;
       inset: 0;
       pointer-events: none;
-    }
-
-    .split-panel--commercial .split-panel__overlay {
-      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(102, 102, 102, 0) 100%);
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0) 55%);
     }
 
     .split-panel__content {
@@ -872,20 +884,27 @@
       padding: 64px 40px;
     }
 
-    .contact-section__bg {
+    .contact-section__bg-wrap {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
       pointer-events: none;
     }
 
+    .contact-section__bg-wrap picture,
+    .contact-section__bg-wrap img {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .contact-section__bg {
+      object-fit: cover;
+    }
+
     .contact-section__overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(255, 255, 255, 0.88);
-      pointer-events: none;
+      display: none;
     }
 
     .contact-section__inner {
@@ -1025,13 +1044,18 @@
 
     <!-- Hero with overlaid nav -->
     <section class="hero-banner" aria-label="Hero">
-      <img class="hero-banner__bg" src="https://www.figma.com/api/mcp/asset/4ea94199-7be9-42c4-8917-4e30f02b8a30" alt="">
+      <div class="hero-banner__bg-wrap" aria-hidden="true">
+        <picture>
+          <source srcset="images/hero-aerial.webp" type="image/webp">
+          <img class="hero-banner__bg" src="images/hero-aerial.jpg" alt="">
+        </picture>
+      </div>
       <div class="hero-banner__overlay" aria-hidden="true"></div>
 
       <div class="hero-banner__inner">
         <nav class="hero-nav" aria-label="Main navigation">
           <a href="index.html" aria-label="Home">
-            <img class="hero-nav__logo" src="https://www.figma.com/api/mcp/asset/d43ec4ac-5d1d-4ac0-aabb-c8304af01274" alt="Roofer 2">
+            <img class="hero-nav__logo" src="images/logo.svg" alt="Roofer 2">
           </a>
           <ul class="hero-nav__menu">
             <li><a href="#services">Services</a></li>
@@ -1048,19 +1072,19 @@
         <div class="hero-body">
           <div class="hero-content">
             <div class="ratings-badge">
-              <img class="ratings-badge__wreath ratings-badge__wreath--left" src="https://www.figma.com/api/mcp/asset/3867b8b4-ac35-4f32-aff5-9223b9b9242f" alt="">
+              <img class="ratings-badge__wreath ratings-badge__wreath--left" src="images/wreath-left.svg" alt="">
               <div class="ratings-badge__center">
                 <div class="ratings-badge__stars" aria-hidden="true">
-                  <img src="https://www.figma.com/api/mcp/asset/80515389-038b-464e-8f5a-7438adae314d" alt="">
-                  <img src="https://www.figma.com/api/mcp/asset/80515389-038b-464e-8f5a-7438adae314d" alt="">
-                  <img src="https://www.figma.com/api/mcp/asset/80515389-038b-464e-8f5a-7438adae314d" alt="">
-                  <img src="https://www.figma.com/api/mcp/asset/80515389-038b-464e-8f5a-7438adae314d" alt="">
-                  <img src="https://www.figma.com/api/mcp/asset/80515389-038b-464e-8f5a-7438adae314d" alt="">
+                  <img src="images/star.svg" alt="">
+                  <img src="images/star.svg" alt="">
+                  <img src="images/star.svg" alt="">
+                  <img src="images/star.svg" alt="">
+                  <img src="images/star.svg" alt="">
                 </div>
                 <div class="ratings-badge__title">Best roofing in<br>all of louisiana</div>
                 <div class="ratings-badge__subtitle">100+ reviews</div>
               </div>
-              <img class="ratings-badge__wreath ratings-badge__wreath--right" src="https://www.figma.com/api/mcp/asset/b0a4dfb0-c411-4ba4-bfe8-9fedb7e851b5" alt="">
+              <img class="ratings-badge__wreath ratings-badge__wreath--right" src="images/wreath-right.svg" alt="">
             </div>
 
             <h1 class="type-h1">Louisiana Roofs Built to Survive Louisiana Storms</h1>
@@ -1093,7 +1117,10 @@
     <div class="layout-container">
       <div class="about-grid">
         <div class="about-grid__photo">
-          <img src="https://www.figma.com/api/mcp/asset/71a64671-a1db-4afa-ba12-2cc0624a255d" alt="Roofing project">
+          <picture>
+            <source srcset="images/about-house.webp" type="image/webp">
+            <img src="images/about-house.jpg" alt="Louisiana home with new roofing">
+          </picture>
         </div>
         <div class="about-grid__content">
           <div class="stack-header">
@@ -1117,11 +1144,11 @@
         </div>
         <div class="testimonial-card" id="reviews">
           <div class="review-stars" aria-label="5 star rating">
-            <img src="https://www.figma.com/api/mcp/asset/63416b2f-5fd1-4568-b614-22664a18f9ae" alt="">
-            <img src="https://www.figma.com/api/mcp/asset/5fc9cd31-b349-4d06-891e-c5c35d45e1b2" alt="">
-            <img src="https://www.figma.com/api/mcp/asset/aacbed64-6622-48ac-9bc6-90323d91108b" alt="">
-            <img src="https://www.figma.com/api/mcp/asset/bbefec4c-7585-4570-a7e2-ffb3ad16ca7c" alt="">
-            <img src="https://www.figma.com/api/mcp/asset/a12967b4-47e3-436c-9a6c-ca89a4e0be69" alt="">
+            <img src="images/star-review-1.svg" alt="">
+            <img src="images/star-review-2.svg" alt="">
+            <img src="images/star-review-3.svg" alt="">
+            <img src="images/star-review-4.svg" alt="">
+            <img src="images/star-review-5.svg" alt="">
           </div>
           <p class="text-content-base" style="font-size:14px;letter-spacing:-0.56px;">They did an outstanding job with my roof replacement in New Orleans. From the initial inspection to the final cleanup, their team was professional and efficient. They walked me through the entire process, helped me choose the best materials for my home, and completed the project on time. My new roof looks fantastic and has greatly improved the curb appeal of my house. I highly recommend them to anyone in need of a roof replacement!</p>
           <div>
@@ -1188,7 +1215,10 @@
         </article>
 
         <div class="service-card service-card--image">
-          <img src="https://www.figma.com/api/mcp/asset/f07d5af0-9bf1-44c0-acb7-d085da47f5ca" alt="Roofing service">
+          <picture>
+            <source srcset="images/service-card-roofing.webp" type="image/webp">
+            <img src="images/service-card-roofing.jpg" alt="Roofer installing shingles on a residential roof">
+          </picture>
         </div>
 
         <article class="service-card">
@@ -1237,7 +1267,10 @@
         </article>
 
         <div class="service-card service-card--image">
-          <img src="https://www.figma.com/api/mcp/asset/f07d5af0-9bf1-44c0-acb7-d085da47f5ca" alt="Roofing service">
+          <picture>
+            <source srcset="images/service-card-house.webp" type="image/webp">
+            <img src="images/service-card-house.jpg" alt="Modern home with durable asphalt shingle roofing">
+          </picture>
         </div>
       </div>
     </div>
@@ -1248,7 +1281,11 @@
     <div class="layout-container">
       <div class="split-panels">
         <div class="split-panel">
-          <img class="split-panel__bg" src="https://www.figma.com/api/mcp/asset/7ebc01e7-dc8e-40e9-a284-baf3a8080e3f" alt="">
+          <picture class="split-panel__bg">
+            <source srcset="images/residential.webp" type="image/webp">
+            <img src="images/residential.jpg" alt="Residential home with new shingle roof">
+          </picture>
+          <div class="split-panel__overlay" aria-hidden="true"></div>
           <div class="split-panel__content">
             <h2 class="type-h2">Professional Residential Roofing Services For Your Home</h2>
             <p class="text-desc">A durable roof protects your home. Simplex Roof offers residential roofing services to keep your home safe and energy-efficient. Our experienced team provides repairs and replacements tailored to your needs, ensuring safety and value.</p>
@@ -1256,7 +1293,10 @@
           </div>
         </div>
         <div class="split-panel split-panel--commercial">
-          <img class="split-panel__bg" src="https://www.figma.com/api/mcp/asset/28b56b8d-6512-40ae-be6f-d4c2fa2feddd" alt="">
+          <picture class="split-panel__bg">
+            <source srcset="images/commercial.webp" type="image/webp">
+            <img src="images/commercial.jpg" alt="Commercial flat roof on a Louisiana business building">
+          </picture>
           <div class="split-panel__overlay" aria-hidden="true"></div>
           <div class="split-panel__content">
             <h2 class="type-h2">Professional Commercial Roofing Services For Your Business</h2>
@@ -1325,7 +1365,7 @@
             <span class="financing-badge">Financing Options</span>
             <h2 class="type-h2">A roof shouldn't have<br>to wait for payday.</h2>
           </div>
-          <img class="financing-logo" src="https://www.figma.com/api/mcp/asset/79f1e4d5-f895-489b-b87d-2c79c5d78fc8" alt="Service Finance Company">
+          <img class="financing-logo" src="images/financing.svg" alt="Service Finance Company">
         </div>
         <div class="financing-content">
           <div class="text-content-base">
@@ -1358,7 +1398,10 @@
           </div>
         </div>
         <div class="featured-testimonial__photo">
-          <img src="https://www.figma.com/api/mcp/asset/185ef1cf-3f3b-47b9-acb8-03ca2f8dedb0" alt="Roofing workers on site">
+          <picture>
+            <source srcset="images/workers.webp" type="image/webp">
+            <img src="images/workers.jpg" alt="Roofing workers on site">
+          </picture>
         </div>
       </div>
     </div>
@@ -1428,7 +1471,12 @@
   <section class="section--white space-section" id="contact">
     <div class="layout-container">
       <div class="contact-section">
-        <img class="contact-section__bg" src="https://www.figma.com/api/mcp/asset/7f2fa10d-a5d7-43f9-8565-53fc166f188a" alt="">
+        <div class="contact-section__bg-wrap" aria-hidden="true">
+          <picture>
+            <source srcset="images/contact-bg.webp" type="image/webp">
+            <img class="contact-section__bg" src="images/contact-bg.jpg" alt="">
+          </picture>
+        </div>
         <div class="contact-section__overlay" aria-hidden="true"></div>
         <div class="contact-section__inner">
           <div class="contact-section__intro">
@@ -1455,14 +1503,14 @@
     <div class="layout-container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img class="footer-brand__logo" src="https://www.figma.com/api/mcp/asset/d43ec4ac-5d1d-4ac0-aabb-c8304af01274" alt="Roofer 2">
+          <img class="footer-brand__logo" src="images/logo.svg" alt="Roofer 2">
           <p class="footer-brand__text">When you choose Simplex Roof, you're not just hiring a roofing company — you're getting a local team that answers, shows up, and treats your roof like our own. Licensed &amp; insured. Serving Louisiana &amp; Texas.</p>
           <div class="social-icons">
-            <a href="#" aria-label="X (Twitter)"><img src="https://www.figma.com/api/mcp/asset/e51bcab3-533f-4755-be72-01cbe6a423e7" alt=""></a>
-            <a href="#" aria-label="Facebook"><img src="https://www.figma.com/api/mcp/asset/83bbd13b-f18d-45b1-bf28-141cd549d55a" alt=""></a>
-            <a href="#" aria-label="Instagram"><img src="https://www.figma.com/api/mcp/asset/fb7f303c-be04-4343-a877-9db6d9cac0cb" alt=""></a>
-            <a href="#" aria-label="LinkedIn"><img src="https://www.figma.com/api/mcp/asset/4b1e8e74-42a5-4929-a4cd-4e0603c7df13" alt=""></a>
-            <a href="#" aria-label="YouTube"><img src="https://www.figma.com/api/mcp/asset/605d1bcc-4ce3-4fe9-8c02-40ac87d8f563" alt=""></a>
+            <a href="#" aria-label="X (Twitter)"><img src="images/icon-x.svg" alt=""></a>
+            <a href="#" aria-label="Facebook"><img src="images/icon-fb.svg" alt=""></a>
+            <a href="#" aria-label="Instagram"><img src="images/icon-ig.svg" alt=""></a>
+            <a href="#" aria-label="LinkedIn"><img src="images/icon-li.svg" alt=""></a>
+            <a href="#" aria-label="YouTube"><img src="images/icon-yt.svg" alt=""></a>
           </div>
         </div>
 

@@ -99,3 +99,40 @@
  <action>Replaced all Figma MCP asset URLs in index.html with compressed local files in `/images/` (webp+jpg picture elements for photos; SVG for logo, wreaths, stars, icons, financing). Mapped hero→hero-aerial, about→about-house, service cards→service-work, splits→residential/commercial, testimonial→workers, contact→contact-bg.</action>
  <reason>Aligns Roofer 1 photography with Roofer 2, removes expiring CDN links, and improves load speed. Layout and copy unchanged.</reason>
 </decision>
+
+## 2026-08-02
+
+<decision>
+ <category>UI/UX</category>
+ <context>Roofer 2 hero headline spanned wider than the supporting paragraph, breaking visual alignment in the left hero column.</context>
+ <action>Capped `.hero-content .type-h1` at `max-width: 560px` — same constraint already on `.hero-content .text-desc`.</action>
+ <reason>Keeps headline and body copy in one readable column; matches Roofer 1 hero description width rule.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>User wanted residential/commercial split-panel copy (headline, paragraph, CTA) at the top of each image card, not bottom-aligned.</context>
+ <action>Changed `.split-panel` from `justify-content: flex-end` to `flex-start`. Unified top-dark gradient overlay on both panels for white text readability. Added overlay to residential panel (was missing).</action>
+ <reason>Top alignment matches user screenshot intent; gradient at top preserves legibility without covering the full photo.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Contact CTA section background photo was heavily dimmed by a white overlay (`rgba(255,255,255,0.88)`), hiding the roofing image.</context>
+ <action>Removed overlay visibility (`display: none` on `.contact-section__overlay`). Form fields remain white cards for contrast.</action>
+ <reason>User requested full image opacity; white form fields still separate content from the photo.</reason>
+</decision>
+
+<decision>
+ <category>Code</category>
+ <context>Roofer 2 still used expiring Figma MCP asset URLs; hero and contact images were oversized for web delivery.</context>
+ <action>Created `roofer2/images/` with compressed JPG + WebP (max 1200px, cwebp q72–65). Replaced all Figma photo/SVG references with local `picture` elements. Hero webp ~36KB (was ~74KB in Roofer 1).</action>
+ <reason>Same local-asset pattern as Roofer 1/3; faster load and no CDN expiry.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Two decorative service-grid image slots used the same placeholder and had no distinct roofing photography.</context>
+ <action>Added Unsplash roofing photos: `service-card-roofing` (worker on shingles) and `service-card-house` (modern shingle home), compressed to 800px max, webp+jpg in `roofer2/images/`.</action>
+ <reason>Distinct visuals fill grid gaps on desktop; alt text describes each scene for accessibility.</reason>
+</decision>
