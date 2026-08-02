@@ -143,3 +143,17 @@
  <action>On viewports ≥640px, split-panel `.btn-primary` uses `align-self: flex-start` and `width: auto` so buttons size to their label.</action>
  <reason>Full-width CTAs looked oversized in side-by-side panels; content-width buttons match typical desktop CTA patterns.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Service grid cards used arbitrary min-height instead of a consistent portrait proportion.</context>
+ <action>All `.service-card` tiles use `aspect-ratio: 4 / 5` (width:height); removed fixed min-heights on text and image cards.</action>
+ <reason>Uniform portrait cards read cleaner in the 2×2 mobile and 4-column desktop grid; image cards inherit the same ratio.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Financing section felt short and the CTA button stretched full width on desktop.</context>
+ <action>Financing section uses `min-height: 80vh` with vertically centered content; financing CTA uses content-width (`align-self: flex-start`).</action>
+ <reason>Taller section gives the financing pitch more breathing room; content-width button matches other desktop CTAs on Roofer 2.</reason>
+</decision>
