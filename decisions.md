@@ -213,3 +213,10 @@
  <action>`.faq-grid` uses `align-items: start` so each accordion hugs its content when collapsed.</action>
  <reason>Grid default stretch forced equal row heights; start alignment lets closed cards shrink to title + chevron only.</reason>
 </decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Financing section at 80vh left too much empty vertical space between headline and logo/CTA.</context>
+ <action>Reduced `.financing-section` `min-height` from `80vh` to `60vh`.</action>
+ <reason>Tighter section height keeps content grouped while preserving full-height column stretch and bottom-pinned logo/CTA.</reason>
+</decision>
