@@ -156,11 +156,18 @@
       font-weight: 500;
       text-transform: uppercase;
       padding: 12px 24px;
+    }
+
+    .top-bar__inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 16px;
       flex-wrap: wrap;
+      width: 100%;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     @media (min-width: 640px) {
@@ -203,6 +210,10 @@
       flex: 1;
       display: flex;
       flex-direction: column;
+      width: 100%;
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
       padding: 0 24px;
     }
 
@@ -1006,8 +1017,10 @@
   <div class="viewport-shell">
     <!-- Top info bar -->
     <div class="top-bar">
-      <span>1 Galleria Blvd Suite 1900, Metairie, LA 70001</span>
-      <span>08:00 A.M. – 05:00 P.M.</span>
+      <div class="top-bar__inner">
+        <span>1 Galleria Blvd Suite 1900, Metairie, LA 70001</span>
+        <span>08:00 A.M. – 05:00 P.M.</span>
+      </div>
     </div>
 
     <!-- Hero with overlaid nav -->
@@ -1472,7 +1485,7 @@
         <div class="footer-col">
           <h3 class="footer-col__title">Company</h3>
           <ul class="footer-col__links">
-            <li><a href="../about.html">About Us</a></li>
+            <li><a href="../roofer1/about.html">About Us</a></li>
             <li><a href="#fortified">Fortified Roofs</a></li>
             <li><a href="#">Financing</a></li>
             <li><a href="#area">Service Area</a></li>
