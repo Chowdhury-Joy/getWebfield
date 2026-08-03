@@ -179,3 +179,12 @@
   <action>Shortened the About lead to a tighter two-clause line covering estates, commercial, and turnkey care.</action>
   <reason>Keeps the right column to roughly 3–4 lines so the head reads as one calm composition.</reason>
 </decision>
+
+## 2026-08-03T20:22:00Z
+
+<decision>
+  <category>CRO</category>
+  <context>Service cards showed redundant “Custom quote” label next to a weak “View Details” button.</context>
+  <action>Removed the price label and changed each card CTA to “Get my custom quote” linking to #contact.</action>
+  <reason>One clear action per card; quote language matches how these services are actually sold.</reason>
+</decision>
