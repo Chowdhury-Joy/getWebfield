@@ -1,5 +1,5 @@
 # Site Map
-Last Updated: 2026-08-04T02:00:59
+Last Updated: 2026-08-04T02:13:59
 
 ## Full Site Map
 | Route / File | Purpose | Access |
@@ -11,10 +11,10 @@ Last Updated: 2026-08-04T02:00:59
 | Anchor | Purpose |
 |---|---|
 | #about | About + stats |
+| #works | Portfolio |
 | #services | Service cards |
 | #areas | Service areas map (US / Texas) |
 | #approach | TLS Approach |
-| #works | Portfolio |
 | #reviews | Reviews |
 | #faq | Frequently asked questions |
 | #contact | Quote form + contact details |
@@ -24,7 +24,7 @@ Last Updated: 2026-08-04T02:00:59
 
 ### Prospect → Quote (HTML version)
 1. Lands on hero — goal: feel premium landscaping brand
-2. Scans services / portfolio — goal: trust
+2. Scans portfolio / services — goal: trust
 3. Reads approach + reviews — goal: confidence
 4. Skims FAQ — goal: clear objections
 5. Submits quote form or calls — key CTA: Request a Quote / 469-455-9733

@@ -143,3 +143,12 @@
   <action>Rebuilt FAQ as a 12-column grid (copy 4 cols left, accordion 8 cols right). Only one FAQ item stays open at a time.</action>
   <reason>Keeps intro text anchored while questions scan as the interactive column; exclusive accordion avoids a wall of open answers.</reason>
 </decision>
+
+## 2026-08-04T02:13:59
+
+<decision>
+  <category>CRO</category>
+  <context>Prospects should see proof of work before reading service offerings.</context>
+  <action>Moved Portfolio (#works) above Services in page order, nav, and footer links.</action>
+  <reason>Showing finished landscapes first builds trust before asking people to compare service types.</reason>
+</decision>

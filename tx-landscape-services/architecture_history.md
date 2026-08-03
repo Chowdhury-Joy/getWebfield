@@ -21,3 +21,6 @@
 
 ## 2026-08-04
 - Added FAQ accordion section before contact
+
+## 2026-08-04
+- Moved Portfolio section before Services in HTML page order
