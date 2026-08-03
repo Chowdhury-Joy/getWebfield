@@ -188,3 +188,12 @@
   <action>Removed the price label and changed each card CTA to “Get my custom quote” linking to #contact.</action>
   <reason>One clear action per card; quote language matches how these services are actually sold.</reason>
 </decision>
+
+## 2026-08-03T20:25:00Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Service card quote buttons were content-width, so label and arrow sat tight together.</context>
+  <action>Made service-card CTAs full width with space-between so label stays left and the arrow circle stays right.</action>
+  <reason>Reads as a clear full-width action bar on each card instead of a compact chip.</reason>
+</decision>

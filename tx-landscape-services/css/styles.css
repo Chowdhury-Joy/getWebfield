@@ -803,9 +803,12 @@ textarea {
   margin-top: auto;
   padding-top: 28px;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 12px;
+  width: 100%;
+}
+
+.service-card__footer .btn {
+  width: 100%;
+  justify-content: space-between;
 }
 
 .service-card .price {
