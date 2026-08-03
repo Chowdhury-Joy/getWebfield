@@ -152,3 +152,12 @@
   <action>Moved Portfolio (#works) above Services in page order, nav, and footer links.</action>
   <reason>Showing finished landscapes first builds trust before asking people to compare service types.</reason>
 </decision>
+
+## 2026-08-03T20:15:49Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>About stats cards sat directly on the soft gray section with no frame separating them from the background.</context>
+  <action>Wrapped the four stat cards in a white rounded shell (.stats-shell) with 16–20px inner padding.</action>
+  <reason>Creates a clear white frame around the alternating light/green cards and matches the rounded-panel language used elsewhere on the page.</reason>
+</decision>

@@ -682,8 +682,21 @@ textarea {
 }
 
 /* Stats — uses shared .grid-cards rules; keep spacing only */
-.stats {
+.stats-shell {
   margin-top: 40px;
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: 16px;
+}
+
+@media (min-width: 640px) {
+  .stats-shell {
+    padding: 20px;
+  }
+}
+
+.stats {
+  margin-top: 0;
 }
 
 .stat-card {
