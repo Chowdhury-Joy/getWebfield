@@ -515,6 +515,75 @@ textarea {
   }
 }
 
+/* Service areas — country map (US for TLS; swap map file per market) */
+.areas-layout {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 900px) {
+  .areas-layout {
+    grid-template-columns: minmax(220px, 0.75fr) 1.55fr;
+    gap: 48px;
+  }
+}
+
+.areas-title {
+  margin: 0 0 16px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(1.8rem, 3.5vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.areas-lead {
+  margin: 0 0 24px;
+  max-width: 28ch;
+  color: var(--content-base);
+  font-size: 1rem;
+}
+
+.areas-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.areas-list li {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+.areas-list li::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: var(--green);
+  vertical-align: middle;
+}
+
+.areas-map {
+  background: transparent;
+  border-radius: 0;
+  padding: 0;
+}
+
+.areas-map__img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Sections — no pure white page bands; page tone only */
 .section {
   background: transparent;
@@ -1018,19 +1087,15 @@ textarea {
   font-weight: 600;
 }
 
-/* Footer — three green cards, no white shell */
+/* Footer — three green cards, aligned to section content width */
 .site-footer {
-  padding: 24px 0 8px;
-}
-
-.footer-shell {
-  padding: 0;
-  background: transparent;
+  padding: 12px 0 8px;
 }
 
 .footer-grid {
   display: grid;
   gap: 12px;
+  width: 100%;
 }
 
 @media (min-width: 900px) {

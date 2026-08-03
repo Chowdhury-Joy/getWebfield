@@ -1,5 +1,5 @@
 # Site Map
-Last Updated: 2026-08-04T01:31:25
+Last Updated: 2026-08-04T01:54:13
 
 ## Full Site Map
 | Route / File | Purpose | Access |
@@ -12,6 +12,7 @@ Last Updated: 2026-08-04T01:31:25
 |---|---|
 | #about | About + stats |
 | #services | Service cards |
+| #areas | Service areas map (US / Texas) |
 | #approach | TLS Approach |
 | #works | Portfolio |
 | #reviews | Reviews |

@@ -107,3 +107,21 @@
   <action>Rebuilt footer as a white rounded shell with three green cards: brand/copyright, contact + socials, page + legal links — TLS content.</action>
   <reason>Matches the reference footer composition while keeping real TLS phone, email, and Pilot Point address.</reason>
 </decision>
+
+## 2026-08-04T01:54:13+0600
+
+<decision>
+  <category>UI/UX</category>
+  <context>Need a reusable “Our Service Areas” map block for Getwebfield sites, one country per market.</context>
+  <action>Added a service-areas section with a US map highlighting Texas; stored US/UK/Canada/Australia SVG pack under assets/maps (and the design-system skill) for future sites to swap the matching country file and highlight class.</action>
+  <reason>Matches the reference map look while keeping each website honest to its real geography.</reason>
+</decision>
+
+## 2026-08-04T01:57:08+0600
+
+<decision>
+  <category>UI/UX</category>
+  <context>Service areas map sat on a white panel and the city list was incomplete vs the live TLS site.</context>
+  <action>Removed map white background. Listed all TLS cities from txlandscapeservices.com (Frisco, Plano, McKinney, Denton, Prosper, Little Elm, Celina + surrounding North DFW). Logged the same complete-list + no-white-map rules in the design-system skill for every future site.</action>
+  <reason>Matches the client’s real coverage and keeps the map aligned with the rest of the page tone.</reason>
+</decision>

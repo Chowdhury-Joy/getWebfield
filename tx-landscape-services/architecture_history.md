@@ -15,3 +15,6 @@
 
 ## 2026-08-04
 - Rebuilt HTML footer to Green Company three-card layout (brand / contact / links)
+
+## 2026-08-04
+- Added service-areas section (US/Texas map) and reusable country SVG pack under assets/maps
