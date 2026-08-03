@@ -161,3 +161,12 @@
   <action>Wrapped the four stat cards in a white rounded shell (.stats-shell) with 16–20px inner padding.</action>
   <reason>Creates a clear white frame around the alternating light/green cards and matches the rounded-panel language used elsewhere on the page.</reason>
 </decision>
+
+## 2026-08-03T20:17:30Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>About (and other section-head) description text sat in a narrow 42ch column with empty space to the right.</context>
+  <action>Removed the max-width cap on .lead when it sits inside .section-head__row so copy fills the right grid column.</action>
+  <reason>The two-column head already defines available width; an extra ch limit left unused space and made the intro feel cramped.</reason>
+</decision>

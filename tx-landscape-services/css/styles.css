@@ -660,6 +660,11 @@ textarea {
   color: var(--content-base);
 }
 
+.section-head__row .lead {
+  max-width: none;
+  width: 100%;
+}
+
 .lead--light {
   color: rgba(255, 255, 255, 0.82);
 }
