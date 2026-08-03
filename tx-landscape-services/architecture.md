@@ -1,5 +1,5 @@
 # Architecture Overview
-Last Updated: 2026-08-04T01:54:13
+Last Updated: 2026-08-04T02:00:59
 
 ## Overview
 Texas Landscape Services marketing website with two prototype directions: (1) Framer Monocromo-inspired editorial homepage, (2) HTML/CSS/JS Green Company–inspired conversion homepage. Content adapted from txlandscapeservices.com (North Dallas–Fort Worth commercial and residential landscape management).
@@ -34,9 +34,10 @@ python3 -m http.server 8765
 
 ## Key Components
 - Framer Home (/) — Monocromo direction (CMS works, services grid, contact)
-- HTML Home (index.html) — Green Company direction (white rounded nav above hero, hero CTAs, about, services, approach, portfolio, reviews, contact form)
+- HTML Home (index.html) — Green Company direction (nav, hero, about, services, areas, approach, portfolio, reviews, FAQ, contact, footer)
 - HTML nav — white rounded bar outside hero (not overlaid on photo)
 - HTML footer — three green cards (brand, contact/social, nav/legal)
+- HTML FAQ — accordion before contact (areas, services, design, TLS Approach, water, estimates)
 - HTML service areas — US map with Texas highlighted (`assets/maps/us.svg`); country pack for UK/CA/AU for other markets
 - HTML animations — IntersectionObserver scroll reveals, staggered cards, hero zoom, hover lifts
 - Framer Nav — floating pill + overlay menu

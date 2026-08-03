@@ -125,3 +125,21 @@
   <action>Removed map white background. Listed all TLS cities from txlandscapeservices.com (Frisco, Plano, McKinney, Denton, Prosper, Little Elm, Celina + surrounding North DFW). Logged the same complete-list + no-white-map rules in the design-system skill for every future site.</action>
   <reason>Matches the client’s real coverage and keeps the map aligned with the rest of the page tone.</reason>
 </decision>
+
+## 2026-08-04T02:00:59+0600
+
+<decision>
+  <category>CRO</category>
+  <context>Prospects need quick answers before requesting a quote; the page had no FAQ.</context>
+  <action>Added an accordion FAQ before contact covering service areas, commercial/residential, design collaboration, TLS Approach, water management, custom programs, and free estimates — answers pulled from live TLS messaging.</action>
+  <reason>Reduces pre-quote friction and reinforces real service facts without inventing claims.</reason>
+</decision>
+
+## 2026-08-04T02:04:41+0600
+
+<decision>
+  <category>UI/UX</category>
+  <context>FAQ was a stacked heading + list; needed a clearer horizontal reading pattern and exclusive open state.</context>
+  <action>Rebuilt FAQ as a 12-column grid (copy 4 cols left, accordion 8 cols right). Only one FAQ item stays open at a time.</action>
+  <reason>Keeps intro text anchored while questions scan as the interactive column; exclusive accordion avoids a wall of open answers.</reason>
+</decision>

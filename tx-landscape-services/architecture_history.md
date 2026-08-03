@@ -18,3 +18,6 @@
 
 ## 2026-08-04
 - Added service-areas section (US/Texas map) and reusable country SVG pack under assets/maps
+
+## 2026-08-04
+- Added FAQ accordion section before contact

@@ -956,6 +956,122 @@ textarea {
   margin-top: 40px;
 }
 
+/* FAQ — 12-col grid: copy 4 / questions 8 */
+.faq-layout {
+  display: grid;
+  gap: 32px;
+  align-items: start;
+}
+
+@media (min-width: 900px) {
+  .faq-layout {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 40px;
+  }
+
+  .faq-copy {
+    grid-column: span 4;
+  }
+
+  .faq-list {
+    grid-column: span 8;
+  }
+}
+
+.faq-copy .eyebrow {
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.faq-copy .type-display {
+  margin: 0 0 16px;
+}
+
+.faq-copy .lead {
+  margin: 0;
+  max-width: 28ch;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 0;
+  max-width: none;
+}
+
+.faq-item {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  padding: 0 22px;
+  transition: background 0.25s ease;
+}
+
+.faq-item[open] {
+  background: var(--green);
+}
+
+.faq-item summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 0;
+  font-weight: 600;
+  font-size: 1.02rem;
+  color: var(--ink);
+  line-height: 1.35;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: "+";
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: rgba(58, 70, 50, 0.1);
+  color: var(--green);
+  font-size: 1.1rem;
+  font-weight: 500;
+  transition: background 0.25s ease, color 0.25s ease;
+}
+
+.faq-item[open] summary {
+  color: var(--white);
+}
+
+.faq-item[open] summary::after {
+  content: "−";
+  background: rgba(255, 255, 255, 0.14);
+  color: var(--white);
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 0 22px;
+  color: var(--content-base);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  max-width: 62ch;
+}
+
+.faq-item[open] p {
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.faq-item p a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .review-card {
   background: var(--surface);
   border-radius: var(--radius-md);

@@ -73,4 +73,18 @@
       form.reset();
     });
   }
+
+  // FAQ: only one open at a time
+  const faqAccordion = document.querySelector("[data-faq-accordion]");
+  if (faqAccordion) {
+    const items = [...faqAccordion.querySelectorAll("details.faq-item")];
+    items.forEach((item) => {
+      item.addEventListener("toggle", () => {
+        if (!item.open) return;
+        items.forEach((other) => {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+  }
 })();
