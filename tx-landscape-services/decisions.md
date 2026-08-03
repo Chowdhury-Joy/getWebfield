@@ -170,3 +170,12 @@
   <action>Removed the max-width cap on .lead when it sits inside .section-head__row so copy fills the right grid column.</action>
   <reason>The two-column head already defines available width; an extra ch limit left unused space and made the intro feel cramped.</reason>
 </decision>
+
+## 2026-08-03T20:18:30Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>About intro copy was long enough to feel dense next to the display headline.</context>
+  <action>Shortened the About lead to a tighter two-clause line covering estates, commercial, and turnkey care.</action>
+  <reason>Keeps the right column to roughly 3–4 lines so the head reads as one calm composition.</reason>
+</decision>
