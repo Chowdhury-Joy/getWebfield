@@ -1,43 +1,63 @@
 # Site Map
-Last Updated: 2026-08-04T02:13:59
+Last Updated: 2026-08-04T04:00:53Z
 
 ## Full Site Map
 | Route / File | Purpose | Access |
 |---|---|---|
+| `/` (`index.html`) | Redirects to V2 | Public |
+| `/v2/` | Farmio-inspired HTML homepage (current default) | Public |
+| `/v1/` | Green Company–inspired HTML homepage (archived variation) | Public |
 | Framer / (https://concave-marketplaces-214295.framer.app) | Monocromo-inspired homepage | Public |
-| index.html | Green Company–inspired HTML homepage | Public (local / static host) |
 
-### HTML page sections (anchors)
+### V2 page sections (anchors)
+| Anchor | Purpose |
+|---|---|
+| #about | About + stats |
+| #solutions | Commercial / estate / water solution cards |
+| #works | Gallery / portfolio |
+| #approach | TLS Approach advantages |
+| #areas | Service areas map (US / Texas) |
+| #reviews | Testimonials |
+| #faq | Frequently asked questions |
+| #contact | Quote form + contact details |
+| Footer | Brand, contact, links · link to V1 |
+
+### V1 page sections (anchors)
 | Anchor | Purpose |
 |---|---|
 | #about | About + stats |
 | #works | Portfolio |
 | #services | Service cards |
-| #areas | Service areas map (US / Texas) |
+| #areas | Service areas map |
 | #approach | TLS Approach |
 | #reviews | Reviews |
-| #faq | Frequently asked questions |
-| #contact | Quote form + contact details |
-| Footer | Brand, contact/social, section + legal links |
+| #faq | FAQ |
+| #contact | Quote form |
+| Footer | Brand / contact / links · link to V2 |
 
 ## Customer Journeys
 
-### Prospect → Quote (HTML version)
-1. Lands on hero — goal: feel premium landscaping brand
-2. Scans portfolio / services — goal: trust
-3. Reads approach + reviews — goal: confidence
-4. Skims FAQ — goal: clear objections
-5. Submits quote form or calls — key CTA: Request a Quote / 469-455-9733
+### Prospect → Quote (V2 default)
+1. Lands on full-bleed hero — goal: premium, modern first impression
+2. Scans solutions + gallery — goal: trust
+3. Reads approach + reviews + FAQ — goal: confidence
+4. Submits quote form or calls — key CTA: Get started / Request a Quote / 469-455-9733
 
-### Prospect → Contact (Framer version)
-1. Lands on editorial homepage
-2. Browses works / approach
-3. Calls or emails from contact block
+### Prospect → Quote (V1)
+1. Lands on Green Company hero
+2. Scans portfolio / services / areas
+3. FAQ → contact form or phone
+
+### Prospect → Contact (Framer)
+1. Editorial homepage → works / approach → phone or email
 
 ## Admin/Staff Journeys
 
-### Update HTML prototype
-- Edit index.html / css/styles.css / js/main.js, refresh browser
+### Update HTML V2
+- Edit `v2/index.html`, `v2/css/styles.css`, `v2/js/main.js`; refresh browser
 
-### Update Framer Projects CMS
-- Framer → CMS → Projects → publish
+### Update HTML V1
+- Edit files under `v1/`; refresh browser
+
+### Deploy
+- Sync project into getWebfield `tx-landscape-services/` and push `origin/main`

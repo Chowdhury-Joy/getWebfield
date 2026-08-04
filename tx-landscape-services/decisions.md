@@ -197,3 +197,12 @@
   <action>Made service-card CTAs full width with space-between so label stays left and the arrow circle stays right.</action>
   <reason>Reads as a clear full-width action bar on each card instead of a compact chip.</reason>
 </decision>
+
+## 2026-08-04T04:00:53Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Needed a second HTML direction after Green Company; Farmio (farmio.framer.website) was chosen as the visual reference.</context>
+  <action>Shipped V2 as a Farmio-inspired layout (floating pill nav, full-bleed photo hero, cream panels, tall solution cards) using TLS green #3a4632 for accents, DM Sans for heading/body/buttons, IBM Plex Mono for taglines, and Farmio-scale display type (~62px / ~52px). Preserved Green Company as /v1/; root redirects to /v2/.</action>
+  <reason>Keeps both variations comparable on getWebfield while making the new Farmio direction the default experience.</reason>
+</decision>

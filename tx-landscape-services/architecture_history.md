@@ -24,3 +24,6 @@
 
 ## 2026-08-04
 - Moved Portfolio section before Services in HTML page order
+
+## 2026-08-04
+- Split HTML site into /v1 (Green Company) and /v2 (Farmio-inspired); root redirects to v2; shared maps remain under assets/maps
