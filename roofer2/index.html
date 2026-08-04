@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roofer 2 — Louisiana Roofing Demo</title>
+  <title>Roof Shark — North Jersey Roofing Contractor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&family=Saira+Extra+Condensed:wght@600&display=swap" rel="stylesheet">
@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --brand: #2173bd;
+      --brand: #e87020;
       --text-main: #111827;
       --text-base: #374151;
       --text-subtle: #6b7280;
@@ -126,7 +126,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(33, 115, 189, 0.06);
+      background: rgba(232, 112, 32, 0.08);
       border: 1px solid #dbdbdb;
       color: var(--brand);
       font-size: 15px;
@@ -253,9 +253,13 @@
     }
 
     .hero-nav__logo {
-      width: 120px;
+      width: 140px;
       height: auto;
       flex-shrink: 0;
+    }
+
+    @media (min-width: 640px) {
+      .hero-nav__logo { width: 160px; }
     }
 
     .hero-nav__menu {
@@ -288,10 +292,17 @@
 
     .hero-content {
       flex: 1;
+      max-width: 50%;
       display: flex;
       flex-direction: column;
       gap: 24px;
       align-items: flex-start;
+    }
+
+    @media (max-width: 639px) {
+      .hero-content {
+        max-width: 100%;
+      }
     }
 
     .hero-form-wrap {
@@ -378,12 +389,12 @@
     .hero-content .type-h1 {
       color: var(--text-inverted-main);
       text-transform: capitalize;
-      max-width: 560px;
+      width: 100%;
     }
 
     .hero-content .text-desc {
       color: var(--text-inverted-base);
-      max-width: 560px;
+      width: 100%;
     }
 
     .form-field {
@@ -553,7 +564,7 @@
     }
 
     @media (min-width: 1200px) {
-      .services-grid { grid-template-columns: repeat(4, 1fr); }
+      .services-grid { grid-template-columns: repeat(3, 1fr); }
     }
 
     .service-card {
@@ -564,13 +575,13 @@
       flex-direction: column;
       gap: 16px;
       min-height: 0;
+      height: auto;
     }
 
     @media (min-width: 640px) {
       .service-card {
         padding: 24px;
         gap: 24px;
-        aspect-ratio: 4 / 5;
       }
     }
 
@@ -627,6 +638,7 @@
       width: 100%;
       font-size: 11px;
       padding: 12px 10px;
+      margin-top: auto;
     }
 
     @media (min-width: 640px) {
@@ -634,26 +646,6 @@
         font-size: 13px;
         padding: 16px 24px;
       }
-    }
-
-    .service-card--image {
-      display: none;
-      padding: 0;
-      overflow: hidden;
-      border: none;
-      background: none;
-    }
-
-    @media (min-width: 640px) {
-      .service-card--image { display: block; }
-    }
-
-    .service-card--image picture,
-    .service-card--image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
     }
 
     /* ===== SPLIT PANELS ===== */
@@ -862,27 +854,10 @@
     .financing-left {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-self: stretch;
       height: 100%;
       min-height: 100%;
-    }
-
-    .financing-badge {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      padding: 8px 16px 6px;
-      font-family: var(--font-heading);
-      font-size: 14px;
-      letter-spacing: 0.56px;
-      text-transform: uppercase;
-      color: var(--brand);
-      align-self: flex-start;
-    }
-
-    .financing-logo {
-      width: 200px;
-      height: auto;
     }
 
     .financing-content {
@@ -1124,7 +1099,7 @@
     .contact-section {
       position: relative;
       overflow: hidden;
-      padding: 64px 40px;
+      padding: 32px 16px;
     }
 
     .contact-section__bg-wrap {
@@ -1167,6 +1142,10 @@
       margin-bottom: 16px;
     }
 
+    .contact-section {
+      padding: 64px 40px;
+    }
+
     .contact-form-note {
       font-size: 12px;
       color: #8c8c87;
@@ -1194,7 +1173,8 @@
     }
 
     .footer-brand__logo {
-      width: 120px;
+      width: 160px;
+      height: auto;
       margin-bottom: 24px;
     }
 
@@ -1257,19 +1237,6 @@
       gap: 16px;
     }
 
-    /* Mobile: hide decorative service grid images */
-    @media (max-width: 639px) {
-      .services-grid > .service-card.service-card--image {
-        display: none;
-      }
-    }
-
-    @media (min-width: 640px) {
-      .services-grid > .service-card.service-card--image {
-        display: block;
-      }
-    }
-
     /* Tablet: hide about photo; desktop only */
     @media (max-width: 1199px) {
       .about-grid__photo {
@@ -1291,8 +1258,8 @@
     <!-- Top info bar -->
     <div class="top-bar">
       <div class="top-bar__inner">
-        <span>1 Galleria Blvd Suite 1900, Metairie, LA 70001</span>
-        <span>08:00 A.M. – 05:00 P.M.</span>
+        <span>532 MacArthur Ave, Garfield NJ 07026</span>
+        <span>Open 24 Hours — 7 Days a Week</span>
       </div>
     </div>
 
@@ -1309,17 +1276,17 @@
       <div class="hero-banner__inner">
         <nav class="hero-nav" aria-label="Main navigation">
           <a href="index.html" aria-label="Home">
-            <img class="hero-nav__logo" src="images/logo.svg" alt="Roofer 2">
+            <img class="hero-nav__logo" src="images/logo.png" alt="Roof Shark">
           </a>
           <ul class="hero-nav__menu">
             <li><a href="#services">Services</a></li>
-            <li><a href="#fortified">Fortified</a></li>
+            <li><a href="#process">Process</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#area">Area</a></li>
+            <li><a href="#area">Areas</a></li>
             <li><a href="#reviews">Reviews</a></li>
           </ul>
           <div class="hero-nav__cta">
-            <a class="btn-secondary" href="tel:5043840676">Call (504) 384-0676</a>
+            <a class="btn-secondary" href="tel:9735132992">Call (973) 513-2992</a>
           </div>
         </nav>
 
@@ -1335,17 +1302,17 @@
                   <img src="images/star.svg" alt="">
                   <img src="images/star.svg" alt="">
                 </div>
-                <div class="ratings-badge__title">Best roofing in<br>all of louisiana</div>
-                <div class="ratings-badge__subtitle">100+ reviews</div>
+                <div class="ratings-badge__title">5-star google<br>rated roofers</div>
+                <div class="ratings-badge__subtitle">4.8 out of 5 average</div>
               </div>
               <img class="ratings-badge__wreath ratings-badge__wreath--right" src="images/wreath-right.svg" alt="">
             </div>
 
-            <h1 class="type-h1">Louisiana Roofs Built to Survive Louisiana Storms</h1>
+            <h1 class="type-h1">Your Trusted North Jersey Roofing Contractor for Quality Service</h1>
 
-            <p class="text-desc">Locally owned and storm-tested. We've inspected and repaired 1,500+ roofs across Greater New Orleans. one truck, one purpose: protect families after the storm.</p>
+            <p class="text-desc">The Apex of Roofing Excellence. Installation experts, National Roofing Contractors Association members, and an Owens-Corning Preferred Contractor — serving Garfield, Bergen County, and Passaic County with quality roofing you can trust.</p>
 
-            <a class="btn-primary btn-primary--hero" href="#contact">Book My Free Inspection</a>
+            <a class="btn-primary btn-primary--hero" href="#contact">Book a Free Estimate</a>
           </div>
         </div>
       </div>
@@ -1354,14 +1321,16 @@
     <!-- Trust ticker -->
     <div class="trust-bar" aria-label="Trust indicators">
       <div class="trust-bar__track">
-        <span class="trust-bar__item">Licensed &amp; insured</span>
-        <span class="trust-bar__item">Free inspections</span>
-        <span class="trust-bar__item">Financing available</span>
-        <span class="trust-bar__item">Emergency repairs</span>
-        <span class="trust-bar__item">Licensed &amp; insured</span>
-        <span class="trust-bar__item">Free inspections</span>
-        <span class="trust-bar__item">Financing available</span>
-        <span class="trust-bar__item">Emergency repairs</span>
+        <span class="trust-bar__item">Installation Experts</span>
+        <span class="trust-bar__item">NRCA Member</span>
+        <span class="trust-bar__item">Owens-Corning Preferred</span>
+        <span class="trust-bar__item">Financing Available</span>
+        <span class="trust-bar__item">Free Estimates</span>
+        <span class="trust-bar__item">Installation Experts</span>
+        <span class="trust-bar__item">NRCA Member</span>
+        <span class="trust-bar__item">Owens-Corning Preferred</span>
+        <span class="trust-bar__item">Financing Available</span>
+        <span class="trust-bar__item">Free Estimates</span>
       </div>
     </div>
   </div>
@@ -1373,26 +1342,26 @@
         <div class="about-grid__photo">
           <picture>
             <source srcset="images/about-house.webp" type="image/webp">
-            <img src="images/about-house.jpg" alt="Louisiana home with new roofing">
+            <img src="images/about-house.jpg" alt="Roof Shark crew on a job site in North Jersey">
           </picture>
         </div>
         <div class="about-grid__content">
           <div class="stack-header">
-            <h2 class="type-h2">Roofing Built For Louisiana's Climate<br>Wherever You Are In The State</h2>
-            <p class="text-content-base">Most roofs fail at half their expected lifespan, and water intrusion drives most home-construction disputes. A small leak today becomes a ceiling, a wall, and mold tomorrow. We come out fast, tell you exactly what's wrong — no upselling — and fix it to survive the next hurricane season.</p>
+            <h2 class="type-h2">Meet Roof Shark: Setting The Standards for Roofing Contractors in Garfield, New Jersey</h2>
+            <p class="text-content-base">Welcome to Roof Shark, where we understand that choosing a roofing company is not just about repairing your home or commercial building’s roof or increasing its curb appeal—it’s about safeguarding your property and your peace of mind. With high-quality workmanship and a superior customer experience, we redefine the standards of roofing professionalism in Garfield, New Jersey.</p>
           </div>
           <div class="stats-row">
             <div class="stat-item">
-              <div class="stat-item__number">1200+</div>
-              <p class="text-content-base">Roof Inspections</p>
+              <div class="stat-item__number">4.8</div>
+              <p class="text-content-base">Google Rating</p>
             </div>
             <div class="stat-item">
-              <div class="stat-item__number">800+</div>
-              <p class="text-content-base">Roofs Repairs</p>
+              <div class="stat-item__number">20+</div>
+              <p class="text-content-base">Years Trusted</p>
             </div>
             <div class="stat-item">
-              <div class="stat-item__number">12+</div>
-              <p class="text-content-base">Year Experience</p>
+              <div class="stat-item__number">24/7</div>
+              <p class="text-content-base">Always Available</p>
             </div>
           </div>
         </div>
@@ -1404,10 +1373,10 @@
             <img src="images/star-review-4.svg" alt="">
             <img src="images/star-review-5.svg" alt="">
           </div>
-          <p class="text-content-base" style="font-size:14px;letter-spacing:-0.56px;">They did an outstanding job with my roof replacement in New Orleans. From the initial inspection to the final cleanup, their team was professional and efficient. They walked me through the entire process, helped me choose the best materials for my home, and completed the project on time. My new roof looks fantastic and has greatly improved the curb appeal of my house. I highly recommend them to anyone in need of a roof replacement!</p>
+          <p class="text-content-base" style="font-size:14px;letter-spacing:-0.56px;">So happy to have found Roof Shark! John was professional, efficient, thorough and a pleasure to work with. He paid attention to detail and left my roof looking beautiful. I look forward to working with him again for my siding. Nothing but a fantastic experience from start to finish. I would recommend him to anyone and everyone.</p>
           <div>
-            <p class="type-h4 text-content-base">Martin Molina</p>
-            <p class="text-content-subtle" style="font-size:14px;">Verified Buyer</p>
+            <p class="type-h4 text-content-base">Theresa Acocella</p>
+            <p class="text-content-subtle" style="font-size:14px;">Google Review</p>
           </div>
         </div>
       </div>
@@ -1418,114 +1387,91 @@
   <section class="section--white space-section" id="services">
     <div class="layout-container">
       <div class="services-header stack-header">
-        <h2 class="type-h2">OUR SPECIALIZED SERVICES</h2>
-        <p class="text-desc text-content-base">We provide top-quality roofing solution, deigned to protect your house</p>
+        <h2 class="type-h2">Services We Offer</h2>
+        <p class="text-desc text-content-base">High-quality workmanship and a superior customer experience for homes and commercial buildings across North Jersey.</p>
       </div>
 
       <div class="services-grid">
         <article class="service-card">
           <div class="service-card__icon" aria-hidden="true"></div>
           <div class="service-card__body">
-            <h3 class="type-h3">Roof Repairs</h3>
-            <p class="service-card__desc text-content-base">Leaks, storm damage, missing shingles — we find the real source and fix it right, often the same day. No upselling, just an honest repair that lasts.</p>
+            <h3 class="type-h3">Residential Roofing</h3>
+            <p class="service-card__desc text-content-base">We help Garfield NJ homeowners with roof leaks, damaged shingles, or a complete roof overhaul — keeping your home protected and attractive.</p>
           </div>
-          <button class="service-card__cta btn-primary" type="button">Get My Roof Repaired</button>
+          <a class="service-card__cta btn-primary" href="#contact">Book a Free Estimate</a>
         </article>
 
         <article class="service-card">
           <div class="service-card__icon" aria-hidden="true"></div>
           <div class="service-card__body">
-            <h3 class="type-h3">Roof Installation</h3>
-            <p class="service-card__desc text-content-base">A new roof built to last and matched to your budget, installed by a certified local crew with quality materials and a clean job site.</p>
+            <h3 class="type-h3">Commercial Roofing</h3>
+            <p class="service-card__desc text-content-base">Built for expansive roof areas, intricate layouts, and the energy and weather resistance commercial building owners need.</p>
           </div>
-          <button class="service-card__cta btn-primary" type="button">Plan My Installation</button>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true"></div>
-          <div class="service-card__body">
-            <h3 class="type-h3">Roof Leak Repair</h3>
-            <p class="service-card__desc text-content-base">A small leak today becomes a ceiling and mold problem tomorrow. We locate the source fast and stop the water before it spreads.</p>
-          </div>
-          <button class="service-card__cta btn-primary" type="button">Stop My Leak</button>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true"></div>
-          <div class="service-card__body">
-            <h3 class="type-h3">Roof Coating</h3>
-            <p class="service-card__desc text-content-base">Extend your roof's life and cut energy costs with a protective coating that seals against Louisiana sun, rain, and heat.</p>
-          </div>
-          <button class="service-card__cta btn-primary" type="button">Protect My Roof</button>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true"></div>
-          <div class="service-card__body">
-            <h3 class="type-h3">Gutters</h3>
-            <p class="service-card__desc text-content-base">Proper drainage keeps water off your roof, walls, and foundation. We install and repair gutters that actually move the water away.</p>
-          </div>
-          <button class="service-card__cta btn-primary" type="button">Fix My Gutters</button>
-        </article>
-
-        <div class="service-card service-card--image">
-          <picture>
-            <source srcset="images/service-card-roofing.webp" type="image/webp">
-            <img src="images/service-card-roofing.jpg" alt="Roofer installing shingles on a residential roof">
-          </picture>
-        </div>
-
-        <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true"></div>
-          <div class="service-card__body">
-            <h3 class="type-h3">Siding</h3>
-            <p class="service-card__desc text-content-base">Boost curb appeal and weather protection with durable siding installed to stand up to storms and humidity year-round.</p>
-          </div>
-          <button class="service-card__cta btn-primary" type="button">Upgrade My Siding</button>
-        </article>
-
-        <article class="service-card">
-          <div class="service-card__icon" aria-hidden="true"></div>
-          <div class="service-card__body">
-            <h3 class="type-h3">Roof Inspection</h3>
-            <p class="service-card__desc text-content-base">A free, honest top-to-bottom check before small problems get expensive — with a clear report and no pressure to buy.</p>
-          </div>
-          <button class="service-card__cta btn-primary" type="button">Book a Free Inspection</button>
+          <a class="service-card__cta btn-primary" href="#contact">Get a Commercial Quote</a>
         </article>
 
         <article class="service-card">
           <div class="service-card__icon" aria-hidden="true"></div>
           <div class="service-card__body">
             <h3 class="type-h3">Roof Replacement</h3>
-            <p class="service-card__desc text-content-base">When repairs aren't enough, we replace your roof to FORTIFIED standards — tougher in a storm and often covered by insurance.</p>
+            <p class="service-card__desc text-content-base">Full roof replacement with top-quality materials and meticulous workmanship — part of our residential and commercial roofing services.</p>
           </div>
-          <button class="service-card__cta btn-primary" type="button">Price My New Roof</button>
+          <a class="service-card__cta btn-primary" href="#contact">Plan My Replacement</a>
         </article>
 
         <article class="service-card">
           <div class="service-card__icon" aria-hidden="true"></div>
           <div class="service-card__body">
-            <h3 class="type-h3">Fences</h3>
-            <p class="service-card__desc text-content-base">Quality fence installation and repair that adds privacy, security, and value — built to handle Gulf Coast weather.</p>
+            <h3 class="type-h3">Roof Repairs</h3>
+            <p class="service-card__desc text-content-base">Missing shingles, water leaks, storm damage, and more — we assess your roof’s condition and give you our honest opinion.</p>
           </div>
-          <button class="service-card__cta btn-primary" type="button">Build My Fence</button>
+          <a class="service-card__cta btn-primary" href="#contact">Fix My Roof</a>
         </article>
 
         <article class="service-card">
           <div class="service-card__icon" aria-hidden="true"></div>
           <div class="service-card__body">
-            <h3 class="type-h3">Painting</h3>
-            <p class="service-card__desc text-content-base">Interior and exterior painting with a clean, professional finish that protects surfaces and refreshes your whole home.</p>
+            <h3 class="type-h3">Residential Flat Roofing</h3>
+            <p class="service-card__desc text-content-base">Flat roofing services for residential properties — specialized repair and replacement as part of our full residential offering.</p>
           </div>
-          <button class="service-card__cta btn-primary" type="button">Refresh My Home</button>
+          <a class="service-card__cta btn-primary" href="#contact">Protect My Flat Roof</a>
         </article>
 
-        <div class="service-card service-card--image">
-          <picture>
-            <source srcset="images/service-card-house.webp" type="image/webp">
-            <img src="images/service-card-house.jpg" alt="Roofing crew working on a residential roof">
-          </picture>
-        </div>
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Siding</h3>
+            <p class="service-card__desc text-content-base">Siding installation and repair to protect and improve your home’s exterior — available alongside our roofing services.</p>
+          </div>
+          <a class="service-card__cta btn-primary" href="#contact">Upgrade My Siding</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Storm Damage Repair</h3>
+            <p class="service-card__desc text-content-base">Emergency repair services for severe leaks or storm damage — we address urgent issues and help prevent further damage to your home.</p>
+          </div>
+          <a class="service-card__cta btn-primary" href="#contact">Get Storm Help</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">Gutters</h3>
+            <p class="service-card__desc text-content-base">Gutter installation as part of our roofing services — helping move water away from your roof, walls, and foundation.</p>
+          </div>
+          <a class="service-card__cta btn-primary" href="#contact">Fix My Gutters</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-card__icon" aria-hidden="true"></div>
+          <div class="service-card__body">
+            <h3 class="type-h3">19 Point Inspection</h3>
+            <p class="service-card__desc text-content-base">A thorough roof inspection with a detailed report — so you know what’s recommended before any work begins.</p>
+          </div>
+          <a class="service-card__cta btn-primary" href="#contact">Book My Inspection</a>
+        </article>
       </div>
     </div>
   </section>
@@ -1537,25 +1483,25 @@
         <div class="split-panel">
           <picture class="split-panel__bg">
             <source srcset="images/residential.webp" type="image/webp">
-            <img src="images/residential.jpg" alt="Residential home with new shingle roof">
+            <img src="images/residential.jpg" alt="Residential asphalt shingle roof installed by Roof Shark">
           </picture>
           <div class="split-panel__overlay" aria-hidden="true"></div>
           <div class="split-panel__content">
-            <h2 class="type-h2">Professional Residential Roofing Services For Your Home</h2>
-            <p class="text-desc">A durable roof protects your home. Simplex Roof offers residential roofing services to keep your home safe and energy-efficient. Our experienced team provides repairs and replacements tailored to your needs, ensuring safety and value.</p>
-            <a class="btn-primary" href="#contact">Schedule A Free Inspection</a>
+            <h2 class="type-h2">Residential Roofing for Your Home</h2>
+            <p class="text-desc">Our residential roofing services help Garfield NJ homeowners with roof leaks, damaged shingles, or a complete roof overhaul. We specialize in roof repair and roof replacement, ensuring your property remains protected and attractive.</p>
+            <a class="btn-primary" href="#contact">Book a Free Estimate</a>
           </div>
         </div>
         <div class="split-panel split-panel--commercial">
           <picture class="split-panel__bg">
             <source srcset="images/commercial.webp" type="image/webp">
-            <img src="images/commercial.jpg" alt="Commercial flat roof on a Louisiana business building">
+            <img src="images/commercial.jpg" alt="Commercial roofing project by Roof Shark">
           </picture>
           <div class="split-panel__overlay" aria-hidden="true"></div>
           <div class="split-panel__content">
-            <h2 class="type-h2">Professional Commercial Roofing Services For Your Business</h2>
-            <p class="text-desc">Commercial roofing in Louisiana and Texas requires energy-efficient, safe systems. We serve industrial, office, hospitality, retail, and education sectors with custom estimates and expert advice. Our team assesses needs and budgets, offers detailed reports, and assists with insurance claims.</p>
-            <a class="btn-primary" href="#contact">Schedule A Free Inspection</a>
+            <h2 class="type-h2">Commercial Roofing for Your Business</h2>
+            <p class="text-desc">Roof Shark’s commercial roofing specialists address expansive roof areas, intricate structural layouts, and heightened energy and weather resistance requirements — for multi-family, retail, warehouses, churches, and more.</p>
+            <a class="btn-primary" href="#contact">Get a Commercial Quote</a>
           </div>
         </div>
       </div>
@@ -1563,46 +1509,53 @@
   </section>
 
   <!-- PROCESS -->
-  <section class="section--white space-section" id="fortified">
+  <section class="section--white space-section" id="process">
     <div class="layout-container">
       <div class="process-grid">
         <div class="process-intro">
           <div class="stack-header">
-            <p class="process-tag">HOW IT WORKS</p>
-            <h2 class="type-h2">Four simple steps.<br>No surprises.</h2>
+            <p class="process-tag">OUR PROCESS</p>
+            <h2 class="type-h2">A 5-step process.<br>Maximum quality.</h2>
           </div>
           <div class="process-ctas">
-            <a class="btn-primary" href="#contact">Book My Free Inspection</a>
-            <a class="btn-secondary" href="tel:5043840676">Call (504) 384-0676</a>
+            <a class="btn-primary" href="#contact">Book a Free Estimate</a>
+            <a class="btn-secondary" href="tel:9735132992">Call (973) 513-2992</a>
           </div>
         </div>
         <div class="process-steps">
           <article class="process-step">
             <div class="process-step__badge">step 01</div>
             <div>
-              <h3 class="type-h3">Free Inspection</h3>
-              <p class="process-step__desc text-content-base">Call for a professional Roofing Contractor and schedule your inspection at your convenience. Ensure your roof's safety and quality with expert service today.</p>
+              <h3 class="type-h3">Contact</h3>
+              <p class="process-step__desc text-content-base">Get the process started by reaching out for a free estimate. Our team of roofing professionals will explain our process and answer any questions you may have.</p>
             </div>
           </article>
           <article class="process-step">
             <div class="process-step__badge">step 02</div>
             <div>
-              <h3 class="type-h3">Honest Quote</h3>
-              <p class="process-step__desc text-content-base">As your Roofing Contractor, we assess your roof's condition, design an action plan, and provide options based on roofing materials, needs, and budget.</p>
+              <h3 class="type-h3">Inspection</h3>
+              <p class="process-step__desc text-content-base">Our skilled technicians will thoroughly inspect your roof, provide you with a detailed report, and answer any questions you have about the roofing services we recommend.</p>
             </div>
           </article>
           <article class="process-step">
             <div class="process-step__badge">step 03</div>
             <div>
-              <h3 class="type-h3">Professional Install</h3>
-              <p class="process-step__desc text-content-base">As your Roofing Contractor, we ensure a 72-hour project turnover. Our cleaning crew will leave your place spotless—it'll be like we were never there!</p>
+              <h3 class="type-h3">Installation</h3>
+              <p class="process-step__desc text-content-base">We’ll work tirelessly to install your roof with meticulous attention to detail, using only top-quality materials and the industry’s leading techniques.</p>
             </div>
           </article>
           <article class="process-step">
             <div class="process-step__badge">step 04</div>
             <div>
-              <h3 class="type-h3">Walkthrough &amp; Warranty</h3>
-              <p class="process-step__desc text-content-base">With a trusted Roofing Contractor, enjoy the weather stress-free while you Netflix &amp; chill on your stain-free couch. Rest assured, your roof is in expert hands, keeping your home safe and sound.</p>
+              <h3 class="type-h3">Clean-Up</h3>
+              <p class="process-step__desc text-content-base">We understand the importance of respecting your property and will leave your home’s exterior spotless.</p>
+            </div>
+          </article>
+          <article class="process-step">
+            <div class="process-step__badge">step 05</div>
+            <div>
+              <h3 class="type-h3">Warranty</h3>
+              <p class="process-step__desc text-content-base">Our commitment to excellence doesn’t end when we complete your roof repair or installation. We stand behind our work and roofing materials with warranty guarantees.</p>
             </div>
           </article>
         </div>
@@ -1611,25 +1564,21 @@
   </section>
 
   <!-- FINANCING -->
-  <section class="section--white space-section financing-section">
+  <section class="section--white space-section financing-section" id="financing">
     <div class="layout-container">
       <div class="financing-grid">
         <div class="financing-left">
-          <div class="stack-header">
-            <span class="financing-badge">Financing Options</span>
-            <h2 class="type-h2">A roof shouldn't have<br>to wait for payday.</h2>
-          </div>
-          <img class="financing-logo" src="images/financing.svg" alt="Service Finance Company">
+          <h2 class="type-h2">Easy financing options<br>that work for you.</h2>
         </div>
         <div class="financing-content">
           <div class="text-content-base">
-            <p>Whether your new roof is the result of a planned project or because of unexpected circumstances, it can represent a significant, but necessary, home investment. A roof helps to keep your home and family protected from the elements.</p>
+            <p>At Roof Shark, we offer a variety of easy-to-use financing options for homeowners. During our visit, one of our specialists will help you find the financing options that work for you.</p>
             <br>
-            <p>We have multiple financing options for you that include 0% interest, 12 months of no payments, and even extended payment plans to fit your budget.</p>
+            <p>We understand that roofing projects are significant investments. That’s why we pair our fair pricing with flexible financing options. Find out if you’re approved in minutes, with a soft credit pull.</p>
             <br>
-            <p>*With approved credit</p>
+            <p>Options include Sunlight Financial (typically FICO above 650) and Enhancify’s network of 30+ lenders for more diverse loan options.</p>
           </div>
-          <a class="btn-primary" href="#contact">APPLY for Financing Options</a>
+          <a class="btn-primary" href="#contact">Ask About Financing</a>
         </div>
       </div>
     </div>
@@ -1641,73 +1590,73 @@
       <div class="testimonials-carousel">
         <div class="testimonials-track">
           <article class="testimonial-slide">
-            <p class="testimonial-slide__quote">Excellent company!!! I had them come look at a job I wanted to do and Jose was completely honest in telling me that it was not feasible to do so. He could have just told me anything and got the job anyway because I really don't know much about roofing. It is nice to not be taken advantage of!!</p>
+            <p class="testimonial-slide__quote">So happy to have found Roof Shark! John was professional, efficient, thorough and a pleasure to work with. He paid attention to detail and left my roof looking beautiful. Nothing but a fantastic experience from start to finish.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Theresa Acocella</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide">
-            <p class="testimonial-slide__quote">Not only was he honest he took his time to explain to me my options and why some are good and some are not. Unfortunately I could not use them for the job I had in mind but definitely plan on using them for any future jobs. Very nice guy who is honest and helpful! Give them a shot!! Thanks Simplex!!!</p>
+            <p class="testimonial-slide__quote">John was professional and courteous from the first time we spoke. He kept me informed in every aspect of the job: dumpster delivery, material delivery, what time his crew would start. His price was very competitive. A sure 5 Stars!</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Greg Heimbuch</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide">
-            <p class="testimonial-slide__quote">They did an outstanding job with my roof replacement in New Orleans. From the initial inspection to the final cleanup, their team was professional and efficient. They walked me through the entire process and completed the project on time.</p>
+            <p class="testimonial-slide__quote">My wife and I hired Dan and his brother John to replace our roof and gutters. Having interviewed 10+ contractors, I can confidently say they stand above others for quality work at a fair price. Flawless execution.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Sean Dzugan</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide">
-            <p class="testimonial-slide__quote">After the last storm we had water coming in through the ceiling. They came out the same day, tarped the roof, and had a permanent repair done within 48 hours. Clear communication the whole time — exactly what you want when your home is at risk.</p>
+            <p class="testimonial-slide__quote">I recently had my roof done and the experience was fantastic! The team was prompt, professional, and efficient. They communicated clearly throughout, and the work was completed on time with no surprises.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Sarah Bennett</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Nisairy Romero</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide">
-            <p class="testimonial-slide__quote">We needed a FORTIFIED roof for insurance savings and they handled the paperwork, inspection, and install without us chasing anyone. The crew left the yard cleaner than they found it. Highly recommend for Louisiana homeowners.</p>
+            <p class="testimonial-slide__quote">They replaced my entire roof and even fixed a hole where squirrels had been living. What stood out was how clean and professional they were — they cleaned up after every single day, leaving no nails or debris behind.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">James Porter</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Rodrigo Abarca Flores</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide" aria-hidden="true">
-            <p class="testimonial-slide__quote">Excellent company!!! I had them come look at a job I wanted to do and Jose was completely honest in telling me that it was not feasible to do so. He could have just told me anything and got the job anyway because I really don't know much about roofing. It is nice to not be taken advantage of!!</p>
+            <p class="testimonial-slide__quote">So happy to have found Roof Shark! John was professional, efficient, thorough and a pleasure to work with. He paid attention to detail and left my roof looking beautiful. Nothing but a fantastic experience from start to finish.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Theresa Acocella</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide" aria-hidden="true">
-            <p class="testimonial-slide__quote">Not only was he honest he took his time to explain to me my options and why some are good and some are not. Unfortunately I could not use them for the job I had in mind but definitely plan on using them for any future jobs. Very nice guy who is honest and helpful! Give them a shot!! Thanks Simplex!!!</p>
+            <p class="testimonial-slide__quote">John was professional and courteous from the first time we spoke. He kept me informed in every aspect of the job: dumpster delivery, material delivery, what time his crew would start. His price was very competitive. A sure 5 Stars!</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Greg Heimbuch</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide" aria-hidden="true">
-            <p class="testimonial-slide__quote">They did an outstanding job with my roof replacement in New Orleans. From the initial inspection to the final cleanup, their team was professional and efficient. They walked me through the entire process and completed the project on time.</p>
+            <p class="testimonial-slide__quote">My wife and I hired Dan and his brother John to replace our roof and gutters. Having interviewed 10+ contractors, I can confidently say they stand above others for quality work at a fair price. Flawless execution.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Martin Molina</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Sean Dzugan</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide" aria-hidden="true">
-            <p class="testimonial-slide__quote">After the last storm we had water coming in through the ceiling. They came out the same day, tarped the roof, and had a permanent repair done within 48 hours. Clear communication the whole time — exactly what you want when your home is at risk.</p>
+            <p class="testimonial-slide__quote">I recently had my roof done and the experience was fantastic! The team was prompt, professional, and efficient. They communicated clearly throughout, and the work was completed on time with no surprises.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">Sarah Bennett</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Nisairy Romero</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
           <article class="testimonial-slide" aria-hidden="true">
-            <p class="testimonial-slide__quote">We needed a FORTIFIED roof for insurance savings and they handled the paperwork, inspection, and install without us chasing anyone. The crew left the yard cleaner than they found it. Highly recommend for Louisiana homeowners.</p>
+            <p class="testimonial-slide__quote">They replaced my entire roof and even fixed a hole where squirrels had been living. What stood out was how clean and professional they were — they cleaned up after every single day, leaving no nails or debris behind.</p>
             <div class="testimonial-slide__author">
-              <p class="testimonial-slide__name">James Porter</p>
-              <p class="testimonial-slide__meta">Verified Buyer</p>
+              <p class="testimonial-slide__name">Rodrigo Abarca Flores</p>
+              <p class="testimonial-slide__meta">Google Review</p>
             </div>
           </article>
         </div>
@@ -1716,58 +1665,58 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section--white space-section">
+  <section class="section--white space-section" id="faq">
     <div class="layout-container">
       <div class="faq-header stack-header">
         <h2 class="type-h2">Frequently Asked Questions</h2>
-        <p class="text-desc text-content-base">Let's put your mind at ease</p>
+        <p class="text-desc text-content-base">Have a roof-related question? We have the answer.</p>
       </div>
 
       <div class="faq-grid">
         <div class="faq-item is-open">
           <button class="faq-item__header" type="button" aria-expanded="true" aria-controls="faq-answer-1" id="faq-trigger-1">
-            <span class="type-h4">What types of roofing materials do you work with?</span>
+            <span class="type-h4">What are the signs that my roof needs repair or replacement?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
           </button>
           <div class="faq-item__answer" id="faq-answer-1" role="region" aria-labelledby="faq-trigger-1">
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">We install and repair asphalt shingles, standing-seam metal, clay and concrete tile, TPO flat roofing, and elastomeric roof coatings. Louisiana humidity and hurricane winds affect each material differently — we'll recommend what holds up best for your roof pitch, budget, and insurance requirements.</p>
+              <p class="text-content-base">Recognizing the signs of roof damage is crucial to avoid bigger and costlier problems. Roof Shark’s team of experts strongly recommends regular inspections to catch potential issues early. Look for signs like missing or damaged shingles, water leaks, or visible sagging. Our team will assess your roof’s condition and give you our honest opinion.</p>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-item__header" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-trigger-2">
-            <span class="type-h4">What sets your roofing services apart from others?</span>
+            <span class="type-h4">Will Roof Shark provide a detailed cost estimate for my roofing project?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
           </button>
           <div class="faq-item__answer" id="faq-answer-2" role="region" aria-labelledby="faq-trigger-2" hidden>
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">We're locally owned, licensed, and insured — and we show up when we say we will. Every inspection comes with a clear written report, no upselling, and storm-tested workmanship backed by warranty. Our crews know Louisiana building codes and FORTIFIED standards inside out.</p>
+              <p class="text-content-base">At Roof Shark, transparency is at the forefront of our service approach. We pride ourselves on providing detailed and accurate cost estimates for all roofing projects. We simplify it by breaking down the costs, explaining all aspects of the roofing work involved, and ensuring you’re making an informed decision.</p>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-item__header" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-trigger-3">
-            <span class="type-h4">How long does a typical roof installation take?</span>
+            <span class="type-h4">Does Roof Shark offer financing options?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
           </button>
           <div class="faq-item__answer" id="faq-answer-3" role="region" aria-labelledby="faq-trigger-3" hidden>
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">Most residential replacements take 1–3 days depending on roof size, material, and weather. We target a 72-hour turnaround from tear-off to final inspection, protect your landscaping during the job, and leave the property clean before we leave.</p>
+              <p class="text-content-base">Absolutely! At Roof Shark, we understand that roofing projects are significant investments. That’s why we pair our fair pricing with flexible financing options to empower homeowners to tackle their roofing needs without breaking the bank. Our goal is to make top-quality roofing services attainable for every homeowner. Find out if you’re approved in minutes, with a soft credit pull.</p>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-item__header" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-trigger-4">
-            <span class="type-h4">Do you offer any warranties on your roofing services?</span>
+            <span class="type-h4">How long does a roof installation typically take?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
           </button>
           <div class="faq-item__answer" id="faq-answer-4" role="region" aria-labelledby="faq-trigger-4" hidden>
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">Yes. Every project includes our workmanship warranty, and manufacturer material warranties apply to shingles, metal, and coatings we install. We'll walk you through exactly what's covered and for how long before any work begins.</p>
+              <p class="text-content-base">The duration of a roof installation depends on various factors including the size of the roof, the type of materials being used, and weather conditions. On average, a typical residential roof installation can take anywhere from a couple of days to a week to complete.</p>
             </div>
           </div>
         </div>
@@ -1779,19 +1728,19 @@
           </button>
           <div class="faq-item__answer" id="faq-answer-5" role="region" aria-labelledby="faq-trigger-5" hidden>
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">At least once a year, and always after a major storm or hurricane. Louisiana heat, rain, and wind wear roofs faster than most climates — catching lifted shingles or soft decking early can save thousands in interior damage.</p>
+              <p class="text-content-base">It is recommended to have your roof professionally inspected once a year, preferably in the spring and fall, to identify any potential problems early. In addition, inspections should be conducted after severe weather conditions, such as storms or heavy winds.</p>
             </div>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-item__header" type="button" aria-expanded="false" aria-controls="faq-answer-6" id="faq-trigger-6">
-            <span class="type-h4">Are you available for emergency roof repairs?</span>
+            <span class="type-h4">What should I do in case of an emergency roof repair?</span>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2"/></svg>
           </button>
           <div class="faq-item__answer" id="faq-answer-6" role="region" aria-labelledby="faq-trigger-6" hidden>
             <div class="faq-item__answer-inner">
-              <p class="text-content-base">Yes. We offer emergency tarping and leak repair across Greater New Orleans and surrounding parishes. If water is coming in now, call us — we'll get a crew out as fast as possible to stop further damage to your home.</p>
+              <p class="text-content-base">In the event of a roofing emergency such as severe leaks or storm damage, contact Roof Shark immediately. We offer emergency repair services to address urgent issues and prevent further damage to your home. Call (973) 513-2992 — open 24 hours a day, 7 days a week.</p>
             </div>
           </div>
         </div>
@@ -1812,8 +1761,8 @@
         <div class="contact-section__overlay" aria-hidden="true"></div>
         <div class="contact-section__inner">
           <div class="contact-section__intro">
-            <h2 class="type-h2">Get your free<br>roof inspection today.</h2>
-            <p class="text-desc text-content-base">Free inspection. No-obligation quote. Backed by a workmanship warranty. Tell us about your roof and we'll be in touch fast.</p>
+            <h2 class="type-h2">Book your free<br>estimate today.</h2>
+            <p class="text-desc text-content-base">Schedule an appointment today so we can resolve your roofing concerns. Serving Garfield, Bergen County, and Passaic County.</p>
           </div>
           <div class="hero-form-wrap">
             <input class="form-field" type="text" placeholder="Name" aria-label="Name">
@@ -1822,8 +1771,8 @@
             <input class="form-field" type="text" placeholder="Address" aria-label="Address">
             <input class="form-field" type="text" placeholder="Service Type" aria-label="Service Type">
             <textarea class="form-field form-field--textarea" placeholder="Message" aria-label="Message"></textarea>
-            <button class="btn-primary btn-full" type="button">Book My Free Inspection</button>
-            <p class="contact-form-note">No spam, no pressure — just a straight answer about your roof.</p>
+            <button class="btn-primary btn-full" type="button">Book a Free Estimate</button>
+            <p class="contact-form-note">Or call us now at (973) 513-2992 — open 24 hours a day, 7 days a week.</p>
           </div>
         </div>
       </div>
@@ -1835,75 +1784,69 @@
     <div class="layout-container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img class="footer-brand__logo" src="images/logo.svg" alt="Roofer 2">
-          <p class="footer-brand__text">When you choose Simplex Roof, you're not just hiring a roofing company — you're getting a local team that answers, shows up, and treats your roof like our own. Licensed &amp; insured. Serving Louisiana &amp; Texas.</p>
+          <img class="footer-brand__logo" src="images/footer-logo.png" alt="Roof Shark">
+          <p class="footer-brand__text">When you choose Roof Shark, you're partnering with a family-owned roofing company that understands the magnitude of your trust. Licensed &amp; insured. Contractor License: 13VH13143300. Serving Garfield, Bergen County &amp; Passaic County, NJ.</p>
           <div class="social-icons">
-            <a href="#" aria-label="X (Twitter)"><img src="images/icon-x.svg" alt=""></a>
-            <a href="#" aria-label="Facebook"><img src="images/icon-fb.svg" alt=""></a>
-            <a href="#" aria-label="Instagram"><img src="images/icon-ig.svg" alt=""></a>
-            <a href="#" aria-label="LinkedIn"><img src="images/icon-li.svg" alt=""></a>
-            <a href="#" aria-label="YouTube"><img src="images/icon-yt.svg" alt=""></a>
+            <a href="https://www.facebook.com/" aria-label="Facebook"><img src="images/icon-fb.svg" alt=""></a>
+            <a href="https://www.instagram.com/" aria-label="Instagram"><img src="images/icon-ig.svg" alt=""></a>
+            <a href="https://www.youtube.com/" aria-label="YouTube"><img src="images/icon-yt.svg" alt=""></a>
           </div>
         </div>
 
         <div class="footer-col">
           <h3 class="footer-col__title">Services</h3>
           <ul class="footer-col__links">
-            <li><a href="#">Roof Replacement</a></li>
-            <li><a href="#">Roof Repairs</a></li>
-            <li><a href="#">Roof Leak Repair</a></li>
-            <li><a href="#">Roof Installation</a></li>
-            <li><a href="#">Roof Inspection</a></li>
-            <li><a href="#">Insurance Claims</a></li>
-            <li><a href="#">Roof Coating</a></li>
-            <li><a href="#">Gutters</a></li>
-            <li><a href="#">Siding</a></li>
-            <li><a href="#">Storm Damage</a></li>
+            <li><a href="#services">Residential Roofing</a></li>
+            <li><a href="#services">Commercial Roofing</a></li>
+            <li><a href="#services">Roof Replacement</a></li>
+            <li><a href="#services">Roof Repairs</a></li>
+            <li><a href="#services">Flat Roofing</a></li>
+            <li><a href="#services">Siding</a></li>
+            <li><a href="#services">Storm Damage</a></li>
+            <li><a href="#services">Gutters</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
           <h3 class="footer-col__title">Company</h3>
           <ul class="footer-col__links">
-            <li><a href="../roofer1/about.html">About Us</a></li>
-            <li><a href="#fortified">Fortified Roofs</a></li>
-            <li><a href="#">Financing</a></li>
-            <li><a href="#area">Service Area</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#process">Our Process</a></li>
+            <li><a href="#financing">Financing</a></li>
+            <li><a href="#area">Service Areas</a></li>
             <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#contact">Free Inspection</a></li>
+            <li><a href="#faq">FAQs</a></li>
+            <li><a href="#contact">Free Estimate</a></li>
           </ul>
         </div>
 
         <div class="footer-col" id="area">
-          <h3 class="footer-col__title">HOUSTON, TX</h3>
+          <h3 class="footer-col__title">Bergen County</h3>
           <ul class="footer-col__links">
-            <li><a href="#">Houston</a></li>
-            <li><a href="#">Katy</a></li>
-            <li><a href="#">Missouri City</a></li>
-            <li><a href="#">Richmond</a></li>
-            <li><a href="#">Cypress</a></li>
-            <li><a href="#">Tomball</a></li>
-            <li><a href="#">Sugar Land</a></li>
-            <li><a href="#">Pearland</a></li>
-            <li><a href="#">Pasadena</a></li>
-            <li><a href="#">Beaumont</a></li>
+            <li><a href="#contact">Garfield</a></li>
+            <li><a href="#contact">Ridgewood</a></li>
+            <li><a href="#contact">Englewood Cliffs</a></li>
+            <li><a href="#contact">Franklin Lakes</a></li>
+            <li><a href="#contact">Glen Rock</a></li>
+            <li><a href="#contact">Tenafly</a></li>
+            <li><a href="#contact">Wyckoff</a></li>
+            <li><a href="#contact">Woodcliff Lake</a></li>
           </ul>
         </div>
 
         <div class="footer-col">
-          <h3 class="footer-col__title">NEW ORLEANS, LA</h3>
+          <h3 class="footer-col__title">More Areas</h3>
           <ul class="footer-col__links">
-            <li><a href="#">New Orleans</a></li>
-            <li><a href="#">Baton Rouge</a></li>
-            <li><a href="#">Covington</a></li>
-            <li><a href="#">Gonzales</a></li>
-            <li><a href="#">Hammond</a></li>
-            <li><a href="#">Kenner</a></li>
-            <li><a href="#">Mandeville</a></li>
-            <li><a href="#">Metairie</a></li>
-            <li><a href="#">Prairieville</a></li>
-            <li><a href="#">Slidell</a></li>
-            <li><a href="#">Denham Springs</a></li>
+            <li><a href="#contact">Passaic County</a></li>
+            <li><a href="#contact">Ho-Ho-Kus</a></li>
+            <li><a href="#contact">Saddle River</a></li>
+            <li><a href="#contact">Upper Saddle River</a></li>
+            <li><a href="#contact">River Vale</a></li>
+            <li><a href="#contact">Old Tappan</a></li>
+            <li><a href="#contact">Short Hills</a></li>
+            <li><a href="#contact">Summit</a></li>
+            <li><a href="mailto:info@roofshark.com">info@roofshark.com</a></li>
+            <li><a href="tel:9735132992">(973) 513-2992</a></li>
           </ul>
         </div>
       </div>

@@ -36,3 +36,30 @@
 
 ## 2026-08-04
 - Rebuilt V2 clean Farmio-look + TLS content; removed team; working testimonials/services; fixed hero; Texas gallery images
+
+## 2026-08-04
+- Equalized Our solutions card heights and Contact us spacing in V2 (no longer Farmio stair-step gaps)
+
+## 2026-08-04
+- V2 Our solutions: intentional stair-step heights (120/240/360 extras) on desktop; equal height/width on mobile
+
+## 2026-08-04
+- V2 solutions stair-step: first card extra 0; steps start at card 2 (0/120/240)
+
+## 2026-08-04
+- Removed Contact us button from V2 Our solutions section header
+
+## 2026-08-04
+- Forced real Geist sitewide in V2: removed Framer Inter files mislabeled as Geist Variable
+
+## 2026-08-04
+- V2 switched to getWebfield Large font system (design-tokens.css, Hanken Grotesk + IBM Plex Mono); removed Geist Fontsource
+
+## 2026-08-04
+- Default getWebfield fonts → Geist Variable + Geist Mono; TLS V2 updated to match
+
+## 2026-08-04
+- Default getWebfield + TLS V2 fonts → Inter (Large scale unchanged)
+## 2026-08-04
+- Tightened Large heading tracking/leading (H1/H2 -0.08em / 80%)
+

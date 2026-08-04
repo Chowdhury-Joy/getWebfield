@@ -233,3 +233,149 @@
   <action>Rebuilt V2 as a clean Farmio-look page with real TLS copy (from txlandscapeservices.com), removed Our Team, added working testimonial scroller with arrows, Texas/landscape gallery images, a simple working services card grid, and a clarified hero (brand title + tagline card, no video).</action>
   <reason>Farmio supplies the look only; content and working sections must come from TLS.</reason>
 </decision>
+
+## 2026-08-04T04:52:19Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Our solutions cards stepped up left→right with no clear rhythm, and the Contact us pill sat on top of the shortest (first) card.</context>
+  <action>Equalized all three solution cards to a shared fixed height (560px desktop / 480 tablet / 420 mobile). Replaced Farmio’s per-card content gaps (--repfbg 179/261/490) with space-between so title stays top and tags stay bottom. Increased title-row → cards spacing and top-aligned the Contact us button so it no longer clashes with card 1.</action>
+  <reason>Consistency reads cleaner than Farmio’s intentional stair-step; equal height + breathing room keeps the section tidy without redesigning the Farmio card look.</reason>
+</decision>
+
+## 2026-08-04T04:59:16Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User wanted the Farmio stair-step solutions look back, but with clear math — not random heights — and equal cards on mobile.</context>
+  <action>Desktop/tablet: bottom-aligned cards stepping +120px each time via extras 120 / 240 / 360 (total heights 420 / 540 / 660 desktop; 360 / 480 / 600 tablet). Mobile: stacked, full width, all 420px tall.</action>
+  <reason>Mimics Farmio’s ascending row while making the rhythm obvious (clean +120 steps) and keeping mobile tidy and consistent.</reason>
+</decision>
+
+## 2026-08-04T05:06:04Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Stair-step still started on card 1; user wanted the first card flat (no extra) and the step to begin on card 2.</context>
+  <action>Set solution card extras to 0 / 120 / 240 (desktop totals 360 / 480 / 600). Mobile stays equal height/width.</action>
+  <reason>Keeps the ascending Farmio rhythm while anchoring card 1 as the baseline.</reason>
+</decision>
+
+
+## 2026-08-04T05:47:52Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Our solutions header still had a Contact us pill that competed with the cards and wasn’t needed in that section.</context>
+  <action>Removed the Contact us button from the Our solutions Title & Button row; left the section heading and cards.</action>
+  <reason>Contact lives elsewhere (nav / contact section); clearing this CTA reduces clutter above the stair-step cards.</reason>
+</decision>
+
+## 2026-08-04T05:54:29Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Some sections still looked unlike Geist because Framer’s Inter font files had been renamed to “Geist Variable,” so the browser loaded Inter while CSS asked for Geist.</context>
+  <action>Removed the 43 Framer/Inter @font-face aliases, dropped Inter Placeholder, pointed Framer font CSS variables at real Geist from Fontsource, and strengthened the sitewide Geist override across sections/text presets.</action>
+  <reason>One real Geist source end-to-end so every section matches.</reason>
+</decision>
+
+
+## 2026-08-04T07:38:04Z
+
+<decision>
+  <category>Code</category>
+  <context>Service Areas text still looked like a system sans even though Geist was named in the markup.</context>
+  <action>Fixed broken inline style attributes that nested double quotes inside font-family (which truncated the style), and added a dedicated .tls-map-section Geist !important rule.</action>
+  <reason>Nested quotes made the browser ignore the font declaration; single-quoted family names inside double-quoted style attrs load Geist correctly.</reason>
+</decision>
+
+
+## 2026-08-04T07:42:47Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Section headings were rendering too heavy (Framer black / weight 1000); user wants medium weight.</context>
+  <action>Set all heading levels (h1–h6), Framer heading presets, Service Areas title, and TLS custom titles to font-weight 500 (medium).</action>
+  <reason>Matches the intended lighter headline feel across the page.</reason>
+</decision>
+
+
+## 2026-08-04T07:45:40Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User asked to use getWebfield’s font system at the Large typography scale for the full V2 site (instead of ad-hoc Geist overrides).</context>
+  <action>Added v2/css/design-tokens.css; loaded Hanken Grotesk + IBM Plex Mono (Bunny); set html data-type-scale="large"; mapped sitewide headings/body/buttons/taglines to Large token sizes and medium heading weight (500).</action>
+  <reason>Aligns TLS V2 with the shared getWebfield design system so type is consistent with other client sites.</reason>
+</decision>
+
+
+## 2026-08-04T07:49:30Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User wants Geist on TLS and as the getWebfield design-system default (replacing Hanken Grotesk / IBM Plex Mono).</context>
+  <action>Set --font-heading/--font-body to Geist Variable and --font-tagline to Geist Mono in the getwebfield-design-system skill tokens, TLS v2 design-tokens + page bridge, and texas-lawn-legends design-tokens. Kept Large type scale and medium heading weight (500). TLS loads Geist via Fontsource.</action>
+  <reason>One shared default type kit across getWebfield client sites; TLS matches that kit.</reason>
+</decision>
+
+
+## 2026-08-04T07:52:32Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User asked to switch the type kit from Geist to Inter.</context>
+  <action>Set getWebfield design-system defaults and TLS V2 (Large scale) to Inter for heading/body/button/tagline; load Inter from Bunny. Updated skill docs and texas-lawn-legends tokens to match.</action>
+  <reason>Inter is now the shared default font across getWebfield client sites.</reason>
+</decision>
+
+
+## 2026-08-04T07:55:16Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Headings felt too loose; user asked to tighten them.</context>
+  <action>Tightened Large-scale heading tracking and leading: H1/H2 to -0.08em / 80% line-height; H3 to -0.07em / 92%; H4/H5 to -0.045em / 92%. Updated getWebfield design-tokens and TLS overrides.</action>
+  <reason>Closer letter-spacing and line-height make Inter headlines feel denser and more intentional.</reason>
+</decision>
+
+
+## 2026-08-04T08:10:30Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Service card titles and how-it-works step titles were mixed heading levels (h3/h5); user asked to make those card headings h4.</context>
+  <action>Converted tls-service-card titles from h3→h4 and the three how-it-works step titles from h5→h4 (with h4/gc3dxx preset).</action>
+  <reason>Keeps card-level titles on one consistent h4 tier in the type scale.</reason>
+</decision>
+
+
+## 2026-08-04T08:12:54Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User wanted h4 titles at a fixed 24px with tighter tracking/leading.</context>
+  <action>Set .type-h4 / site h4 to 24px at all breakpoints, line-height 85%, letter-spacing -0.06em in getWebfield tokens and TLS overrides.</action>
+  <reason>Card-level titles stay consistent and denser than the previous stepped 20/24/28 scale.</reason>
+</decision>
+
+
+## 2026-08-04T10:35:16Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Our solutions cards felt too close together.</context>
+  <action>Increased the horizontal gap between solution cards from 24px to 64px.</action>
+  <reason>Gives each card more breathing room in the stair-step row.</reason>
+</decision>
+
+
+## 2026-08-04T10:36:46Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>User wanted more space between the Our solutions headline and the card row — not between the cards themselves.</context>
+  <action>Reverted card-to-card gap to 24px. Set the section container gap (headline → cards) to 64px.</action>
+  <reason>Separates the title block from the stair-step cards without widening the card gutters.</reason>
+</decision>

@@ -276,3 +276,40 @@
  <action>Replaced featured testimonial with gray-band `.testimonials-carousel` — CSS marquee (70s loop), 1.2 cards mobile / 2.5 desktop, white cards with quote + verified buyer; pauses on hover; manual scroll when reduced-motion.</action>
  <reason>Matches Figma node 22766:137; peek cards signal scrollability; slow auto-scroll keeps social proof moving without interaction.</reason>
 </decision>
+
+## 2026-08-02 — Roof Shark
+
+<decision>
+ <category>UI/UX</category>
+ <context>User asked to redesign roofshark.com homepage in Roofer 2 style without inventing a new layout.</context>
+ <action>Kept the Roofer 2 section shell (viewport hero, trust ticker, about grid, 4-col services, residential/commercial split, process, financing, review marquee, FAQ, contact, footer). Swapped in Roof Shark copy, real Google reviews, NJ service areas, logo, and photography from roofshark.com. Brand token set to logo orange `#e87020`. Dropped blog/articles and the large service-map block; folded process into four steps (clean-up + warranty combined).</action>
+ <reason>Preserves a proven conversion layout clients already like, while making the page feel like Roof Shark’s real business instead of a Louisiana placeholder.</reason>
+</decision>
+
+<decision>
+ <category>Code</category>
+ <context>Roof Shark assets had to ship locally like other roofer demos (no hotlinked CDN).</context>
+ <action>Downloaded hero, team, service thumbs, gallery shots, logos, and financing icon from roofshark.com; compressed to JPG+WebP in `roofer2/images/`; HTML uses `picture` elements.</action>
+ <reason>Matches the local-asset prevention rule and keeps GitHub Pages self-contained.</reason>
+</decision>
+
+<decision>
+ <category>Business_Logic</category>
+ <context>Initial Roof Shark pass mixed real site copy with leftover Roofer 2 demo lines and paraphrased blurbs; user asked if content was verified.</context>
+ <action>Audited against roofshark.com (home, FAQs, financing, residential, commercial). Replaced invented badge ("best roofing…"), payday financing headline, and "no spam" note with source phrasing; restored exact 5-step process and closer FAQ/about/financing wording; service card blurbs condensed from their pages because homepage cards are title-only.</action>
+ <reason>Client demos must not invent claims; layout can shorten copy, but facts and voice should come from the live site.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Hero copy felt narrow/capped; service grid still used decorative image tiles and a 4-col desktop layout.</context>
+ <action>Set `.hero-content` to `max-width: 50%` (100% under 640px) and removed 560px caps on hero h1/desc so text fills that column. Services: removed image cards; desktop 3×3 with `aspect-ratio: 1/1`; below desktop keep 2-col grid with height hugging content (no aspect ratio).</action>
+ <reason>Wider hero column matches the photo better; 9 text services fill a clean square grid without filler photos.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>Desktop service cards were locked to 1:1, leaving empty space inside shorter cards.</context>
+ <action>Removed desktop  so service cards hug content height at all breakpoints while keeping the 3-col desktop / 2-col smaller grid.</action>
+ <reason>User requested hug height on desktop too — consistent card rhythm without forced square empty space.</reason>
+</decision>
