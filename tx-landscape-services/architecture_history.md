@@ -33,3 +33,6 @@
 
 ## 2026-08-04
 - Replaced V2 with Farmio Framer SSR 1:1 clone (extracted CSS/HTML); hero video swapped for heading; map section retained
+
+## 2026-08-04
+- Rebuilt V2 clean Farmio-look + TLS content; removed team; working testimonials/services; fixed hero; Texas gallery images

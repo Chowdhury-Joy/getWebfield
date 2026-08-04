@@ -224,3 +224,12 @@
   <action>Rebuilt /v2 from Farmio’s extracted Framer SSR HTML + CSS (content swapped to TLS), forced appear/opacity states visible without Framer JS, replaced hero video with the main heading, inserted the US/Texas map section, and removed cross-version footer links.</action>
   <reason>Only reusing Farmio’s actual structure/styles gets a true 1:1 look; video removed per request with heading in its place.</reason>
 </decision>
+
+## 2026-08-04T04:25:00Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Framer SSR clone was fragile: hero heading broken, services/testimonials non-functional, Farmio filler content, unwanted team section.</context>
+  <action>Rebuilt V2 as a clean Farmio-look page with real TLS copy (from txlandscapeservices.com), removed Our Team, added working testimonial scroller with arrows, Texas/landscape gallery images, a simple working services card grid, and a clarified hero (brand title + tagline card, no video).</action>
+  <reason>Farmio supplies the look only; content and working sections must come from TLS.</reason>
+</decision>

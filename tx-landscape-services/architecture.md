@@ -1,5 +1,5 @@
 # Architecture Overview
-Last Updated: 2026-08-04T04:20:00Z
+Last Updated: 2026-08-04T04:25:00Z
 
 ## Overview
 Texas Landscape Services marketing site with three prototype directions: (1) Framer Monocromo-inspired editorial homepage, (2) HTML V1 Green Company–inspired conversion homepage at `/v1/`, (3) HTML V2 Farmio 1:1 visual clone at `/v2/` (default). Content adapted from txlandscapeservices.com (North Dallas–Fort Worth commercial and residential landscape management).
@@ -26,7 +26,7 @@ Live (getWebfield):
 ## Tech Stack
 - Framer (Monocromo): canvas + CMS; Geist Mono
 - HTML V1 (Green Company): IBM Plex Mono; olive green `#3a4632`
-- HTML V2 (Farmio 1:1 Framer SSR clone): Inter + BDO Grotesk display; Farmio lime `#e7f352`, cream `#e3e4d4`, ink `#04303b`; floating pill nav; marquee about; solution/service panels; map retained
+- HTML V2 (Farmio look + TLS content): Inter + BDO Grotesk display; Farmio lime `#e7f352`, cream `#e3e4d4`, ink `#04303b`; floating pill nav; marquee about; solution/service panels; map retained
 - Imagery: Unsplash + txlandscapeservices.com uploads
 - Maps: `assets/maps/` (us, uk, canada, australia)
 
