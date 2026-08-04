@@ -1,11 +1,11 @@
 # Site Map
-Last Updated: 2026-08-04T04:00:53Z
+Last Updated: 2026-08-04T04:10:00Z
 
 ## Full Site Map
 | Route / File | Purpose | Access |
 |---|---|---|
 | `/` (`index.html`) | Redirects to V2 | Public |
-| `/v2/` | Farmio-inspired HTML homepage (current default) | Public |
+| `/v2/` | Farmio 1:1 HTML homepage (current default) | Public |
 | `/v1/` | Green Company–inspired HTML homepage (archived variation) | Public |
 | Framer / (https://concave-marketplaces-214295.framer.app) | Monocromo-inspired homepage | Public |
 
@@ -20,7 +20,7 @@ Last Updated: 2026-08-04T04:00:53Z
 | #reviews | Testimonials |
 | #faq | Frequently asked questions |
 | #contact | Quote form + contact details |
-| Footer | Brand, contact, links · link to V1 |
+| Footer | Brand, contact, links |
 
 ### V1 page sections (anchors)
 | Anchor | Purpose |
@@ -33,7 +33,7 @@ Last Updated: 2026-08-04T04:00:53Z
 | #reviews | Reviews |
 | #faq | FAQ |
 | #contact | Quote form |
-| Footer | Brand / contact / links · link to V2 |
+| Footer | Brand / contact / links |
 
 ## Customer Journeys
 

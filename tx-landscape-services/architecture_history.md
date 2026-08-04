@@ -27,3 +27,6 @@
 
 ## 2026-08-04
 - Split HTML site into /v1 (Green Company) and /v2 (Farmio-inspired); root redirects to v2; shared maps remain under assets/maps
+
+## 2026-08-04
+- Rebuilt V2 as 1:1 Farmio visual clone (lime/cream/ink, Inter+BDO); retained service-areas map; removed cross-version footer links

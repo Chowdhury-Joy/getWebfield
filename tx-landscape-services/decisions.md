@@ -206,3 +206,12 @@
   <action>Shipped V2 as a Farmio-inspired layout (floating pill nav, full-bleed photo hero, cream panels, tall solution cards) using TLS green #3a4632 for accents, DM Sans for heading/body/buttons, IBM Plex Mono for taglines, and Farmio-scale display type (~62px / ~52px). Preserved Green Company as /v1/; root redirects to /v2/.</action>
   <reason>Keeps both variations comparable on getWebfield while making the new Farmio direction the default experience.</reason>
 </decision>
+
+## 2026-08-04T04:10:00Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>V2 was only loosely Farmio-inspired (TLS olive, DM Sans) and still felt like a different template; user asked for a 1:1 Farmio copy while keeping the map and removing cross-version footer links.</context>
+  <action>Rebuilt /v2 to mirror Farmio’s system: lime #E7F352 CTAs, cream #E3E4D4 panels, ink #04303B, Inter body + BDO Grotesk display, floating pill nav, marquee about, tall solution cards, horizontal service panels, feature percentages, how-it-works steps, gallery, FAQ+image, join CTA. Kept US/Texas map. Removed V1↔V2 footer flip links.</action>
+  <reason>V1 and V2 should read as two distinct looks; V2 should match the Farmio reference closely.</reason>
+</decision>
