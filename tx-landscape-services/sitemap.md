@@ -1,11 +1,11 @@
 # Site Map
-Last Updated: 2026-08-04T04:10:00Z
+Last Updated: 2026-08-04T04:20:00Z
 
 ## Full Site Map
 | Route / File | Purpose | Access |
 |---|---|---|
 | `/` (`index.html`) | Redirects to V2 | Public |
-| `/v2/` | Farmio 1:1 HTML homepage (current default) | Public |
+| `/v2/` | Farmio 1:1 Framer-SSR clone homepage (current default) | Public |
 | `/v1/` | Green Company–inspired HTML homepage (archived variation) | Public |
 | Framer / (https://concave-marketplaces-214295.framer.app) | Monocromo-inspired homepage | Public |
 

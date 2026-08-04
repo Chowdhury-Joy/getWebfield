@@ -30,3 +30,6 @@
 
 ## 2026-08-04
 - Rebuilt V2 as 1:1 Farmio visual clone (lime/cream/ink, Inter+BDO); retained service-areas map; removed cross-version footer links
+
+## 2026-08-04
+- Replaced V2 with Farmio Framer SSR 1:1 clone (extracted CSS/HTML); hero video swapped for heading; map section retained

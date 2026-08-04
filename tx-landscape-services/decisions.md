@@ -215,3 +215,12 @@
   <action>Rebuilt /v2 to mirror Farmio’s system: lime #E7F352 CTAs, cream #E3E4D4 panels, ink #04303B, Inter body + BDO Grotesk display, floating pill nav, marquee about, tall solution cards, horizontal service panels, feature percentages, how-it-works steps, gallery, FAQ+image, join CTA. Kept US/Texas map. Removed V1↔V2 footer flip links.</action>
   <reason>V1 and V2 should read as two distinct looks; V2 should match the Farmio reference closely.</reason>
 </decision>
+
+## 2026-08-04T04:20:00Z
+
+<decision>
+  <category>UI/UX</category>
+  <context>Previous V2 was only Farmio-inspired and not close enough; user required a 1:1 clone, without the hero video.</context>
+  <action>Rebuilt /v2 from Farmio’s extracted Framer SSR HTML + CSS (content swapped to TLS), forced appear/opacity states visible without Framer JS, replaced hero video with the main heading, inserted the US/Texas map section, and removed cross-version footer links.</action>
+  <reason>Only reusing Farmio’s actual structure/styles gets a true 1:1 look; video removed per request with heading in its place.</reason>
+</decision>
