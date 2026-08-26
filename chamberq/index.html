@@ -162,6 +162,7 @@
   @media (max-width: 640px) {
     .board { grid-template-columns: 1fr; }
   }
+
 </style>
 </head>
 <body>
@@ -193,8 +194,9 @@ let cards = [
   { id: 6, text: 'Patient Invoice: no mention of Amount (cash / online / discount)', p: 0, col: 'todo' },
   { id: 7, text: 'How much the Doctor is getting from referral (to other chambers)', p: 0, col: 'todo' },
   { id: 8, text: 'Lead Staff should be able to print prescription', p: 0, col: 'todo' },
+  { id: 9, text: 'Print files need a header with logo of client', p: 0, col: 'todo' },
 ];
-let nid = 9, drag = null, modal = null;
+let nid = 10, drag = null, modal = null;
 
 function buildStars(cardId, p) {
   const w = document.createElement('div');
