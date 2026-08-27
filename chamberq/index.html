@@ -317,6 +317,9 @@ function render() {
           rb.innerHTML = '<i class="ti ti-arrow-right" aria-hidden="true"></i>';
           rb.onclick = e => { e.stopPropagation(); mv(card._id, 1); }; acts.appendChild(rb);
         }
+        const eb = document.createElement('button'); eb.className = 'iact'; eb.title = 'Edit';
+        eb.innerHTML = '<i class="ti ti-pencil" aria-hidden="true"></i>';
+        eb.onclick = e => { e.stopPropagation(); openEdit(card._id, card.text); }; acts.appendChild(eb);
         const db2 = document.createElement('button'); db2.className = 'iact del'; db2.title = 'Delete';
         db2.innerHTML = '<i class="ti ti-trash" aria-hidden="true"></i>';
         db2.onclick = e => { e.stopPropagation(); delCard(card._id); }; acts.appendChild(db2);
@@ -352,6 +355,30 @@ function mv(id, d) {
 function delCard(id) {
   if (confirm('Delete this card?')) deleteDoc(doc(db, 'cards', id));
 }
+
+function openEdit(id, currentText) {
+  const ov = document.createElement('div'); ov.className = 'overlay';
+  ov.innerHTML = `<div class="modal">
+    <div class="modal-head">Edit card</div>
+    <textarea id="et">${currentText}</textarea>
+    <div class="modal-foot">
+      <button class="mbtn" onclick="window._closeM()">Cancel</button>
+      <button class="mbtn ok" onclick="window._saveEdit('${id}')">Save</button>
+    </div>
+  </div>`;
+  ov.addEventListener('click', e => { if (e.target === ov) window._closeM(); });
+  document.body.appendChild(ov);
+  modal = { ov, selP: 0 };
+  const ta = document.getElementById('et');
+  setTimeout(() => { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }, 50);
+}
+
+window._saveEdit = id => {
+  const t = document.getElementById('et')?.value?.trim();
+  if (!t) return;
+  updateDoc(doc(db, 'cards', id), { text: t });
+  window._closeM();
+};
 
 function openAdd(colId) {
   const ov = document.createElement('div'); ov.className = 'overlay';
