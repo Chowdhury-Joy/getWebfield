@@ -63,7 +63,7 @@
   .sync-dot.ok { background: #22c55e; }
   .sync-dot.err { background: #f87171; }
 
-  #board { display: grid !important; grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 12px; align-items: start; width: 100%; }
+  #board { display: grid !important; grid-template-columns: repeat(4, minmax(0, 1fr)) !important; gap: 12px; align-items: start; width: 100%; }
 
   .col { border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); overflow: hidden; }
   .col-head { display: flex; align-items: center; gap: 8px; padding: 11px 13px 10px; background: var(--surface); border-bottom: 1px solid var(--border); }
@@ -178,9 +178,10 @@ const db = getFirestore(app);
 const colRef = collection(db, 'cards');
 
 const COLS = [
-  { id: 'todo',  label: 'To do',       color: '#94a3b8' },
-  { id: 'doing', label: 'In progress', color: '#3b82f6' },
-  { id: 'done',  label: 'Done',        color: '#22c55e' },
+  { id: 'todo',      label: 'To do',       color: '#94a3b8' },
+  { id: 'doing',     label: 'In progress', color: '#3b82f6' },
+  { id: 'inreview',  label: 'In review',   color: '#a855f7' },
+  { id: 'done',      label: 'Done',        color: '#22c55e' },
 ];
 const PCOLOR = ['#cbd5e1', '#60a5fa', '#fbbf24', '#f87171'];
 const PLABEL = ['None', 'Low', 'Medium', 'High'];
