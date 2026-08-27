@@ -65,7 +65,7 @@
   .sync-dot.ok { background: #22c55e; }
   .sync-dot.err { background: #f87171; }
 
-  .board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+  .board { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: start; }
 
   .col { border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); overflow: hidden; }
   .col-head { display: flex; align-items: center; gap: 8px; padding: 11px 13px 10px; background: var(--surface); border-bottom: 1px solid var(--border); }
@@ -141,7 +141,7 @@
 
   .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 13px; }
 
-  @media (max-width: 640px) { .board { grid-template-columns: 1fr; } }
+  @media (max-width: 768px) { .board { grid-template-columns: 1fr; } }
 
   .footer { margin-top: auto; padding-top: 2.5rem; text-align: center; font-size: 11px; color: var(--text-muted); }
 </style>
