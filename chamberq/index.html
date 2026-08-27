@@ -215,7 +215,7 @@ function setSyncStatus(state) {
 
 onSnapshot(colRef, snap => {
   cards = snap.docs.map(d => ({ _id: d.id, ...d.data() }));
-  cards.sort((a, b) => (a.order || 0) - (b.order || 0));
+  cards.sort((a, b) => (b.p || 0) - (a.p || 0) || (a.order || 0) - (b.order || 0));
 
   if (!seeded && cards.length === 0) {
     seeded = true;
