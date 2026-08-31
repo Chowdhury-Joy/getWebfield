@@ -3,10 +3,22 @@
   line-height:1.5;padding:10px 16px;text-align:center;letter-spacing:.01em}
 .demo-bar strong{color:#fff}
 .demo-bar a{color:#b7c9a0;text-decoration:underline}
-.areas-figure{border-radius:24px;overflow:hidden;height:260px}
-.areas-figure img{width:100%;height:100%;object-fit:cover;display:block}
+.areas-figure{border-radius:24px;overflow:hidden;height:300px;display:flex;
+  align-items:center;justify-content:center;background:var(--white,#fff);padding:12px}
+.areas-figure svg{width:100%;height:100%;display:block}
 @media (min-width:768px){
-  .areas-figure{grid-column:span 8;height:440px}
+  .areas-figure{grid-column:span 8;height:480px;padding:20px}
 }
+
+/* Heading-to-content rhythm.
+   #approach measured -28px (cards overlapped the heading), #faq 0px, and the
+   CTA heading sat flush against its lead. Normalised to the 40px the About
+   section already used. */
+#approach .section-head + .grid-cards,
+#faq .section-head + .faq-list,
+#services .section-head + .service-grid{margin-top:48px}
+.cta-panel__copy .eyebrow{margin-bottom:20px}
+.cta-panel__copy .lead{margin-top:18px}
+.cta-panel__copy .cta-points{margin-top:24px}
 .faq-list{display:flex;flex-direction:column;gap:12px}
 .footer-legal{margin-top:24px;font-size:12px;line-height:1.6;color:var(--content-subtle,#9ca3af);max-width:820px}
