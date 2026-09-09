@@ -1,0 +1,76 @@
+/* Concept-preview additions layered on the Green Company template.
+   Same structure as the landscaping previews; the palette is re-toned from
+   garden green to timber/oak so the shell suits a joinery brand. */
+
+/* ---- Timber palette override ---------------------------------------- */
+:root{
+  --green:#4a3a29;        /* dark walnut — buttons, service cards, footer */
+  --green-deep:#33271b;
+  --green-soft:#6b543c;
+  --page:#f6f3ed;         /* warm paper */
+  --surface:#ece3d4;      /* light oak card fill */
+  --content-subtle:#8f8578;
+}
+
+.hero__overlay{
+  background:linear-gradient(180deg,
+    rgba(36,26,16,.30) 0%,
+    rgba(36,26,16,.24) 40%,
+    rgba(36,26,16,.74) 100%);
+}
+
+/* ---- Concept-preview banner ----------------------------------------- */
+.demo-bar{background:#33271b;color:#f9f6f1;font-family:var(--font-tagline,monospace);font-size:12px;
+  line-height:1.5;padding:10px 16px;text-align:center;letter-spacing:.01em}
+.demo-bar strong{color:#fff}
+.demo-bar a{color:#d8c3a0;text-decoration:underline}
+
+/* ---- Service-area map ------------------------------------------------ */
+.areas-figure{overflow:visible;height:300px;display:flex;align-items:center;
+  justify-content:center;background:transparent;padding:0}
+.areas-figure svg{width:100%;height:100%;display:block;background:transparent}
+@media (min-width:768px){
+  .areas-figure{grid-column:span 8;height:480px}
+}
+
+/* Workshop marker: slow breathing halo plus two staggered outward pings */
+.areas-map__glow,.areas-map__ping{transform-box:fill-box;transform-origin:center}
+.areas-map__glow{animation:gwfGlowPulse 4s ease-in-out infinite}
+.areas-map__ping{animation:gwfPing 3.2s cubic-bezier(.22,.61,.36,1) infinite}
+.areas-map__ping--2{animation-delay:1.6s}
+@keyframes gwfGlowPulse{
+  0%,100%{transform:scale(1);opacity:.85}
+  50%    {transform:scale(1.14);opacity:1}
+}
+@keyframes gwfPing{
+  0%  {transform:scale(.45);opacity:.55}
+  70% {opacity:0}
+  100%{transform:scale(2.1);opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .areas-map__glow,.areas-map__ping{animation:none}
+  .areas-map__ping{opacity:.25}
+}
+
+/* ---- Heading-to-content rhythm (same fix as the other previews) ------ */
+#approach .section-head + .grid-cards,
+#faq .section-head + .faq-list,
+#services .section-head + .service-grid{margin-top:48px}
+.cta-panel__copy .eyebrow{margin-bottom:20px}
+.cta-panel__copy .lead{margin-top:18px}
+.cta-panel__copy .cta-points{margin-top:24px}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.footer-legal{margin-top:24px;font-size:12px;line-height:1.6;color:var(--content-subtle,#8f8578);max-width:820px}
+
+/* ---- Price-promise strip under the hero -----------------------------
+   Sits in the page shell alongside the hero, so it takes the hero's
+   corner radius and is separated from it by the same gap the card grids
+   use, rather than butting straight up against it. */
+.promise{background:var(--green);color:rgba(255,255,255,.9);
+  margin-top:var(--space-lg);border-radius:var(--radius-xl);overflow:hidden}
+.promise__inner{display:grid;gap:12px;padding-top:22px;padding-bottom:22px;
+  font-family:var(--font-tagline,monospace);font-size:13px;line-height:1.6}
+.promise__inner strong{color:#fff;font-size:15px;letter-spacing:.01em}
+@media (min-width:768px){
+  .promise__inner{grid-template-columns:repeat(3,1fr);gap:32px;align-items:start}
+}

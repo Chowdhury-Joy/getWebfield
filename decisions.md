@@ -313,3 +313,26 @@
  <action>Removed desktop  so service cards hug content height at all breakpoints while keeping the 3-col desktop / 2-col smaller grid.</action>
  <reason>User requested hug height on desktop too — consistent card rhythm without forced square empty space.</reason>
 </decision>
+
+## 2026-09-09
+
+<decision>
+ <category>UI/UX</category>
+ <context>Custom Timber Buildings is a joinery manufacturer, not a landscaper. The Green Company template's garden-green palette read wrong for the brand, but the layout and conversion structure were worth keeping.</context>
+ <action>Kept the template shell untouched and re-toned the brand tokens (`--green`, `--page`, `--surface`, hero overlay) to walnut/oak in `css/demo.css` only. Left `styles.css` and `design-tokens.css` byte-identical to the template.</action>
+ <reason>Palette is the only thing that had to change for a different trade; overriding in the demo layer keeps every preview diffable against the master template.</reason>
+</decision>
+
+<decision>
+ <category>Business_Logic</category>
+ <context>The template's contact block and footer carry an email address and street address. Custom Timber Buildings publish neither on their site — only the phone number 01935 891195 and a form.</context>
+ <action>Removed the email and street-address lines rather than inventing them; contact is phone plus the on-page form, and the footer says "Somerset workshop" because the county is stated on their site but the address is not.</action>
+ <reason>Client previews must not fabricate contact details — a wrong address or email is worse than an absent one.</reason>
+</decision>
+
+<decision>
+ <category>UI/UX</category>
+ <context>The London previews mark a single service city on the UK map. This business manufactures in Somerset and delivers nationwide, the Channel Islands and mainland Europe.</context>
+ <action>Reframed the section as "Where we deliver" with UK regions plus Channel Islands and Europe, and moved the pulse marker to the Yeovil workshop at (561.4, 1146.9), derived from the map's own projection (114.05px/deg latitude, 67.0px/deg longitude) and checked against three landmarks on the path.</action>
+ <reason>The marker should read as "this is where it is made", not "this is the only place we serve", or the map undersells nationwide delivery.</reason>
+</decision>
