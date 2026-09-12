@@ -200,25 +200,6 @@ const PLABEL = ['None', 'Low', 'Medium', 'High'];
 
 let cards = [];
 let drag = null, modal = null;
-let seeded = false;
-
-const SEED = [
-  { text: 'Remove "Forget Password?" link', p: 0, col: 'todo' },
-  { text: 'Pharmacy Medicine Batch Entry', p: 1, col: 'todo' },
-  { text: 'Clinic Cut in both Doctor & Clinic [Card]', p: 2, col: 'todo' },
-  { text: 'Doctor Net = Full Price − Clinic Cut − Expense [Daily/Monthly]', p: 2, col: 'todo' },
-  { text: 'Live Queue → Patient Arrived → Loading time too long → Include Loading animation', p: 3, col: 'todo' },
-  { text: 'Patient Invoice: no mention of Amount (cash / online / discount)', p: 0, col: 'todo' },
-  { text: 'How much the Doctor is getting from referral (to other chambers)', p: 0, col: 'todo' },
-  { text: 'Lead Staff should be able to print prescription', p: 0, col: 'todo' },
-  { text: 'Print files need a header with logo of client', p: 0, col: 'todo' },
-  { text: 'Printable items: small print "All rights reserved to ChamberQ.com" at the very bottom of the page', p: 0, col: 'todo' },
-  { text: 'Printable items: clinic footer block (return reminder text + address/contact) should be pinned to the bottom of the printed page, not float immediately after the prescription content', p: 0, col: 'todo' },
-  { text: 'Add site-wide font option (manageable from admin panel)', p: 0, col: 'todo' },
-  { text: 'Hero section: remove auto-added gradient', p: 0, col: 'todo' },
-  { text: 'Navigation: add mega-menu / dropdown for sub-pages', p: 0, col: 'todo' },
-  { text: 'Navigation mega-menu items should be manageable from admin panel', p: 0, col: 'todo' },
-];
 
 function setSyncStatus(state) {
   const dot = document.getElementById('sdot');
@@ -231,12 +212,6 @@ function setSyncStatus(state) {
 onSnapshot(colRef, snap => {
   cards = snap.docs.map(d => ({ _id: d.id, ...d.data() }));
   cards.sort((a, b) => (b.p || 0) - (a.p || 0) || (a.order || 0) - (b.order || 0));
-
-  if (!seeded && cards.length === 0) {
-    seeded = true;
-    SEED.forEach((c, i) => addDoc(colRef, { ...c, order: i, createdAt: serverTimestamp() }));
-    return;
-  }
 
   setSyncStatus('ok');
   render();
