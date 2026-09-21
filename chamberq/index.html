@@ -183,7 +183,6 @@
 <script type="module">
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
 import { getFirestore, collection, onSnapshot, addDoc, updateDoc, deleteDoc, doc, serverTimestamp, orderBy, query } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
-import { getStorage, ref, uploadBytes, getDownloadURL, deleteObject } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-storage.js';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAPPeOLlVBF-vuSooeG7IOjx-ZXPqi3nSs",
@@ -196,7 +195,6 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-const storage = getStorage(app);
 const colRef = collection(db, 'cards');
 
 const COLS = [
@@ -311,7 +309,7 @@ function render() {
           im.onclick = e => { e.stopPropagation(); openLightbox(card.img); };
           const idel = document.createElement('button'); idel.className = 'card-img-del'; idel.title = 'Remove image';
           idel.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
-          idel.onclick = e => { e.stopPropagation(); removeImage(card._id, card.img); };
+          idel.onclick = e => { e.stopPropagation(); removeImage(card._id); };
           iw.appendChild(im); iw.appendChild(idel); el.appendChild(iw);
         }
 
@@ -482,26 +480,37 @@ window._saveCard = colId => {
   window._closeM();
 };
 
+function compressImage(file, maxPx = 900, quality = 0.72) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => {
+      let w = img.width, h = img.height;
+      if (w > maxPx || h > maxPx) {
+        if (w > h) { h = Math.round(h * maxPx / w); w = maxPx; }
+        else       { w = Math.round(w * maxPx / h); h = maxPx; }
+      }
+      const cv = document.createElement('canvas');
+      cv.width = w; cv.height = h;
+      cv.getContext('2d').drawImage(img, 0, 0, w, h);
+      resolve(cv.toDataURL('image/jpeg', quality));
+    };
+    img.src = URL.createObjectURL(file);
+  });
+}
+
 function openImagePicker(cardId) {
   const input = document.createElement('input');
   input.type = 'file'; input.accept = 'image/*';
   input.onchange = async () => {
     const file = input.files[0];
     if (!file) return;
-    const card = cards.find(c => c._id === cardId);
-    if (card?.img) {
-      try { await deleteObject(ref(storage, `cards/${cardId}/image`)); } catch {}
-    }
-    const storageRef = ref(storage, `cards/${cardId}/image`);
-    await uploadBytes(storageRef, file);
-    const url = await getDownloadURL(storageRef);
-    await updateDoc(doc(db, 'cards', cardId), { img: url });
+    const b64 = await compressImage(file);
+    await updateDoc(doc(db, 'cards', cardId), { img: b64 });
   };
   input.click();
 }
 
-async function removeImage(cardId, imgUrl) {
-  try { await deleteObject(ref(storage, `cards/${cardId}/image`)); } catch {}
+async function removeImage(cardId) {
   await updateDoc(doc(db, 'cards', cardId), { img: null });
 }
 
