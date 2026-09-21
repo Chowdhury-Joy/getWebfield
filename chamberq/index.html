@@ -152,10 +152,17 @@
   .loading { text-align: center; padding: 3rem; color: var(--text-muted); font-size: 13px; }
 
   .card-img-wrap { position: relative; margin-bottom: 8px; }
-  .card-img { width: 100%; border-radius: 6px; max-height: 140px; object-fit: cover; cursor: zoom-in; display: block; }
-  .card-img-del { position: absolute; top: 4px; right: 4px; background: rgba(0,0,0,.55); border: none; border-radius: 99px; color: #fff; cursor: pointer; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; font-size: 11px; opacity: 0; transition: opacity .15s; }
-  .card-img-wrap:hover .card-img-del { opacity: 1; }
-  .card-img-uploading { width: 100%; height: 80px; border-radius: 6px; background: var(--surface-2); border: 1px dashed var(--border-strong); display: flex; align-items: center; justify-content: center; font-size: 11px; color: var(--text-muted); margin-bottom: 8px; }
+  .card-img { width: 100%; border-radius: 6px; max-height: 160px; object-fit: cover; cursor: zoom-in; display: block; }
+  .card-img-del { position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,.6); border: none; border-radius: 99px; color: #fff; cursor: pointer; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .card-img-del:hover { background: rgba(220,38,38,.85); }
+
+  .img-picker { margin-top: 10px; border: 1.5px dashed var(--border-strong); border-radius: var(--radius); padding: 14px; text-align: center; cursor: pointer; transition: background .12s; }
+  .img-picker:hover { background: var(--surface-2); }
+  .img-picker-label { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 6px; pointer-events: none; }
+  .img-preview-wrap { position: relative; margin-top: 10px; }
+  .img-preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: var(--radius); display: block; }
+  .img-preview-clear { position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,.6); border: none; border-radius: 99px; color: #fff; cursor: pointer; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .img-preview-clear:hover { background: rgba(220,38,38,.85); }
 
   .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; z-index: 300; cursor: zoom-out; }
   .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,.5); }
@@ -309,7 +316,7 @@ function render() {
           im.onclick = e => { e.stopPropagation(); openLightbox(card.img); };
           const idel = document.createElement('button'); idel.className = 'card-img-del'; idel.title = 'Remove image';
           idel.innerHTML = '<i class="ti ti-x" aria-hidden="true"></i>';
-          idel.onclick = e => { e.stopPropagation(); removeImage(card._id); };
+          idel.onclick = e => { e.stopPropagation(); updateDoc(doc(db, 'cards', card._id), { img: null }); };
           iw.appendChild(im); iw.appendChild(idel); el.appendChild(iw);
         }
 
@@ -337,9 +344,6 @@ function render() {
           cb.innerHTML = `<i class="ti ti-message" aria-hidden="true"></i>${cc > 0 ? `<span class="comment-count">${cc}</span>` : ''}`;
           cb.onclick = e => { e.stopPropagation(); openComments(card._id, card.text); }; acts.appendChild(cb);
         }
-        const ib = document.createElement('button'); ib.className = 'iact'; ib.title = card.img ? 'Change image' : 'Add image';
-        ib.innerHTML = '<i class="ti ti-camera" aria-hidden="true"></i>';
-        ib.onclick = e => { e.stopPropagation(); openImagePicker(card._id); }; acts.appendChild(ib);
         const db2 = document.createElement('button'); db2.className = 'iact del'; db2.title = 'Delete';
         db2.innerHTML = '<i class="ti ti-trash" aria-hidden="true"></i>';
         db2.onclick = e => { e.stopPropagation(); delCard(card._id); }; acts.appendChild(db2);
@@ -420,11 +424,56 @@ window._postComment = cardId => {
   input.value = '';
 };
 
+function imgPickerBlock(currentSrc) {
+  return `
+    <div class="flabel">Image <span style="font-weight:400;text-transform:none">(optional)</span></div>
+    ${currentSrc
+      ? `<div class="img-preview-wrap" id="ipw">
+           <img class="img-preview" id="ipreview" src="${currentSrc}">
+           <button class="img-preview-clear" onclick="window._clearImg()" title="Remove image"><i class="ti ti-x"></i></button>
+         </div>`
+      : `<div class="img-picker" id="ipw" onclick="window._pickImg()">
+           <div class="img-picker-label"><i class="ti ti-photo" style="font-size:16px"></i> Click to add image</div>
+         </div>`
+    }`;
+}
+
+window._pickImg = () => {
+  const inp = document.createElement('input');
+  inp.type = 'file'; inp.accept = 'image/*'; inp.style.display = 'none';
+  document.body.appendChild(inp);
+  inp.onchange = async () => {
+    const file = inp.files[0]; inp.remove();
+    if (!file || !modal) return;
+    const b64 = await compressImage(file);
+    modal.pendingImg = b64;
+    const ipw = document.getElementById('ipw');
+    if (!ipw) return;
+    ipw.outerHTML = `<div class="img-preview-wrap" id="ipw">
+      <img class="img-preview" id="ipreview" src="${b64}">
+      <button class="img-preview-clear" onclick="window._clearImg()" title="Remove image"><i class="ti ti-x"></i></button>
+    </div>`;
+  };
+  inp.click();
+};
+
+window._clearImg = () => {
+  if (!modal) return;
+  modal.pendingImg = null;
+  modal.removeImg = true;
+  const ipw = document.getElementById('ipw');
+  if (ipw) ipw.outerHTML = `<div class="img-picker" id="ipw" onclick="window._pickImg()">
+    <div class="img-picker-label"><i class="ti ti-photo" style="font-size:16px"></i> Click to add image</div>
+  </div>`;
+};
+
 function openEdit(id, currentText) {
+  const card = cards.find(c => c._id === id);
   const ov = document.createElement('div'); ov.className = 'overlay';
   ov.innerHTML = `<div class="modal">
     <div class="modal-head">Edit card</div>
     <textarea id="et">${currentText}</textarea>
+    ${imgPickerBlock(card?.img || null)}
     <div class="modal-foot">
       <button class="mbtn" onclick="window._closeM()">Cancel</button>
       <button class="mbtn ok" onclick="window._saveEdit('${id}')">Save</button>
@@ -432,7 +481,7 @@ function openEdit(id, currentText) {
   </div>`;
   ov.addEventListener('click', e => { if (e.target === ov) window._closeM(); });
   document.body.appendChild(ov);
-  modal = { ov, selP: 0 };
+  modal = { ov, selP: 0, pendingImg: undefined, removeImg: false };
   const ta = document.getElementById('et');
   setTimeout(() => { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }, 50);
 }
@@ -440,7 +489,10 @@ function openEdit(id, currentText) {
 window._saveEdit = id => {
   const t = document.getElementById('et')?.value?.trim();
   if (!t) return;
-  updateDoc(doc(db, 'cards', id), { text: t });
+  const update = { text: t };
+  if (modal?.pendingImg) update.img = modal.pendingImg;
+  if (modal?.removeImg && !modal?.pendingImg) update.img = null;
+  updateDoc(doc(db, 'cards', id), update);
   window._closeM();
 };
 
@@ -456,6 +508,7 @@ function openAdd(colId) {
       <button class="popt" data-v="2" onclick="mpick(2)">★★ Med</button>
       <button class="popt" data-v="3" onclick="mpick(3)">★★★ High</button>
     </div>
+    ${imgPickerBlock(null)}
     <div class="modal-foot">
       <button class="mbtn" onclick="window._closeM()">Cancel</button>
       <button class="mbtn ok" onclick="window._saveCard('${colId}')">Add card</button>
@@ -463,7 +516,7 @@ function openAdd(colId) {
   </div>`;
   ov.addEventListener('click', e => { if (e.target === ov) window._closeM(); });
   document.body.appendChild(ov);
-  modal = { ov, selP: 0 };
+  modal = { ov, selP: 0, pendingImg: null };
   setTimeout(() => document.getElementById('nt').focus(), 50);
 }
 
@@ -476,7 +529,9 @@ window._saveCard = colId => {
   const t = document.getElementById('nt')?.value?.trim();
   if (!t) return;
   const maxOrder = cards.reduce((m, c) => Math.max(m, c.order || 0), 0);
-  addDoc(colRef, { text: t, p: modal ? modal.selP : 0, col: colId, order: maxOrder + 1, createdAt: serverTimestamp() });
+  const data = { text: t, p: modal ? modal.selP : 0, col: colId, order: maxOrder + 1, createdAt: serverTimestamp() };
+  if (modal?.pendingImg) data.img = modal.pendingImg;
+  addDoc(colRef, data);
   window._closeM();
 };
 
@@ -498,21 +553,6 @@ function compressImage(file, maxPx = 900, quality = 0.72) {
   });
 }
 
-function openImagePicker(cardId) {
-  const input = document.createElement('input');
-  input.type = 'file'; input.accept = 'image/*';
-  input.onchange = async () => {
-    const file = input.files[0];
-    if (!file) return;
-    const b64 = await compressImage(file);
-    await updateDoc(doc(db, 'cards', cardId), { img: b64 });
-  };
-  input.click();
-}
-
-async function removeImage(cardId) {
-  await updateDoc(doc(db, 'cards', cardId), { img: null });
-}
 
 function openLightbox(url) {
   const lb = document.createElement('div'); lb.className = 'lightbox';
