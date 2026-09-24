@@ -83,7 +83,6 @@
     user-select: none;
   }
   .card:hover { border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0,0,0,.08); }
-  .card:hover .card-acts { opacity: 1; }
   .card.dragging { opacity: .25; cursor: grabbing; }
   .card.over { outline: 2px dashed #60a5fa; outline-offset: 1px; }
   .card.p0 { border-left-color: #cbd5e1; }
@@ -98,12 +97,15 @@
   .sw-star { background: none; border: none; cursor: pointer; padding: 0; font-size: 14px; line-height: 1; transition: transform .1s; }
   .sw-star:hover { transform: scale(1.2); }
 
-  .card-acts { display: flex; gap: 3px; opacity: 0; transition: opacity .12s; }
+  .card-acts { display: flex; gap: 3px; }
   .iact { background: none; border: 1px solid var(--border); border-radius: 5px; color: var(--text-muted); cursor: pointer; padding: 3px 6px; font-size: 11px; line-height: 1.4; }
   .iact:hover { background: var(--surface-2); border-color: var(--border-strong); color: var(--text); }
   .iact.del:hover { background: #fee2e2; border-color: #fca5a5; color: #b91c1c; }
   .iact.comment:hover { background: #f5f3ff; border-color: #a855f7; color: #7e22ce; }
+  .iact.voice.has-rec { color: #f97316; border-color: #f97316; }
+  .iact.voice.has-rec:hover { background: #fff7ed; }
   .comment-count { font-size: 10px; background: #f5f3ff; color: #7e22ce; border-radius: 99px; padding: 1px 6px; margin-left: 4px; display: inline-block; }
+  .voice-count { font-size: 10px; margin-left: 2px; }
   .comment-list { max-height: 200px; overflow-y: auto; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
   .comment-item { background: var(--surface-2); border-radius: 6px; padding: 8px 10px; font-size: 12px; line-height: 1.5; }
   .comment-meta { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
@@ -163,6 +165,21 @@
   .img-preview { width: 100%; max-height: 160px; object-fit: cover; border-radius: var(--radius); display: block; }
   .img-preview-clear { position: absolute; top: 5px; right: 5px; background: rgba(0,0,0,.6); border: none; border-radius: 99px; color: #fff; cursor: pointer; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 12px; }
   .img-preview-clear:hover { background: rgba(220,38,38,.85); }
+
+  .rec-list { max-height: 220px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px; margin-bottom: 4px; }
+  .rec-item { background: var(--surface-2); border-radius: 6px; padding: 8px 10px; }
+  .rec-item-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .rec-meta { font-size: 10px; color: var(--text-muted); }
+  .rec-audio { width: 100%; height: 36px; display: block; }
+  .rec-ctrl { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 16px 0 6px; border-top: 1px solid var(--border); margin-top: 12px; }
+  .rec-btn { width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 22px; transition: background .15s; }
+  .rec-btn.idle { background: var(--surface-2); color: var(--text-secondary); }
+  .rec-btn.idle:hover { background: #fee2e2; color: #dc2626; }
+  .rec-btn.recording { background: #dc2626; color: #fff; animation: pulse-rec 1.2s ease-in-out infinite; }
+  @keyframes pulse-rec { 0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.4)} 50%{box-shadow:0 0 0 10px rgba(220,38,38,0)} }
+  .rec-timer { font-size: 14px; font-weight: 600; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+  .rec-timer.active { color: #dc2626; }
+  .rec-hint { font-size: 11px; color: var(--text-muted); }
 
   .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: flex; align-items: center; justify-content: center; z-index: 300; cursor: zoom-out; }
   .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; box-shadow: 0 8px 40px rgba(0,0,0,.5); }
@@ -344,6 +361,11 @@ function render() {
           cb.innerHTML = `<i class="ti ti-message" aria-hidden="true"></i>${cc > 0 ? `<span class="comment-count">${cc}</span>` : ''}`;
           cb.onclick = e => { e.stopPropagation(); openComments(card._id, card.text); }; acts.appendChild(cb);
         }
+        const vc = card.voiceCount || 0;
+        const vb = document.createElement('button');
+        vb.className = `iact voice${vc > 0 ? ' has-rec' : ''}`; vb.title = 'Voice notes';
+        vb.innerHTML = `<i class="ti ti-microphone" aria-hidden="true"></i>${vc > 0 ? `<span class="voice-count">${vc}</span>` : ''}`;
+        vb.onclick = e => { e.stopPropagation(); openVoice(card._id, card.text); }; acts.appendChild(vb);
         const db2 = document.createElement('button'); db2.className = 'iact del'; db2.title = 'Delete';
         db2.innerHTML = '<i class="ti ti-trash" aria-hidden="true"></i>';
         db2.onclick = e => { e.stopPropagation(); delCard(card._id); }; acts.appendChild(db2);
@@ -553,6 +575,113 @@ function compressImage(file, maxPx = 900, quality = 0.72) {
   });
 }
 
+
+let recState = { recorder: null, chunks: [], stream: null, interval: null, seconds: 0 };
+
+function fmtDur(s) { return `${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`; }
+
+function openVoice(cardId, cardText) {
+  const ov = document.createElement('div'); ov.className = 'overlay';
+  ov.innerHTML = `<div class="modal" style="width:400px">
+    <div class="modal-head" style="font-size:13px;color:var(--text-muted);font-weight:400;margin-bottom:4px">Voice notes</div>
+    <div style="font-size:14px;font-weight:500;margin-bottom:10px;line-height:1.4">${cardText}</div>
+    <div class="rec-list" id="rlist"><div class="rec-hint" style="text-align:center;padding:1rem 0">Loading…</div></div>
+    <div class="rec-ctrl">
+      <button class="rec-btn idle" id="recbtn" onclick="window._toggleRec('${cardId}')">
+        <i class="ti ti-microphone" aria-hidden="true"></i>
+      </button>
+      <div class="rec-timer" id="rectimer">0:00</div>
+      <div class="rec-hint" id="rechint">Tap to record</div>
+    </div>
+    <div class="modal-foot"><button class="mbtn" onclick="window._closeVoice()">Close</button></div>
+  </div>`;
+  ov.addEventListener('click', e => { if (e.target === ov) window._closeVoice(); });
+  document.body.appendChild(ov);
+  modal = { ov, selP: 0 };
+
+  const recRef = collection(db, 'cards', cardId, 'recordings');
+  const unsub = onSnapshot(query(recRef, orderBy('createdAt', 'asc')), snap => {
+    const list = document.getElementById('rlist');
+    if (!list) { unsub(); return; }
+    if (snap.empty) { list.innerHTML = '<div class="rec-hint" style="text-align:center;padding:1rem 0;color:var(--text-muted)">No voice notes yet</div>'; return; }
+    list.innerHTML = '';
+    snap.docs.forEach(d => {
+      const r = d.data();
+      const date = r.createdAt?.toDate ? r.createdAt.toDate().toLocaleString() : '';
+      const dur = r.duration ? fmtDur(r.duration) : '';
+      const item = document.createElement('div'); item.className = 'rec-item';
+      item.innerHTML = `
+        <div class="rec-item-head">
+          <span class="rec-meta">${date}${dur ? ' · ' + dur : ''}</span>
+          <button class="iact del" onclick="window._delRec('${cardId}','${d.id}')" title="Delete"><i class="ti ti-trash"></i></button>
+        </div>
+        <audio class="rec-audio" controls src="${r.audio}"></audio>`;
+      list.appendChild(item);
+    });
+    list.scrollTop = list.scrollHeight;
+  });
+  modal.unsub = unsub;
+}
+
+window._toggleRec = async cardId => {
+  if (recState.recorder && recState.recorder.state === 'recording') {
+    recState.recorder.stop();
+    recState.stream.getTracks().forEach(t => t.stop());
+    clearInterval(recState.interval);
+    const btn = document.getElementById('recbtn');
+    if (btn) { btn.className = 'rec-btn idle'; btn.innerHTML = '<i class="ti ti-microphone" aria-hidden="true"></i>'; }
+    const hint = document.getElementById('rechint');
+    if (hint) hint.textContent = 'Saving…';
+    const timer = document.getElementById('rectimer');
+    if (timer) timer.className = 'rec-timer';
+  } else {
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      recState.stream = stream; recState.chunks = []; recState.seconds = 0;
+      const mime = ['audio/webm;codecs=opus','audio/webm','audio/mp4','audio/ogg'].find(m => MediaRecorder.isTypeSupported(m)) || '';
+      const recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : {});
+      recState.recorder = recorder;
+      recorder.ondataavailable = e => { if (e.data.size > 0) recState.chunks.push(e.data); };
+      recorder.onstop = async () => {
+        const duration = recState.seconds;
+        const blob = new Blob(recState.chunks, { type: recorder.mimeType || 'audio/webm' });
+        const b64 = await new Promise(res => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(blob); });
+        const recRef = collection(db, 'cards', cardId, 'recordings');
+        await addDoc(recRef, { audio: b64, duration, createdAt: serverTimestamp() });
+        const card = cards.find(c => c._id === cardId);
+        updateDoc(doc(db, 'cards', cardId), { voiceCount: (card?.voiceCount || 0) + 1 });
+        const hint = document.getElementById('rechint');
+        if (hint) hint.textContent = 'Tap to record';
+        recState.recorder = null;
+      };
+      recorder.start();
+      const btn = document.getElementById('recbtn');
+      if (btn) { btn.className = 'rec-btn recording'; btn.innerHTML = '<i class="ti ti-square" aria-hidden="true"></i>'; }
+      const hint = document.getElementById('rechint'); if (hint) hint.textContent = 'Recording… tap to stop';
+      const timer = document.getElementById('rectimer'); if (timer) { timer.textContent = '0:00'; timer.className = 'rec-timer active'; }
+      recState.interval = setInterval(() => {
+        recState.seconds++;
+        const t = document.getElementById('rectimer'); if (t) t.textContent = fmtDur(recState.seconds);
+      }, 1000);
+    } catch { alert('Microphone access denied or unavailable.'); }
+  }
+};
+
+window._delRec = async (cardId, recId) => {
+  await deleteDoc(doc(db, 'cards', cardId, 'recordings', recId));
+  const card = cards.find(c => c._id === cardId);
+  updateDoc(doc(db, 'cards', cardId), { voiceCount: Math.max(0, (card?.voiceCount || 1) - 1) });
+};
+
+window._closeVoice = () => {
+  if (recState.recorder && recState.recorder.state === 'recording') {
+    recState.recorder.stop();
+    recState.stream?.getTracks().forEach(t => t.stop());
+    clearInterval(recState.interval);
+    recState.recorder = null;
+  }
+  window._closeM();
+};
 
 function openLightbox(url) {
   const lb = document.createElement('div'); lb.className = 'lightbox';
